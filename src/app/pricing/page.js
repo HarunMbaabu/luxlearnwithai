@@ -1,11 +1,23 @@
-'use client'
+"use client";
+import { useState } from "react";
 import FAQAccordion from "../components/faq";
 import Footer from "../components/footer";
 import Header from "../components/header";
 import { Calendar, Clock } from "lucide-react";
+import FullProgramMonthlyForm from "@/components/FullProgramMonthlyForm";
 
 const page = () => {
-  const registrationUrl = process.env.NEXT_PUBLIC_REGISTRATION_LINK ?? 'https://forms.gle/uACYjjmH4zq3F5Us5';
+  const registrationUrl =
+    process.env.NEXT_PUBLIC_REGISTRATION_LINK ?? "https://forms.gle/uACYjjmH4zq3F5Us5";
+
+  const [open, setOpen] = useState(false);
+  const [selectedMode, setSelectedMode] = useState("");
+
+  const openForm = (mode) => {
+    setSelectedMode(mode);
+    setOpen(true);
+  };
+
   return (
     <section className="bg-white text-gray-900">
       <Header />
@@ -86,15 +98,14 @@ const page = () => {
                   </ul>
                   <button
                     type="button"
-                    onClick={() => {
-                      window.location.href = registrationUrl;
-                    }}
+                    onClick={() => openForm("Online Classes")}
                     className="inline-block px-5 py-3 font-semibold tracking-wider text-center rounded bg-gray-100 dark:bg-violet-600 dark:text-gray-50"
                   >
                     Apply Now
                   </button>
                 </div>
               </div>
+
               <div className="flex w-full mb-8 sm:px-4 md:w-1/2 lg:w-1/3 lg:mb-0">
                 <div className="flex flex-grow flex-col p-6 space-y-6 rounded-md sm:p-8 bg-blue-900 dark:bg-violet-600 text-gray-50">
                   <div className="space-y-2">
@@ -170,15 +181,16 @@ const page = () => {
                       <span>Flexible attendance options</span>
                     </li>
                   </ul>
-                  <a
-                    rel="noopener noreferrer"
-                    href={process.env.NEXT_PUBLIC_REGISTRATION_LINK || 'https://forms.gle/rkdBC3ywcwx88fb1A'}
+                  <button
+                    type="button"
+                    onClick={() => openForm("Hybrid Classes")}
                     className="inline-block w-full px-5 py-3 font-bold tracking-wider text-center rounded bg-gray-100 text-blue-900 dark:text-violet-600"
                   >
                     Apply Now
-                  </a>
+                  </button>
                 </div>
               </div>
+
               <div className="flex w-full mb-8 sm:px-4 md:w-1/2 lg:w-1/3 lg:mb-0">
                 <div className="flex flex-grow flex-col p-6 space-y-6 rounded-md border sm:p-8 dark:bg-gray-50">
                   <div className="space-y-2">
@@ -190,7 +202,7 @@ const page = () => {
                     <p className="text-sm font-medium">(50,000 KES total)</p>
                   </div>
                   <p className="leading-relaxed dark:text-gray-600">
-                    In-person classes at our Kilimani campus
+                    In-person classes at our Garden Estate campus
                   </p>
                   <ul className="space-y-2 dark:text-gray-600">
                     <li className="flex items-start space-x-2">
@@ -269,19 +281,20 @@ const page = () => {
                       <span>Full campus resources access</span>
                     </li>
                   </ul>
-                  <a
-                    rel="noopener noreferrer"
-                    href={process.env.NEXT_PUBLIC_REGISTRATION_LINK || 'https://forms.gle/rkdBC3ywcwx88fb1A'}
+                  <button
+                    type="button"
+                    onClick={() => openForm("Physical Classes")}
                     className="inline-block w-full px-5 py-3 font-semibold tracking-wider text-center rounded bg-gray-100 dark:bg-violet-600 dark:text-gray-50"
                   >
                     Apply Now
-                  </a>
+                  </button>
                 </div>
               </div>
             </div>
           </div>
         </section>
       </div>
+
       <section className="container mx-auto max-w-6xl p-6">
         <div className="mb-12">
           <h2 className="text-3xl font-bold text-center mb-8">
@@ -350,10 +363,23 @@ const page = () => {
           </div>
         </div>
       </section>
+
       <section className="container mx-auto max-w-6xl p-6">
         <FAQAccordion />
       </section>
+
       <Footer />
+
+      {open && (
+        <div className="fixed inset-0 z-50 bg-black/50 flex items-center justify-center p-4">
+          <div className="bg-white rounded-lg w-full max-w-md">
+            <FullProgramMonthlyForm
+              defaultMode={selectedMode}
+              onClose={() => setOpen(false)}
+            />
+          </div>
+        </div>
+      )}
     </section>
   );
 };

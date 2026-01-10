@@ -1,5 +1,5 @@
 "use client";
-import { useEffect } from "react";
+import { useEffect, useState } from "react";
 import Image from "next/image";
 import Link from "next/link";
 import AOS from "aos";
@@ -20,9 +20,16 @@ import Header from "./components/header";
 import Footer from "./components/footer";
 import { MarqueeDemo } from "./components/marquee";
 import ApplicationProcess from "./components/application_process";
+import ShortCourseForm from "@/components/ShortCourseForm";
+import { Dialog, DialogTrigger, DialogContent, DialogTitle } from "@/components/ui/dialog";
+import FullProgramForm from "@/components/FullProgramForm";
+import UniversalEnrollmentForm from "@/components/UniversalEnrollmentForm";
 
 export default function Home() {
   const registrationUrl = process.env.NEXT_PUBLIC_REGISTRATION_LINK ?? '#';
+  const [showShortCourseForm, setShowShortCourseForm] = useState(false);
+  const [showFullProgramForm, setShowFullProgramForm] = useState(false);
+  const [showUniversalEnrollmentForm, setShowUniversalEnrollmentForm] = useState(false);
   useEffect(() => {
     AOS.init({ duration: 700, once: true });
   }, []);
@@ -80,12 +87,22 @@ export default function Home() {
                 enabled coach, industry experts, and our elite educators.
               </p>
               <div className="flex flex-col sm:flex-row gap-4">
+                <Dialog open={showUniversalEnrollmentForm} onOpenChange={setShowUniversalEnrollmentForm}>
+              <DialogTrigger asChild>
                 <Button
-                  size="lg"
+                  size="sm"
                   className="rounded-full bg-blue-900 text-white"
+                  onClick={() => setShowUniversalEnrollmentForm(true)}
                 >
-                  <Link href={process.env.NEXT_PUBLIC_REGISTRATION_LINK || '#'}>Enroll Now</Link>
+                  Enroll now
+                  <ArrowRight className="ml-2 h-4 w-4" />
                 </Button>
+              </DialogTrigger>
+              <DialogContent>
+                <DialogTitle>Enrollment</DialogTitle>
+                <UniversalEnrollmentForm onClose={() => setShowUniversalEnrollmentForm(false)} />
+              </DialogContent>
+            </Dialog>
                 <Button
                   onClick={() => {
                     window.location.href = "learn-with-ai";
@@ -150,59 +167,63 @@ export default function Home() {
 
       {/* Programs Section */}
       <section className="py-16 px-4 bg-slate-50">
-        <div className="container mx-auto max-w-6xl">
-          <div className="text-center mb-12" data-aos="fade-up">
-            <h2 className="text-3xl md:text-4xl font-bold mb-4">
-              Our Programs
-            </h2>
-            <p className="text-xl text-gray-600 max-w-2xl mx-auto">
-              Choose the program that fits your career goals and schedule. Available both in-person and online.
+    <div className="container mx-auto max-w-6xl">
+      <div className="text-center mb-12" data-aos="fade-up">
+        <h2 className="text-3xl md:text-4xl font-bold mb-4">
+          Our Programs
+        </h2>
+        <p className="text-xl text-gray-600 max-w-2xl mx-auto">
+          Choose the program that fits your career goals and schedule. Available both in-person and online.
+        </p>
+      </div>
+      <div className="grid grid-cols-1 md:grid-cols-2 gap-8">
+        <div
+          className="bg-blue-50 rounded-2xl p-8 border border-blue-100"
+          data-aos="fade-up"
+        >
+          <h3 className="text-2xl font-bold text-blue-900 mb-4">
+            Full Program
+          </h3>
+          <div className="mb-6">
+            <p className="text-lg mb-2">
+              <span className="font-semibold">Duration:</span> 6 Months
             </p>
-          </div>
-          <div className="grid grid-cols-1 md:grid-cols-2 gap-8">
-            {/* Full Program Card */}
-            <div
-              className="bg-blue-50 rounded-2xl p-8 border border-blue-100"
-              data-aos="fade-up"
-            >
-              <h3 className="text-2xl font-bold text-blue-900 mb-4">
-                Full Program
-              </h3>
-              <div className="mb-6">
-                <p className="text-lg mb-2">
-                  <span className="font-semibold">Duration:</span> 6 Months
-                </p>
-                <p className="text-gray-600">• 4 Months Learning</p>
-                <p className="text-gray-600">• 2 Months Internship</p>
-                <div className="mt-4 p-3 bg-white rounded-lg border border-blue-200">
-                  <p className="text-sm font-medium text-blue-800 mb-1">Available Formats:</p>
-                  <div className="flex flex-wrap gap-2">
-                    <span className="inline-flex items-center px-2.5 py-0.5 rounded-full text-xs font-medium bg-blue-100 text-blue-800">
-                      🏢 Physical Classes
-                    </span>
-                    <span className="inline-flex items-center px-2.5 py-0.5 rounded-full text-xs font-medium bg-green-100 text-green-800">
-                      💻 Online Classes
-                    </span>
-                  </div>
-                </div>
+            <p className="text-gray-600">• 4 Months Learning</p>
+            <p className="text-gray-600">• 2 Months Internship</p>
+            <div className="mt-4 p-3 bg-white rounded-lg border border-blue-200">
+              <p className="text-sm font-medium text-blue-800 mb-1">Available Formats:</p>
+              <div className="flex flex-wrap gap-2">
+                <span className="inline-flex items-center px-2.5 py-0.5 rounded-full text-xs font-medium bg-blue-100 text-blue-800">
+                  🏢 Physical Classes
+                </span>
+                <span className="inline-flex items-center px-2.5 py-0.5 rounded-full text-xs font-medium bg-green-100 text-green-800">
+                  💻 Online Classes
+                </span>
               </div>
-              <div className="flex items-center justify-between">
-                <div className="text-3xl font-bold text-blue-900">
-                  From 30,000 KSh
-                </div>
+            </div>
+          </div>
+          <div className="flex items-center justify-between">
+            <div className="text-3xl font-bold text-blue-900">
+              From KES 30,000
+            </div>
+            <Dialog open={showFullProgramForm} onOpenChange={setShowFullProgramForm}>
+              <DialogTrigger asChild>
                 <Button
-                  onClick={() => {
-                    window.location.href =
-                      "https://forms.gle/wkisaQGhB7j3yUYr5";
-                  }}
                   size="sm"
                   className="rounded-full bg-blue-900 text-white"
+                  onClick={() => setShowFullProgramForm(true)}
                 >
                   Enroll now
                   <ArrowRight className="ml-2 h-4 w-4" />
                 </Button>
-              </div>
-            </div>
+              </DialogTrigger>
+              <DialogContent>
+                <DialogTitle>Full Program Enrollment</DialogTitle>
+                <FullProgramForm onClose={() => setShowFullProgramForm(false)} />
+              </DialogContent>
+            </Dialog>
+          </div>
+        </div>
 
             {/* Prep Program Card */}
             <div
@@ -232,19 +253,24 @@ export default function Home() {
               </div>
               <div className="flex items-center justify-between">
                 <div className="text-3xl font-bold text-blue-900">
-                  For 7,5000 KSh
+                  For KES 5,500
                 </div>
-                <Button
-                  onClick={() => {
-                    window.location.href =
-                      "https://docs.google.com/forms/d/e/1FAIpQLSejkNyeCtcMx8TaU3x87QOuUktSLyGvjsIKXDKRaYWEtKeRxQ/viewform";
-                  }}
-                  size="sm"
-                  className="rounded-full bg-blue-900 text-white"
-                >
-                  Enroll now
-                  <ArrowRight className="ml-2 h-4 w-4" />
-                </Button>
+                <Dialog open={showShortCourseForm} onOpenChange={setShowShortCourseForm}>
+                  <DialogTrigger asChild>
+                    <Button
+                      size="sm"
+                      className="rounded-full bg-blue-900 text-white"
+                      onClick={() => setShowShortCourseForm(true)}
+                    >
+                      Enroll now
+                      <ArrowRight className="ml-2 h-4 w-4" />
+                    </Button>
+                  </DialogTrigger>
+                  <DialogContent>
+                    <DialogTitle>Short Course Enrollment</DialogTitle>
+                    <ShortCourseForm onClose={() => setShowShortCourseForm(false)} />
+                  </DialogContent>
+                </Dialog>
               </div>
             </div>
           </div>
@@ -697,16 +723,22 @@ export default function Home() {
               skills in AI and data science.
             </p>
             <div className="flex flex-col sm:flex-row gap-4 justify-center">
-              <Button
-                onClick={() => {
-                  window.location.href = registrationUrl;
-                }}
-                size="lg"
-                className="rounded-full bg-blue-900 text-white"
-              >
-                Enroll Now
-                <ArrowRight className="ml-2 h-4 w-4" />
-              </Button>
+            <Dialog open={showUniversalEnrollmentForm} onOpenChange={setShowUniversalEnrollmentForm}>
+              <DialogTrigger asChild>
+                <Button
+                  size="sm"
+                  className="rounded-full bg-blue-900 text-white"
+                  onClick={() => setShowUniversalEnrollmentForm(true)}
+                >
+                  Enroll now
+                  <ArrowRight className="ml-2 h-4 w-4" />
+                </Button>
+              </DialogTrigger>
+              <DialogContent>
+                <DialogTitle>Enrollment</DialogTitle>
+                <UniversalEnrollmentForm onClose={() => setShowUniversalEnrollmentForm(false)} />
+              </DialogContent>
+            </Dialog>
               <Button
                 onClick={() => {
                   window.location.href =

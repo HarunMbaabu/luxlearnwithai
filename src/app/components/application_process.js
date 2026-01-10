@@ -1,7 +1,6 @@
 "use client";
 
 import React from "react";
-
 import { useState } from "react";
 import {
   ChevronRight,
@@ -10,12 +9,21 @@ import {
   Users,
   Award,
   FileText,
+  ArrowRight,
 } from "lucide-react";
 import { Button } from "@/components/ui/button";
-import Link from "next/link";
+import UniversalEnrollmentForm from "@/components/UniversalEnrollmentForm";
+import {
+  Dialog,
+  DialogTrigger,
+  DialogContent,
+  DialogTitle,
+} from "@/components/ui/dialog";
 
 export default function ApplicationProcess() {
   const [activeStep, setActiveStep] = useState(0);
+  const [showUniversalEnrollmentForm, setShowUniversalEnrollmentForm] =
+    useState(false);
 
   const steps = [
     {
@@ -64,7 +72,6 @@ export default function ApplicationProcess() {
           network.
         </p>
       </div>
-      
 
       {/* Mobile Process Steps */}
       <div className="my-8 md:hidden">
@@ -133,9 +140,7 @@ export default function ApplicationProcess() {
             <h3 className="mb-2 text-xl font-bold text-blue-900 md:text-2xl">
               {steps[activeStep].title}
             </h3>
-            <p className="mb-4 text-blue-900">
-              {steps[activeStep].description}
-            </p>
+            <p className="mb-4 text-blue-900">{steps[activeStep].description}</p>
             <div className="mb-6 rounded-lg bg-white p-4  text-blue-900">
               {steps[activeStep].details}
             </div>
@@ -164,8 +169,26 @@ export default function ApplicationProcess() {
 
       {/* CTA Button */}
       <div className="mt-12 text-center">
-        <Link className="rounded-md bg-blue-900 px-8 py-3 text-lg font-bold text-white hover:bg-blue-800" href="https://docs.google.com/forms/d/e/1FAIpQLSejkNyeCtcMx8TaU3x87QOuUktSLyGvjsIKXDKRaYWEtKeRxQ/viewform">Enroll Now
-        </Link>
+        <Dialog
+          open={showUniversalEnrollmentForm}
+          onOpenChange={setShowUniversalEnrollmentForm}
+        >
+          <DialogTrigger asChild>
+            <button
+              className="rounded-md bg-blue-900 px-8 py-3 text-lg font-bold text-white hover:bg-blue-800"
+              onClick={() => setShowUniversalEnrollmentForm(true)}
+              type="button"
+            >
+              Enroll Now
+            </button>
+          </DialogTrigger>
+          <DialogContent>
+            <DialogTitle>Enrollment</DialogTitle>
+            <UniversalEnrollmentForm
+              onClose={() => setShowUniversalEnrollmentForm(false)}
+            />
+          </DialogContent>
+        </Dialog>
       </div>
     </div>
   );

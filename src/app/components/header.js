@@ -4,12 +4,22 @@ import { useState, useEffect } from "react";
 import Link from "next/link";
 import { Button } from "@/components/ui/button";
 import { Menu, X, ChevronDown } from "lucide-react";
+import UniversalEnrollmentForm from "@/components/UniversalEnrollmentForm";
+import {
+  Dialog,
+  DialogTrigger,
+  DialogContent,
+  DialogTitle,
+} from "@/components/ui/dialog";
 
 export default function Header() {
   const [showLanguageDropdown, setShowLanguageDropdown] = useState(false);
   const [showCompanyDropdown, setShowCompanyDropdown] = useState(false);
   const [mobileMenuOpen, setMobileMenuOpen] = useState(false);
   const [showBanner, setShowBanner] = useState(true);
+  const [showUniversalEnrollmentForm, setShowUniversalEnrollmentForm] =
+    useState(false);
+
   const [selectedLanguage, setSelectedLanguage] = useState({
     flag: "/globe.svg",
     name: "English",
@@ -75,13 +85,34 @@ export default function Header() {
             <div className="text-center">
               <p className="text-sm md:text-base font-medium">
                 <strong>January 2026 Intake Registration Now Open!</strong>
-                <Link
-                  href={process.env.NEXT_PUBLIC_REGISTRATION_LINK || '#'}
-                  className="ml-1 underline hover:no-underline font-semibold"
-                  rel="noopener noreferrer"
+
+                <Dialog
+                  open={showUniversalEnrollmentForm}
+                  onOpenChange={(open) => {
+                    setShowUniversalEnrollmentForm(open);
+                    if (open) {
+                      setShowLanguageDropdown(false);
+                      setShowCompanyDropdown(false);
+                      setMobileMenuOpen(false);
+                    }
+                  }}
                 >
-                    Register→
-                </Link>
+                  <DialogTrigger asChild>
+                    <button
+                      type="button"
+                      className="ml-1 underline hover:no-underline font-semibold"
+                      onClick={() => setShowUniversalEnrollmentForm(true)}
+                    >
+                      Register→
+                    </button>
+                  </DialogTrigger>
+                  <DialogContent>
+                    <DialogTitle>Enrollment</DialogTitle>
+                    <UniversalEnrollmentForm
+                      onClose={() => setShowUniversalEnrollmentForm(false)}
+                    />
+                  </DialogContent>
+                </Dialog>
               </p>
             </div>
             <button
@@ -95,9 +126,12 @@ export default function Header() {
         </div>
       )}
 
-
       {/* Main Header */}
-      <header className={`fixed left-0 w-full z-40 bg-white/95 backdrop-blur-sm border-b border-blue-200 ${showBanner ? 'top-10' : 'top-0'} transition-all duration-300`}>
+      <header
+        className={`fixed left-0 w-full z-40 bg-white/95 backdrop-blur-sm border-b border-blue-200 ${
+          showBanner ? "top-10" : "top-0"
+        } transition-all duration-300`}
+      >
         <div className="w-full px-4 mx-auto flex h-16 items-center justify-between">
           <Link href={"/"} className="flex items-center gap-2 md:gap-4">
             <Image
@@ -114,7 +148,6 @@ export default function Header() {
 
           {/* Desktop Navigation */}
           <nav className="hidden md:flex items-center gap-6">
-
             <Link
               href="/learn-with-ai"
               className="text-md tracking-wide font-bold text-gray-800 hover:text-blue-900 transition-colors"
@@ -135,6 +168,7 @@ export default function Header() {
             >
               Pricing
             </Link>
+
             {/* Company Dropdown */}
             <div className="relative">
               <button
@@ -208,9 +242,33 @@ export default function Header() {
             </div>
 
             {/* Desktop Apply Button */}
-            <Button size="sm" className="text-md hidden md:block bg-blue-900">
-              <Link href={process.env.NEXT_PUBLIC_REGISTRATION_LINK || 'https://forms.gle/1FnYU1i623GsvpiT9'}>Enroll Now</Link>
-            </Button>
+            <Dialog
+              open={showUniversalEnrollmentForm}
+              onOpenChange={(open) => {
+                setShowUniversalEnrollmentForm(open);
+                if (open) {
+                  setShowLanguageDropdown(false);
+                  setShowCompanyDropdown(false);
+                  setMobileMenuOpen(false);
+                }
+              }}
+            >
+              <DialogTrigger asChild>
+                <Button
+                  size="sm"
+                  className="text-md hidden md:block bg-blue-900"
+                  onClick={() => setShowUniversalEnrollmentForm(true)}
+                >
+                  Enroll Now
+                </Button>
+              </DialogTrigger>
+              <DialogContent>
+                <DialogTitle>Enrollment</DialogTitle>
+                <UniversalEnrollmentForm
+                  onClose={() => setShowUniversalEnrollmentForm(false)}
+                />
+              </DialogContent>
+            </Dialog>
 
             {/* Mobile Menu Button */}
             <button
@@ -255,9 +313,12 @@ export default function Header() {
               >
                 Pricing
               </Link>
+
               {/* Mobile Company Section */}
               <div className="border-l-2 border-blue-100 pl-3">
-                <div className="text-xs font-semibold text-blue-900 uppercase tracking-wide mb-2">About</div>
+                <div className="text-xs font-semibold text-blue-900 uppercase tracking-wide mb-2">
+                  About
+                </div>
                 {companyLinks.map((link) => (
                   <Link
                     key={link.href}
@@ -268,9 +329,34 @@ export default function Header() {
                   </Link>
                 ))}
               </div>
-              <Button size="sm" className="bg-blue-900 w-full mt-2">
-                <Link href={process.env.NEXT_PUBLIC_REGISTRATION_LINK || '#'}>Enroll Now</Link>
-              </Button>
+
+              <Dialog
+                open={showUniversalEnrollmentForm}
+                onOpenChange={(open) => {
+                  setShowUniversalEnrollmentForm(open);
+                  if (open) {
+                    setShowLanguageDropdown(false);
+                    setShowCompanyDropdown(false);
+                    setMobileMenuOpen(false);
+                  }
+                }}
+              >
+                <DialogTrigger asChild>
+                  <Button
+                    size="sm"
+                    className="bg-blue-900 w-full mt-2"
+                    onClick={() => setShowUniversalEnrollmentForm(true)}
+                  >
+                    Enroll Now
+                  </Button>
+                </DialogTrigger>
+                <DialogContent>
+                  <DialogTitle>Enrollment</DialogTitle>
+                  <UniversalEnrollmentForm
+                    onClose={() => setShowUniversalEnrollmentForm(false)}
+                  />
+                </DialogContent>
+              </Dialog>
             </div>
           </div>
         )}
