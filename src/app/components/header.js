@@ -84,7 +84,7 @@ export default function Header() {
           <div className="flex items-center justify-center px-4 py-2 relative">
             <div className="text-center">
               <p className="text-sm md:text-base font-medium">
-                <strong>January 2026 Intake Registration Now Open!</strong>
+                <strong>March 2026 Intake Registration Now Open!</strong>
 
                 <Dialog
                   open={showUniversalEnrollmentForm}
