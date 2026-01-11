@@ -4,6 +4,10 @@ import { Pool } from "pg";
 
 const connectionString = process.env.LUXDEVDB_CONN;
 
+if (!connectionString) {
+  throw new Error("Missing LUXDEVDB_CONN");
+}
+
 function getSslMode(cs) {
   try {
     const u = new URL(cs);
@@ -20,11 +24,16 @@ const sslMode =
 
 const useSsl = sslMode ? sslMode !== "disable" : true;
 
-const rejectUnauthorized = sslMode === "verify-full" || sslMode === "verify-ca";
+const sslRootCert = process.env.PGSSLROOTCERT;
 
 const pool = new Pool({
   connectionString,
-  ssl: useSsl ? { rejectUnauthorized } : undefined,
+  ssl: useSsl
+    ? {
+        rejectUnauthorized: true,
+        ca: sslRootCert,
+      }
+    : undefined,
 });
 
 function quoteIdent(name) {
@@ -154,18 +163,14 @@ export async function POST(req) {
     const data = payload?.data;
 
     if (!formType || !data || typeof data !== "object") {
-      return new Response(JSON.stringify({ error: "Invalid payload" }), {
-        status: 400,
-      });
+      return new Response(JSON.stringify({ error: "Invalid payload" }), { status: 400 });
     }
 
     const schemaName = "applications";
     const tableName = sanitizeTableName(formType);
 
     if (!tableName) {
-      return new Response(JSON.stringify({ error: "Invalid formType" }), {
-        status: 400,
-      });
+      return new Response(JSON.stringify({ error: "Invalid formType" }), { status: 400 });
     }
 
     const row = toRow(data);
