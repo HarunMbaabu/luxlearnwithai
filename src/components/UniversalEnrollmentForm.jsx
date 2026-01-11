@@ -202,10 +202,12 @@ const PROGRAM_TYPES = ["Full Program", "Short Course"];
 const genders = ["Male", "Female"];
 
 const shortCourses = [
-  { name: "MS Fabric", price: 5500 },
-  { name: "Python For Data Analysis", price: 5500 },
-  { name: "SQL for Data Analysis", price: 5500 },
+  { name: "Data Science  and Analytics", price: 5500, times: ["7 PM", "5 AM"] },
+  { name: "Python For Data Analysis", price: 5500, times: ["7 PM", "5 AM"] },
+  { name: "SQL for Data Analysis", price: 5500, times: ["7 PM", "5 AM"] },
 ];
+
+const SHORT_COURSE_TIMES = ["7 PM", "5 AM"];
 
 const modes = ["Online Classes", "Hybrid Classes", "Physical Classes"];
 
@@ -215,10 +217,7 @@ const MODE_MONTHLY_KES = {
   "Physical Classes": 12500,
 };
 
-const tracks = [
-  "Data Analytics, Data Science and AI",
-  "Data Engineering"
-];
+const tracks = ["Data Analytics, Data Science and AI", "Data Engineering"];
 
 const sources = [
   "Friend/Colleague",
@@ -245,7 +244,10 @@ const MONTHS = 4;
 
 const formatKES = (v) => (v ? `KES ${v.toLocaleString("en-KE")} ` : "");
 
-export default function UniversalEnrollmentForm({ defaultProgramType = "", onClose }) {
+export default function UniversalEnrollmentForm({
+  defaultProgramType = "",
+  onClose,
+}) {
   const sortedCountries = useMemo(() => {
     const base = [...countries];
     base.sort((a, b) => a.name.localeCompare(b.name));
@@ -262,6 +264,7 @@ export default function UniversalEnrollmentForm({ defaultProgramType = "", onClo
     gender: "",
     programType: defaultProgramType || "",
     course: "",
+    shortCourseTime: "",
     mode: "",
     tracks: [],
     source: "",
@@ -276,7 +279,8 @@ export default function UniversalEnrollmentForm({ defaultProgramType = "", onClo
     if (el) el.scrollTop = 0;
   }, []);
 
-  const shortCoursePrice = shortCourses.find((c) => c.name === form.course)?.price || 0;
+  const shortCoursePrice =
+    shortCourses.find((c) => c.name === form.course)?.price || 0;
 
   const fullProgramTotal =
     MODE_MONTHLY_KES[form.mode] ? MODE_MONTHLY_KES[form.mode] * MONTHS : 0;
@@ -300,6 +304,7 @@ export default function UniversalEnrollmentForm({ defaultProgramType = "", onClo
         ...f,
         programType: value,
         course: "",
+        shortCourseTime: "",
         mode: "",
         tracks: [],
         source: "",
@@ -309,10 +314,21 @@ export default function UniversalEnrollmentForm({ defaultProgramType = "", onClo
       return;
     }
 
+    if (name === "course") {
+      setForm((f) => ({
+        ...f,
+        course: value,
+        shortCourseTime: "",
+      }));
+      return;
+    }
+
     if (name === "tracks") {
       setForm((f) => ({
         ...f,
-        tracks: checked ? [...f.tracks, value] : f.tracks.filter((t) => t !== value),
+        tracks: checked
+          ? [...f.tracks, value]
+          : f.tracks.filter((t) => t !== value),
       }));
       return;
     }
@@ -345,6 +361,7 @@ export default function UniversalEnrollmentForm({ defaultProgramType = "", onClo
           phone: form.phone,
           nationality: form.nationality,
           course: form.course,
+          time: form.shortCourseTime,
           price: shortCoursePrice,
         }
       : {
@@ -359,7 +376,7 @@ export default function UniversalEnrollmentForm({ defaultProgramType = "", onClo
           tracks: form.tracks,
           source: form.source,
           interest: form.interest,
-          employment: form.employment
+          employment: form.employment,
         };
 
     try {
@@ -517,6 +534,26 @@ export default function UniversalEnrollmentForm({ defaultProgramType = "", onClo
                 {shortCourses.map((c) => (
                   <option key={c.name} value={c.name}>
                     {c.name}
+                  </option>
+                ))}
+              </select>
+            </div>
+
+            <div>
+              <select
+                name="shortCourseTime"
+                value={form.shortCourseTime}
+                required
+                onChange={handleChange}
+                className="w-full px-3 py-2 rounded border"
+                disabled={!form.course}
+              >
+                <option value="" disabled>
+                  Select Class Time
+                </option>
+                {SHORT_COURSE_TIMES.map((t) => (
+                  <option key={t} value={t}>
+                    {t}
                   </option>
                 ))}
               </select>

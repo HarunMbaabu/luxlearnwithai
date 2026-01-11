@@ -199,10 +199,12 @@ const countries = [
 ];
 
 const courses = [
-  { name: "MS Fabric", price: 5500 },
+  { name: "Data Science  and Analytics", price: 5500 },
   { name: "Python For Data Analysis", price: 5500 },
   { name: "SQL for Data Analysis", price: 5500 },
 ];
+
+const COURSE_TIMES = ["7 PM", "5 AM"];
 
 function formatKES(amount) {
   if (typeof amount !== "number" || Number.isNaN(amount)) return "";
@@ -225,12 +227,12 @@ export default function ShortCourseForm({ onSubmit, onClose }) {
     phone: "",
     nationality: "",
     course: "",
+    time: "",
     price: 0,
   });
 
   const [submitted, setSubmitted] = useState(false);
 
-  // ✅ added (duplication handling like FullProgramMonthlyForm)
   const [submitting, setSubmitting] = useState(false);
   const [fieldErrors, setFieldErrors] = useState({
     email: "",
@@ -246,6 +248,7 @@ export default function ShortCourseForm({ onSubmit, onClose }) {
       code: firstCountry?.code || "",
       nationality: firstCountry?.nationality || "",
       course: "",
+      time: "",
       price: 0,
     }));
 
@@ -258,7 +261,6 @@ export default function ShortCourseForm({ onSubmit, onClose }) {
   const handleChange = (e) => {
     const { name, value } = e.target;
 
-    // ✅ clear errors while typing
     setFieldErrors((prev) => ({
       ...prev,
       general: "",
@@ -282,6 +284,7 @@ export default function ShortCourseForm({ onSubmit, onClose }) {
       setForm((prev) => ({
         ...prev,
         course: value,
+        time: "",
         price: selectedCourse?.price ?? 0,
       }));
       return;
@@ -303,7 +306,6 @@ export default function ShortCourseForm({ onSubmit, onClose }) {
         body: JSON.stringify({ formType: "shortCourse", data: form }),
       });
 
-      // ✅ DUPLICATION HANDLING
       if (res.status === 409) {
         setFieldErrors({
           email: "",
@@ -340,6 +342,7 @@ export default function ShortCourseForm({ onSubmit, onClose }) {
           phone: "",
           nationality: firstCountry?.nationality || "",
           course: "",
+          time: "",
           price: 0,
         });
 
@@ -370,7 +373,6 @@ export default function ShortCourseForm({ onSubmit, onClose }) {
       className="w-full max-w-full px-4 py-4 bg-white rounded-none sm:rounded-lg sm:max-w-md sm:mx-auto
                  max-h-[85vh] overflow-y-auto overflow-x-hidden"
     >
-      {/* ✅ show duplication/general errors */}
       {fieldErrors.general ? (
         <div className="mb-3 rounded border border-red-300 bg-red-50 px-3 py-2 text-red-800">
           {fieldErrors.general}
@@ -468,6 +470,26 @@ export default function ShortCourseForm({ onSubmit, onClose }) {
             {courses.map((c) => (
               <option key={c.name} value={c.name}>
                 {c.name}
+              </option>
+            ))}
+          </select>
+        </div>
+
+        <div>
+          <select
+            name="time"
+            value={form.time}
+            onChange={handleChange}
+            required
+            disabled={!form.course}
+            className="w-full px-3 py-2 rounded border disabled:bg-gray-100"
+          >
+            <option value="" disabled>
+              Select Class Time
+            </option>
+            {COURSE_TIMES.map((t) => (
+              <option key={t} value={t}>
+                {t}
               </option>
             ))}
           </select>
