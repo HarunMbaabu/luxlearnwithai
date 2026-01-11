@@ -235,9 +235,9 @@ export default function Home() {
               </h3>
               <div className="mb-6">
                 <p className="text-lg mb-2">
-                  <span className="font-semibold">Duration:</span> 2 Weeks
+                  <span className="font-semibold">Duration:</span> 1 Month
                 </p>
-                <p className="text-gray-600">• 1 Week Learning</p>
+                <p className="text-gray-600">• 3 Week Learning</p>
                 <p className="text-gray-600">• 1 Week Building</p>
                 <div className="mt-4 p-3 bg-white rounded-lg border border-blue-200">
                   <p className="text-sm font-medium text-blue-800 mb-1">Available Formats:</p>

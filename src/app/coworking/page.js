@@ -9,7 +9,7 @@ const cardsData = [
     {
         image: "/dsa.jpg",
         title: "Daily Pass",
-        amount: "Ksh. 1,050",
+        amount: "Ksh. 999",
         period: "/day",
         description: "Perfect for short visits or trying out our space",
         features: [
@@ -24,7 +24,7 @@ const cardsData = [
     {
         image: "/dsa.jpg",
         title: "Weekly Pass",
-        amount: "Ksh. 4,200",
+        amount: "Ksh. 2,599",
         period: "/week",
         description: "Great for temporary projects or business trips",
         features: [
@@ -40,7 +40,7 @@ const cardsData = [
     {
         image: "/dsa.jpg",
         title: "Monthly Membership",
-        amount: "Ksh. 15,000",
+        amount: "Ksh. 6,999",
         period: "/month",
         description: "Ideal for freelancers and remote workers",
         features: [
@@ -143,17 +143,28 @@ export default function CoworkingPage() {
                 </section>
 
                 {/* Main Content */}
-                <section className=' py-8 px-4 leading-relaxed'>
-                    <div className='flex flex-col justify-center items-center container max-w-4xl mx-auto gap-8'>
-                        <h2 className='text-4xl md:text-5xl font-black'>Our shared workspaces are beautiful, diverse and promote collaboration.</h2>
-                        <p>The flexible seating arrangement allows our members to choose from standing desks to private booths, from swings to couches and everything in between, either indoors or outside. Our communal membership includes all the shared amenities that our locations have to offer including meeting rooms, specialty coffee bars and outdoor cafes, complimentary yoga & meditation, phone booths, prayer rooms, mother’s rooms, showers and so much more. Simply choose an open seat in our coworking area and get to work.</p>
-                    </div>
-                    <div className='container max-w-4xl mx-auto my-8'>
-                        <Link href="#" className="border-2 border-blue-900 text-blue-900 px-4 py-2 rounded-full text-lg hover:bg-blue-900 hover:text-gray-50 transition-all">
-                            Schedule a Visit
-                        </Link>
-                    </div>
+                <section className="py-8 px-4 leading-relaxed">
+                <div className="flex flex-col justify-center items-center container max-w-4xl mx-auto gap-8">
+                    <h2 className="text-4xl md:text-5xl font-black">
+                    Our shared workspaces are beautiful, diverse and promote collaboration.
+                    </h2>
+                    <p>
+                    The flexible seating arrangement allows our members to choose from standing desks to private booths, from swings to couches and everything in between, either indoors or outside. Our communal membership includes all the shared amenities that our locations have to offer including meeting rooms, specialty coffee bars and outdoor cafes, complimentary yoga & meditation, phone booths, prayer rooms, mother’s rooms, showers and so much more. Simply choose an open seat in our coworking area and get to work.
+                    </p>
+                </div>
+
+                <div className="container max-w-4xl mx-auto my-8 text-center">
+                    <a
+                    href="https://cal.com/luxedevhq.com/learn-about-luxdevhq-coworking-space"
+                    target="_blank"
+                    rel="noopener noreferrer"
+                    className="inline-block border-2 border-blue-900 text-blue-900 px-4 py-2 rounded-full text-lg hover:bg-blue-900 hover:text-gray-50 transition-all"
+                    >
+                    Schedule a Visit
+                    </a>
+                </div>
                 </section>
+
 
                 {/* Features Section */}
                 <section className="bg-blue-900 text-gray-100 py-8">
