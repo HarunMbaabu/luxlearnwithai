@@ -130,7 +130,7 @@ export default function Footer() {
               <li className="text-gray-600">D18A Garden Court, Garden Estate</li>
               <li className="text-gray-600">Nairobi, Kenya</li>
               <li className="text-gray-600">info@luxdevhq.com</li>
-              <li className="text-gray-600">0798166628</li>
+              <li className="text-gray-600">0796448232</li>
             </ul>
           </div>
         </div>
