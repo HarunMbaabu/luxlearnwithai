@@ -199,7 +199,7 @@ const countries = [
 ];
 
 const courses = [
-  { name: "Data Science  and Analytics", price: 5500 },
+  { name: "MS Fabric, Excel, and Power BI", price: 5500 },
   { name: "Python For Data Analysis", price: 5500 },
   { name: "SQL for Data Analysis", price: 5500 },
 ];
