@@ -151,13 +151,6 @@ export default function Header() {
           {/* Desktop Navigation */}
           <nav className="hidden md:flex items-center gap-6">
             <Link
-              href="/learn-with-ai"
-              className="text-md tracking-wide font-bold text-gray-800 hover:text-blue-900 transition-colors"
-            >
-              Learn With AI
-            </Link>
-
-            <Link
               href="/coworking"
               className="text-md tracking-wide font-bold text-gray-800 hover:text-blue-900 transition-colors"
             >
@@ -168,7 +161,7 @@ export default function Header() {
               href="/pricing"
               className="text-md tracking-wide font-bold text-gray-800 hover:text-blue-900 transition-colors"
             >
-              Pricing
+              PROGRAMS
             </Link>
 
             {/* Company Dropdown */}
@@ -296,13 +289,6 @@ export default function Header() {
           <div className="mobile-menu-content md:hidden bg-white border-t border-gray-100">
             <div className="px-4 py-3 flex flex-col space-y-3">
               <Link
-                href="/learn-with-ai"
-                className="text-sm font-medium text-gray-600 hover:text-blue-900 transition-colors py-2"
-              >
-                Learn With AI
-              </Link>
-
-              <Link
                 href="/coworking"
                 className="text-sm font-medium text-gray-600 hover:text-blue-900 transition-colors py-2"
               >
@@ -313,7 +299,7 @@ export default function Header() {
                 href="/pricing"
                 className="text-sm font-medium text-gray-600 hover:text-blue-900 transition-colors py-2"
               >
-                Pricing
+                 PROGRAMS
               </Link>
 
               {/* Mobile Company Section */}
