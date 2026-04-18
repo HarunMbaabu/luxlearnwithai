@@ -14,28 +14,25 @@ export default function ProgramDetails() {
             <li className="flex items-start gap-2">
               <div className="w-1 h-1 rounded-full bg-blue-600 mt-2.5"></div>
               <p className="text-slate-400">
-                <span className="font-medium text-blue-200">4 months learning:</span> Intensive hands-on training in your chosen field
+                <span className="font-medium text-blue-200">4 months instructor-led:</span> Structured, intensive training in your chosen field
               </p>
             </li>
             <li className="flex items-start gap-2">
               <div className="w-1 h-1 rounded-full bg-blue-600 mt-2.5"></div>
               <p className="text-slate-400">
-                <span className="font-medium text-blue-200">2 months internship:</span> Work on real-world projects with industry
-                partners
+                <span className="font-medium text-blue-200">Career phase extension:</span> Depending on pace and support needs, total journey may extend up to 8–9 months
               </p>
             </li>
             <li className="flex items-start gap-2">
               <div className="w-1 h-1 rounded-full bg-blue-600 mt-2.5"></div>
               <p className="text-slate-400">
-                <span className="font-medium text-blue-200">Weekly projects:</span> Submit at least 75% of weekly projects and
-                articles to qualify for certification
+                <span className="font-medium text-blue-200">Pay once value:</span> Pay for one program and unlock subsequent programs at no extra tuition
               </p>
             </li>
             <li className="flex items-start gap-2">
               <div className="w-1 h-1 rounded-full bg-blue-600 mt-2.5"></div>
               <p className="text-slate-400">
-                <span className="font-medium text-blue-200">Certification:</span> Receive a verifiable certificate upon successful
-                completion
+                <span className="font-medium text-blue-200">Certification:</span> Receive a verifiable certificate after successful completion and project review
               </p>
             </li>
           </ul>
@@ -94,21 +91,19 @@ export default function ProgramDetails() {
             <li className="flex items-start gap-2">
               <div className="w-1 h-1 rounded-full bg-blue-600 mt-2.5"></div>
               <p className="text-slate-400">
-                <span className="font-medium text-blue-200">Hybrid Classes:</span> 10,500 KES/month (42,000 KES total)
+                <span className="font-medium text-blue-200">Full upfront payment:</span> Pay the full fee and receive a 10% discount
               </p>
             </li>
             <li className="flex items-start gap-2">
               <div className="w-1 h-1 rounded-full bg-blue-600 mt-2.5"></div>
               <p className="text-slate-400">
-                <span className="font-medium text-blue-200">Physical Classes:</span> 12,500 KES/month (50,000 KES total – includes
-                additional service charges)
+                <span className="font-medium text-blue-200">Monthly installment option:</span> Spread tuition across monthly payments that fit your budget
               </p>
             </li>
             <li className="flex items-start gap-2">
               <div className="w-1 h-1 rounded-full bg-blue-600 mt-2.5"></div>
               <p className="text-slate-400">
-                <span className="font-medium text-blue-200">Registration fee:</span> 500 KES (refundable if the applicant fails the
-                entrance test)
+                <span className="font-medium text-blue-200">Enrollment support:</span> Admissions guidance is provided to help you choose the best track and payment plan
               </p>
             </li>
           </ul>
