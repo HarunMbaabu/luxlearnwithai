@@ -81,10 +81,10 @@ export default function ProgramOverview() {
             key={index}
           >
             <Card className="relative border-slate-200 h-full hover:shadow-md transition-all duration-300">
-              <div className="absolute -top-6 -left-6 w-64 h-64 bg-blue-700 rounded-full mix-blend-multiply filter blur-2xl opacity-20 animate-blob"></div>
-              <div className="absolute -bottom-8 -right-8 w-64 h-64 bg-blue-500 rounded-full mix-blend-multiply filter blur-2xl opacity-20 animate-blob animation-delay-2000"></div>
-              <div className="absolute inset-0 rounded-2xl bg-gradient-to-r from-blue-700 to-blue-500 opacity-10"></div>
-              <CardContent className="pt-6">
+              <div className="pointer-events-none absolute -top-6 -left-6 w-64 h-64 bg-blue-700 rounded-full mix-blend-multiply filter blur-2xl opacity-20 animate-blob"></div>
+              <div className="pointer-events-none absolute -bottom-8 -right-8 w-64 h-64 bg-blue-500 rounded-full mix-blend-multiply filter blur-2xl opacity-20 animate-blob animation-delay-2000"></div>
+              <div className="pointer-events-none absolute inset-0 rounded-2xl bg-gradient-to-r from-blue-700 to-blue-500 opacity-10"></div>
+              <CardContent className="relative z-10 pt-6">
                 <div className="flex flex-col h-full">
                   <div className="w-12 h-12 rounded-lg bg-slate-100 flex items-center justify-center mb-4">
                     {program.icon}
