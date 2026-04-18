@@ -2,17 +2,15 @@
 
 import { Card, CardContent } from "@/components/ui/card";
 import { Database, BarChart, Brain } from "lucide-react";
-import { useState, useEffect, useRef } from "react";
+import { useEffect, useRef } from "react";
 
 export default function ProgramOverview() {
-  const [isVisible, setIsVisible] = useState(false);
   const sectionRef = useRef(null);
 
   useEffect(() => {
     const observer = new IntersectionObserver(
       ([entry]) => {
         if (entry.isIntersecting) {
-          setIsVisible(true);
           observer.disconnect();
         }
       },
@@ -114,17 +112,6 @@ export default function ProgramOverview() {
         ))}
       </div>
 
-      <div
-        className={`mt-8 p-4 border border-amber-100/50 rounded-lg text-center bg-amber-400/30 ${
-          isVisible ? "animate-fade-in-delay-3" : "opacity-0"
-        }`}
-      >
-        <p className="text-white font-medium">
-          <span className="font-bold">Special Offer:</span> Combine two courses
-          at the price of one! For example, attend Data Analytics during the day
-          and Data Engineering in the evening.
-        </p>
-      </div>
     </div>
   );
 }
