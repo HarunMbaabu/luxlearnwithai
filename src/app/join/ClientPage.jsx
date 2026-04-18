@@ -5,10 +5,9 @@ import { Button } from "@/components/ui/button";
 import ProgramOverview from "@/components/program-overview";
 import BenefitsSection from "@/components/benefits-section";
 import ProgramDetails from "@/components/program-details";
-import PaymentInitiationForm from "@/components/payment-initiation-form";
+import UniversalEnrollmentForm from "@/components/UniversalEnrollmentForm";
 import FaqSection from "@/components/faq-section";
 import TestimonialsSection from "@/components/testimonials-section";
-import GuaranteeSection from "@/components/guarantee-section";
 import StatisticsSection from "@/components/statistics-section";
 import DataEngineeringCurriculum from "@/components/data-engineering-curriculum";
 import ProgramValueSection from "@/components/program-value-section";
@@ -204,9 +203,6 @@ export default function ClientPage() {
       </section>
 
       <div className="container mx-auto px-4 md:px-6 py-16">
-        {/* Guarantee Section */}
-        <GuaranteeSection />
-
         {/* Statistics Section */}
         <StatisticsSection />
 
@@ -281,11 +277,11 @@ export default function ClientPage() {
               Start Your Application
             </h2>
             <p className="text-slate-300 text-center max-w-2xl mx-auto mb-10">
-              Begin your journey by paying the 500 KES registration fee
+              Complete your enrollment details to secure your cohort slot
             </p>
             <div className="max-w-md mx-auto">
               <div className="bg-white rounded-xl shadow-lg p-6 md:p-8 border border-slate-200">
-                <PaymentInitiationForm />
+                <UniversalEnrollmentForm />
               </div>
             </div>
           </div>

@@ -103,8 +103,7 @@ export default function ProgramDetails() {
             <li className="flex items-start gap-2">
               <div className="w-1 h-1 rounded-full bg-blue-600 mt-2.5"></div>
               <p className="text-slate-400">
-                <span className="font-medium text-blue-200">Registration fee:</span> 500 KES (refundable if the applicant fails the
-                entrance test)
+                <span className="font-medium text-blue-200">Enrollment support:</span> Admissions guidance is provided to help you choose the best track and payment plan
               </p>
             </li>
           </ul>
