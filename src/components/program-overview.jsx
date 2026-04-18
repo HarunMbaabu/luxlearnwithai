@@ -1,18 +1,17 @@
 "use client";
 
+import Link from "next/link";
 import { Card, CardContent } from "@/components/ui/card";
 import { Database, BarChart, Brain } from "lucide-react";
-import { useState, useEffect, useRef } from "react";
+import { useEffect, useRef } from "react";
 
 export default function ProgramOverview() {
-  const [isVisible, setIsVisible] = useState(false);
   const sectionRef = useRef(null);
 
   useEffect(() => {
     const observer = new IntersectionObserver(
       ([entry]) => {
         if (entry.isIntersecting) {
-          setIsVisible(true);
           observer.disconnect();
         }
       },
@@ -41,6 +40,7 @@ export default function ProgramOverview() {
         "NLP",
       ],
       color: "emerald",
+      curriculumLink: "/curriculum#data-science-ai",
     },
     {
       title: "Data Analytics",
@@ -55,6 +55,7 @@ export default function ProgramOverview() {
         "Statistical Analysis",
       ],
       color: "blue",
+      curriculumLink: "/curriculum#data-analytics",
     },
     {
       title: "Data Engineering",
@@ -68,6 +69,7 @@ export default function ProgramOverview() {
         "Data Modeling",
       ],
       color: "purple",
+      curriculumLink: "/curriculum#data-engineering",
     },
   ];
 
@@ -79,10 +81,10 @@ export default function ProgramOverview() {
             key={index}
           >
             <Card className="relative border-slate-200 h-full hover:shadow-md transition-all duration-300">
-              <div className="absolute -top-6 -left-6 w-64 h-64 bg-blue-700 rounded-full mix-blend-multiply filter blur-2xl opacity-20 animate-blob"></div>
-              <div className="absolute -bottom-8 -right-8 w-64 h-64 bg-blue-500 rounded-full mix-blend-multiply filter blur-2xl opacity-20 animate-blob animation-delay-2000"></div>
-              <div className="absolute inset-0 rounded-2xl bg-gradient-to-r from-blue-700 to-blue-500 opacity-10"></div>
-              <CardContent className="pt-6">
+              <div className="pointer-events-none absolute -top-6 -left-6 w-64 h-64 bg-blue-700 rounded-full mix-blend-multiply filter blur-2xl opacity-20 animate-blob"></div>
+              <div className="pointer-events-none absolute -bottom-8 -right-8 w-64 h-64 bg-blue-500 rounded-full mix-blend-multiply filter blur-2xl opacity-20 animate-blob animation-delay-2000"></div>
+              <div className="pointer-events-none absolute inset-0 rounded-2xl bg-gradient-to-r from-blue-700 to-blue-500 opacity-10"></div>
+              <CardContent className="relative z-10 pt-6">
                 <div className="flex flex-col h-full">
                   <div className="w-12 h-12 rounded-lg bg-slate-100 flex items-center justify-center mb-4">
                     {program.icon}
@@ -100,12 +102,12 @@ export default function ProgramOverview() {
                     ))}
                   </div>
                   <div className="mt-auto pt-4 border-t border-slate-100">
-                    <div className="flex items-center justify-between">
-                      <span className="text-sm text-slate-500">
-                        Starting from
-                      </span>
-                      <span className="font-semibold">7,500 KES/mo</span>
-                    </div>
+                    <Link
+                      href={program.curriculumLink}
+                      className="inline-flex items-center justify-center w-full text-sm font-semibold text-blue-700 hover:text-blue-900"
+                    >
+                      View Curriculum
+                    </Link>
                   </div>
                 </div>
               </CardContent>
@@ -114,17 +116,6 @@ export default function ProgramOverview() {
         ))}
       </div>
 
-      <div
-        className={`mt-8 p-4 border border-amber-100/50 rounded-lg text-center bg-amber-400/30 ${
-          isVisible ? "animate-fade-in-delay-3" : "opacity-0"
-        }`}
-      >
-        <p className="text-white font-medium">
-          <span className="font-bold">Special Offer:</span> Combine two courses
-          at the price of one! For example, attend Data Analytics during the day
-          and Data Engineering in the evening.
-        </p>
-      </div>
     </div>
   );
 }

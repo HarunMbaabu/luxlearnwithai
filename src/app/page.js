@@ -24,6 +24,8 @@ import ShortCourseForm from "@/components/ShortCourseForm";
 import { Dialog, DialogTrigger, DialogContent, DialogTitle } from "@/components/ui/dialog";
 import FullProgramForm from "@/components/FullProgramForm";
 import UniversalEnrollmentForm from "@/components/UniversalEnrollmentForm";
+import ProgramOverview from "@/components/program-overview";
+import BenefitsSection from "@/components/benefits-section";
 
 export default function Home() {
   const registrationUrl = process.env.NEXT_PUBLIC_REGISTRATION_LINK ?? '#';
@@ -165,15 +167,39 @@ export default function Home() {
         </div>
       </section>
 
+      <section className="py-16 px-4 bg-white">
+        <div className="container mx-auto max-w-6xl">
+          <div className="text-center mb-12" data-aos="fade-up">
+            <h2 className="text-3xl md:text-4xl font-bold mb-4">Our Training Programs</h2>
+            <p className="text-xl text-gray-600 max-w-2xl mx-auto">
+              Explore our core learning tracks built for data careers in analytics, AI, and data engineering.
+            </p>
+          </div>
+          <ProgramOverview />
+        </div>
+      </section>
+
+      <section className="py-16 px-4 bg-slate-50">
+        <div className="container mx-auto max-w-6xl">
+          <div className="text-center mb-12" data-aos="fade-up">
+            <h2 className="text-3xl md:text-4xl font-bold mb-4">Why Join LuxDevHQ?</h2>
+            <p className="text-xl text-gray-600 max-w-2xl mx-auto">
+              Learn with hands-on mentorship, flexible options, and career-focused support from day one.
+            </p>
+          </div>
+          <BenefitsSection />
+        </div>
+      </section>
+
       {/* Programs Section */}
       <section className="py-16 px-4 bg-slate-50">
     <div className="container mx-auto max-w-6xl">
       <div className="text-center mb-12" data-aos="fade-up">
         <h2 className="text-3xl md:text-4xl font-bold mb-4">
-          Our Programs
+          Program Access & Enrollment Options
         </h2>
         <p className="text-xl text-gray-600 max-w-2xl mx-auto">
-          Choose the program that fits your career goals and schedule. Available both in-person and online.
+          Choose the path that fits your career goals and schedule. Available in-person and online.
         </p>
       </div>
       <div className="grid grid-cols-1 md:grid-cols-2 gap-8">
@@ -748,7 +774,7 @@ export default function Home() {
                 size="lg"
                 className="rounded-full"
               >
-                Schedule an Assessment
+Book a Consultation
                 <ExternalLink className="ml-2 h-4 w-4" />
               </Button>
             </div>
