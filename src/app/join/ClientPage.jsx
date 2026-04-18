@@ -10,6 +10,8 @@ import FaqSection from "@/components/faq-section";
 import TestimonialsSection from "@/components/testimonials-section";
 import GuaranteeSection from "@/components/guarantee-section";
 import StatisticsSection from "@/components/statistics-section";
+import DataEngineeringCurriculum from "@/components/data-engineering-curriculum";
+import ProgramValueSection from "@/components/program-value-section";
 import { ChevronRight } from "lucide-react";
 import Header from "../components/header";
 
@@ -49,7 +51,7 @@ export default function ClientPage() {
               }`}
             >
               <div className="inline-block bg-blue-900 text-white text-sm font-medium px-3 py-1 rounded-full mb-6 animate-fade-in-delay-1">
-                June 2025 Intake Now Open
+                2026 Intake Now Open
               </div>
 
               <h1 className="text-4xl md:text-5xl lg:text-6xl font-bold mb-6 leading-tight animate-fade-in-delay-2">
@@ -58,9 +60,7 @@ export default function ClientPage() {
               </h1>
 
               <p className="text-lg md:text-xl text-slate-300 mb-8 animate-fade-in-delay-3">
-                Join our 6-month intensive training program in Data Science,
-                Analytics, Data Engineering, and AI. Get a job in tech or join
-                another course for free.
+                Join LuxDevHQ's 6-month intensive training program in Data Science, Analytics, Data Engineering, and AI. Build job-ready skills through hands-on projects, mentorship, and internship experience.
               </p>
 
               <div className="flex flex-col sm:flex-row gap-4 animate-fade-in-delay-4">
@@ -93,7 +93,7 @@ export default function ClientPage() {
                     TN
                   </div>
                 </div>
-                <span>Join 500+ students who transformed their careers</span>
+                <span>Join 500+ learners building careers with LuxDevHQ</span>
               </div>
             </div>
 
@@ -135,8 +135,8 @@ export default function ClientPage() {
 
                 <ul className="space-y-4">
                   {[
-                    "4 months intensive training",
-                    "2 months paid internship",
+                    "4 months instructor-led training",
+                    "Flexible completion up to 8–9 months",
                     "Job placement assistance",
                     "Industry-recognized certification",
                     "Flexible learning options",
@@ -210,6 +210,8 @@ export default function ClientPage() {
         {/* Statistics Section */}
         <StatisticsSection />
 
+        <ProgramValueSection />
+
         {/* Program Overview Section */}
         <div className="mt-16">
           <h2 className="text-2xl md:text-3xl font-bold mb-2 text-slate-50 text-center">
@@ -235,7 +237,9 @@ export default function ClientPage() {
         </div>
 
         {/* Testimonials Section */}
-        <TestimonialsSection />
+        <div id="testimonials">
+          <TestimonialsSection />
+        </div>
 
         {/* Program Details Section */}
         <div className="mt-16">
@@ -248,6 +252,8 @@ export default function ClientPage() {
           <ProgramDetails />
         </div>
 
+        <DataEngineeringCurriculum />
+
         {/* Registration CTA */}
         {!showPayment && (
           <div className="mt-20 text-center py-16 px-4 bg-gradient-to-r from-slate-900 to-slate-800 rounded-2xl text-white">
@@ -255,8 +261,7 @@ export default function ClientPage() {
               Ready to Transform Your Career?
             </h2>
             <p className="text-lg text-slate-300 mb-8 max-w-2xl mx-auto">
-              Join our June 2025 cohort and gain the skills, experience, and
-              connections you need to succeed in tech.
+              Join our 2026 cohort and gain the skills, experience, and connections you need to succeed in tech.
             </p>
             <Button
               size="lg"
