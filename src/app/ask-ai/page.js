@@ -1140,7 +1140,7 @@ export default function AskAIPage() {
                       </li>
                     </ul>
                     <Button className="w-full bg-white text-blue-900 hover:bg-blue-50">
-                      <Link href={process.env.NEXT_PUBLIC_REGISTRATION_LINK || '#'}>Register for January 2026 Intake</Link>
+                      <Link href={process.env.NEXT_PUBLIC_REGISTRATION_LINK || '#'}>Register for August 2026 Intake</Link>
                     </Button>
                   </CardContent>
                 </Card>

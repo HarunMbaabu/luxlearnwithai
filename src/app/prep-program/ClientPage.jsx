@@ -97,10 +97,10 @@ export default function LuxDevHQPrepProgram() {
               <div className={`max-w-2xl ${isVisible ? "animate-fade-in" : "opacity-0"}`}>
                 <div className="flex flex-wrap gap-2 mb-6">
                   <Badge className="bg-red-600 hover:bg-red-700 text-white animate-fade-in-delay-1">
-                    Registration Ends June 20, 2025
+                    August 2026 Intake Registration Open
                   </Badge>
                   <Badge className="bg-blue-600 hover:bg-blue-700 text-white animate-fade-in-delay-1">
-                    Training Starts June 30, 2025
+                    Training Starts August 2026
                   </Badge>
                 </div>
 
@@ -692,8 +692,8 @@ export default function LuxDevHQPrepProgram() {
                 </p>
 
                 <div className="flex flex-wrap justify-center gap-6 mb-12">
-                  <Badge className="bg-red-600 text-xl px-6 py-3">Registration Ends: June 20, 2025</Badge>
-                  <Badge className="bg-blue-600 text-xl px-6 py-3">Training Starts: June 30, 2025</Badge>
+                  <Badge className="bg-red-600 text-xl px-6 py-3">Registration Open: August 2026 Intake</Badge>
+                  <Badge className="bg-blue-600 text-xl px-6 py-3">Training Starts: August 2026</Badge>
                 </div>
 
                 <Button

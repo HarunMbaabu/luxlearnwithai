@@ -50,7 +50,7 @@ export default function ClientPage() {
               }`}
             >
               <div className="inline-block bg-blue-900 text-white text-sm font-medium px-3 py-1 rounded-full mb-6 animate-fade-in-delay-1">
-                2026 Intake Now Open
+                August 2026 Intake Now Open
               </div>
 
               <h1 className="text-4xl md:text-5xl lg:text-6xl font-bold mb-6 leading-tight animate-fade-in-delay-2">

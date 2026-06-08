@@ -148,7 +148,7 @@ export default function RegistrationForm({ paymentId, email }) {
           Registration Successful!
         </h3>
         <p className="mt-2 text-sm text-emerald-700">
-          Thank you for registering for the LuxDevHQ June 2025 Intake. We have
+          Thank you for registering for the LuxDevHQ August 2026 Intake. We have
           received your application and payment.
         </p>
         <p className="mt-2 text-sm text-emerald-700 font-medium">
