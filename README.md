@@ -52,7 +52,7 @@ If none of the available time slots work for you, please contact Brigid Chepkemo
 
 If you have any questions or need assistance, feel free to reach out. We look forward to speaking with you soon!
 
-For inquiries and enrollment details, visit our campus at Garden Estate, off Thika Road. The next training begins on  June 30, 2025. You can join the LuxDevHQ June Intake WhatsApp Support Group here: https://chat.whatsapp.com/HNVVzlccdBlEFgNu5nlG1R or contact us at info@luxdevhq.com. You can also call or WhatsApp 0796448232 for more information.
+For inquiries and enrollment details, visit our campus at Garden Estate, off Thika Road. The next training intake is August 2026. You can join the LuxDevHQ August Intake WhatsApp Support Group here: https://chat.whatsapp.com/HNVVzlccdBlEFgNu5nlG1R or contact us at info@luxdevhq.com. You can also call or WhatsApp 0796448232 for more information.
 
 Best regards,
 LuxDevHQ Admissions Team
