@@ -85,7 +85,9 @@ export default function Header() {
             <div className="text-center">
               <p className="text-sm md:text-base font-medium">
                 <strong>
-                        June 2026 Intake – Registration Now Open | Apply Today
+    
+                        August 2026 Intake – Registration Now Open | Reguster Now!
+    
                 </strong>
 
                 <Dialog
