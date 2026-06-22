@@ -8,247 +8,339 @@ import {
 
 const instructorLedWeeks = [
   {
-    week: "Week 2",
-    title: "Power BI I: Data Preparation & Core Visuals",
+    week: "Week 1",
+    title: "Onboarding and Environment Setup",
+    month: "Month 1: Foundations of Data Engineering",
     objectives: [
-      "Connect Power BI to CSV, Excel, and SQL sources.",
-      "Clean and shape data using Power Query.",
-      "Build a first dashboard with meaningful KPIs.",
+      "Understand data engineering career pathways, course expectations, and delivery rhythm.",
+      "Set up the development environment for Python, SQL, Git, Docker, and cloud labs.",
     ],
     concepts: [
-      "BI workflow, Power Query, relationships, and star schema basics.",
-      "Visual encoding, chart selection, and dashboard usability.",
+      "Monday: Onboarding, course overview, career pathways, Git/GitHub, VS Code, and terminal workflow.",
+      "Tuesday: Introduction to cloud computing across Azure, AWS, and GCP.",
+      "Wednesday: Data governance, security, compliance, IAM, secrets, and access control.",
+      "Thursday: SQL for data engineering and PostgreSQL setup.",
+      "Friday: Peer project — environment setup challenges and troubleshooting.",
+      "Saturday lab: Build a starter pipeline with PostgreSQL and Azure Blob Storage/S3-compatible storage.",
     ],
-    project: "County Health Dashboard: outpatient visits and medicine stock by county.",
-    tools: "Power BI Desktop, Excel/CSV, SQL Server or PostgreSQL (read-only)",
+    project: "Cloud-ready development environment plus a basic PostgreSQL-to-object-storage pipeline.",
+    tools: "Python, Git/GitHub, VS Code, PostgreSQL, Docker, Azure Blob Storage, AWS S3, GCP Cloud Storage",
+  },
+  {
+    week: "Week 2",
+    title: "SQL Essentials for Data Engineering",
+    month: "Month 1: Foundations of Data Engineering",
+    objectives: [
+      "Write reliable analytical SQL for source exploration and pipeline outputs.",
+      "Design SQL models that support reporting, downstream transformations, and performance.",
+    ],
+    concepts: [
+      "Monday: SELECT, WHERE, JOIN, GROUP BY, HAVING, CASE, and clean query structure.",
+      "Tuesday: Recursive queries, window functions, views, stored procedures, subqueries, and CTEs.",
+      "Wednesday: Query optimization, indexes, partitions, and execution plans.",
+      "Thursday: Data modeling with normalization, denormalization, star schemas, and slowly changing dimensions.",
+      "Friday: Job shadowing — observe senior engineers writing and optimizing production SQL.",
+      "Saturday lab: Create a star schema and analyze data using SQL.",
+    ],
+    project: "Retail analytics star schema with optimized SQL queries and documented assumptions.",
+    tools: "PostgreSQL, DBeaver/pgAdmin, SQLFluff, dbdiagram, Git",
   },
   {
     week: "Week 3",
-    title: "Power BI II: Data Storytelling & Publishing",
+    title: "Introduction to Data Pipelines",
+    month: "Month 1: Foundations of Data Engineering",
     objectives: [
-      "Create interactive reports and drill-through pages.",
-      "Build DAX measures for business logic.",
-      "Publish and share reports responsibly.",
+      "Explain ETL, ELT, ingestion, transformation, and loading patterns.",
+      "Build maintainable Python pipelines for batch files and APIs.",
     ],
     concepts: [
-      "DAX basics, row/filter context intro, RLS, storytelling with data.",
-      "Report usability and stakeholder communication.",
+      "Monday: ETL/ELT workflow theory, batch ingestion, idempotency, and pipeline contracts.",
+      "Tuesday: Build a simple Python ETL pipeline for CSV data.",
+      "Wednesday: Extract, transform, load best practices, logging, configs, and error handling.",
+      "Thursday: Build a Python ETL pipeline for batch processing with tests and validation.",
+      "Friday: Peer project — design a basic ETL workflow as a team.",
+      "Saturday lab: Develop a sales-data ETL pipeline with quality checks.",
     ],
-    project: "Mobile Money Insights: trends by region, segment, and anomaly flags.",
-    tools: "Power BI Service, DAX, workspace sharing",
+    project: "Sales data ETL with automated cleaning, validation, logging, and reproducible outputs.",
+    tools: "Python, Pandas, Requests, pytest, Great Expectations, Pandera, pre-commit, Makefile",
   },
   {
     week: "Week 4",
-    title: "SQL Fundamentals for Data Engineers",
+    title: "Introduction to Apache Airflow",
+    month: "Month 1: Foundations of Data Engineering",
     objectives: [
-      "Write robust SQL queries for analysis and engineering.",
-      "Use joins, aggregations, CTEs, and window functions.",
+      "Author and schedule basic Airflow DAGs.",
+      "Orchestrate PostgreSQL, Python, and cloud-storage tasks reliably.",
     ],
     concepts: [
-      "SELECT pipeline, joins, GROUP BY/HAVING, CASE, CTEs.",
-      "Query readability, correctness, and reproducibility.",
+      "Monday: Apache Airflow concepts, DAGs, tasks, scheduling, retries, and operators.",
+      "Tuesday: Set up Airflow locally and create a starter DAG.",
+      "Wednesday: DAG best practices, backfills, dependency design, SLAs, and retries.",
+      "Thursday: Integrate Airflow with PostgreSQL and Azure Blob Storage/S3.",
+      "Friday: Job shadowing — observe real-world Airflow pipelines and runbooks.",
+      "Saturday lab: Automate a batch ETL pipeline with Airflow.",
     ],
-    project: "Retail Orders Mart: daily sales and customer activity queries.",
-    tools: "PostgreSQL, DBeaver/pgAdmin, Git",
+    project: "Airflow-orchestrated ingestion → validation → transform → publish workflow.",
+    tools: "Apache Airflow, Docker Compose, PostgreSQL, Azure Blob Storage, AWS S3, Astronomer CLI basics",
   },
   {
     week: "Week 5",
-    title: "Advanced SQL & Data Modeling",
+    title: "Data Warehousing and Data Lakes",
+    month: "Month 2: Intermediate Tools and Concepts",
     objectives: [
-      "Design analytical schemas for reporting and pipeline outputs.",
-      "Optimize queries and reason about performance.",
+      "Compare warehouses, data lakes, and lakehouse architectures.",
+      "Design analytical storage for raw, curated, and serving layers.",
     ],
     concepts: [
-      "Normalization vs denormalization, star/snowflake schemas.",
-      "Indexing, partitioning intro, execution plans, SCD concepts.",
+      "Monday: OLTP vs OLAP, partitioning, clustering, marts, and warehouse design.",
+      "Tuesday: Work with Redshift/Snowflake/BigQuery/Synapse patterns for warehousing.",
+      "Wednesday: Data lakes, lakehouse architecture, bronze/silver/gold, and open table formats.",
+      "Thursday: Set up Delta Lake for raw and curated data.",
+      "Friday: Peer project — implement a warehouse model and data lake for sales data.",
+      "Saturday lab: Design and implement a basic lakehouse architecture.",
     ],
-    project: "SACCO Analytics Warehouse Model: members, loans, repayments, branches.",
-    tools: "PostgreSQL, SQL execution plans, dbdiagram",
+    project: "Sales lakehouse with raw, cleaned, and analytics-ready layers.",
+    tools: "Snowflake, Amazon Redshift, BigQuery, Azure Synapse, Delta Lake, Apache Iceberg, Parquet, MinIO",
   },
   {
     week: "Week 6",
-    title: "Python for Data Engineering I",
+    title: "Data Governance and Security",
+    month: "Month 2: Intermediate Tools and Concepts",
     objectives: [
-      "Build Python scripts for ingestion and cleanup.",
-      "Work safely with files, APIs, and structured data.",
+      "Apply governance, privacy, and compliance controls to data platforms.",
+      "Secure object storage, warehouses, secrets, and access policies.",
     ],
     concepts: [
-      "Functions, modules, virtual environments.",
-      "Pandas basics, JSON/CSV handling, API requests.",
+      "Monday: Governance frameworks, stewardship, cataloging, lineage, and security principles.",
+      "Tuesday: AWS Lake Formation and IAM-based access control.",
+      "Wednesday: Sensitive data handling, PII, GDPR, HIPAA, retention, and masking.",
+      "Thursday: Implement security policies in S3 and Azure Blob Storage.",
+      "Friday: Job shadowing — observe governance policies in production workflows.",
+      "Saturday lab: Secure cloud data with access controls, validation, and audit notes.",
     ],
-    project: "Public Data Ingestion Script for open data/API sources.",
-    tools: "Python, Pandas, Requests, Jupyter/VS Code",
+    project: "Secure cloud data zone with documented roles, policies, and quality gates.",
+    tools: "AWS Lake Formation, AWS IAM, Azure RBAC, Azure Key Vault, AWS Secrets Manager, OpenMetadata/DataHub basics",
   },
   {
     week: "Week 7",
-    title: "Python for Data Engineering II (Automation & Quality)",
+    title: "Real-Time Data Processing with Kafka",
+    month: "Month 2: Intermediate Tools and Concepts",
     objectives: [
-      "Create maintainable ETL scripts.",
-      "Add tests, logging, configs, and CLI behavior.",
+      "Build producer/consumer applications and reason about event-driven systems.",
+      "Design Kafka topics, partitions, schemas, retention, and replay strategies.",
     ],
     concepts: [
-      "Project structure, argparse/typer, logging, exception strategy.",
-      "Data validation intro with Great Expectations/Pandera and unit tests.",
+      "Monday: Introduction to Apache Kafka for real-time data streaming.",
+      "Tuesday: Set up a Kafka producer and consumer.",
+      "Wednesday: Kafka topics, partitions, brokers, consumer groups, schemas, and message design.",
+      "Thursday: Integrate Kafka with PostgreSQL for real-time updates.",
+      "Friday: Peer project — build a real-time Kafka pipeline for transactional data.",
+      "Saturday lab: Stream e-commerce events and land them for analytics.",
     ],
-    project: "Automated Data Cleaner CLI with logs and validation report.",
-    tools: "Python, pytest, Great Expectations/Pandera, pre-commit",
+    project: "E-commerce event stream with producer, consumer, schema strategy, and replay notes.",
+    tools: "Apache Kafka, Kafka UI, Redpanda, Confluent Schema Registry, Python producers/consumers, PostgreSQL",
   },
   {
     week: "Week 8",
-    title: "ETL/ELT Concepts & Pipeline Design",
+    title: "Batch vs. Stream Processing",
+    month: "Month 2: Intermediate Tools and Concepts",
     objectives: [
-      "Design reliable source-to-warehouse pipelines.",
-      "Choose ETL vs ELT based on constraints.",
+      "Choose batch, streaming, or hybrid architectures based on product requirements.",
+      "Implement batch and real-time workflows with scalable processing tools.",
     ],
     concepts: [
-      "Batch ingestion, CDC intro, idempotency, incremental loads.",
-      "Medallion architecture: bronze/silver/gold.",
+      "Monday: Batch vs stream processing, latency, throughput, windows, and delivery semantics.",
+      "Tuesday: Batch processing with PySpark.",
+      "Wednesday: Combining batch and stream processing workflows.",
+      "Thursday: Real-time processing with Apache Flink and Spark Structured Streaming.",
+      "Friday: Job shadowing — observe a real-time processing pipeline.",
+      "Saturday lab: Build a hybrid pipeline combining batch and real-time processing.",
     ],
-    project: "NGO Donations Pipeline: ingest, clean, transform, and load trusted tables.",
-    tools: "Python SQL pipeline scripts, PostgreSQL, MinIO/S3-compatible object storage",
+    project: "Hybrid batch + streaming pipeline for operational KPIs.",
+    tools: "PySpark, Spark Structured Streaming, Apache Flink, Kafka, Delta Lake, Docker Compose",
   },
   {
     week: "Week 9",
-    title: "Data Warehousing & Lakehouse Foundations",
+    title: "Machine Learning Integration in Data Pipelines",
+    month: "Month 3: Advanced Data Engineering",
     objectives: [
-      "Build modern analytical storage architecture.",
-      "Compare warehouse, lake, and lakehouse patterns.",
+      "Prepare ML-ready datasets through reproducible pipeline stages.",
+      "Automate feature engineering and model scoring inside data workflows.",
     ],
     concepts: [
-      "Kimball basics, data marts, partition strategy.",
-      "Lakehouse table format overview (Delta/Iceberg concepts).",
+      "Monday: ML workflow overview for data engineers and feature-store concepts.",
+      "Tuesday: Preprocess data for ML using Pandas and PySpark.",
+      "Wednesday: Feature engineering, automated feature extraction, and training/serving data contracts.",
+      "Thursday: Automate feature extraction using Apache Airflow.",
+      "Friday: Peer project — build a pipeline that integrates ML model outputs.",
+      "Saturday lab: Build an ML-powered recommendation pipeline.",
     ],
-    project: "E-commerce Data Mart Design for sales, inventory, and behavior.",
-    tools: "PostgreSQL/BigQuery/Synapse (one primary), Parquet",
+    project: "Recommendation-system pipeline with feature generation, validation, and scheduled scoring.",
+    tools: "Pandas, PySpark, scikit-learn, MLflow basics, Airflow, Feast feature-store concepts",
   },
   {
     week: "Week 10",
-    title: "Cloud for Data Engineers",
+    title: "Spark and PySpark for Big Data",
+    month: "Month 3: Advanced Data Engineering",
     objectives: [
-      "Deploy storage and pipeline components on cloud.",
-      "Apply IAM, secrets management, and basic cost control.",
+      "Process larger datasets with Spark DataFrames and Spark SQL.",
+      "Optimize Spark jobs for partitioning, joins, caching, and shuffle behavior.",
     ],
     concepts: [
-      "Compute, storage, IAM, and networking basics.",
-      "Managed data services (Azure-first with AWS/GCP mapping).",
+      "Monday: Apache Spark architecture for big data processing.",
+      "Tuesday: Set up Spark and PySpark for data analysis.",
+      "Wednesday: Spark RDDs, DataFrames, Spark SQL, performance optimization, and tuning.",
+      "Thursday: Analyze large datasets using Spark SQL.",
+      "Friday: Peer project — build a PySpark pipeline for large-scale processing.",
+      "Saturday lab: Analyze big datasets with Spark and PySpark.",
     ],
-    project: "County Revenue Cloud Landing Zone with secure ingestion + warehouse schema.",
-    tools: "Azure (recommended), optional AWS/GCP mapping, Terraform intro",
+    project: "Large-scale analytics job with Spark SQL, partitioning, and performance notes.",
+    tools: "Apache Spark, PySpark, Spark SQL, Databricks Community/Local Spark, Parquet, Delta Lake",
   },
   {
     week: "Week 11",
-    title: "Containerization with Docker",
+    title: "Advanced Apache Airflow Techniques",
+    month: "Month 3: Advanced Data Engineering",
     objectives: [
-      "Package pipeline applications as containers.",
-      "Run a local multi-service stack with Compose.",
+      "Build dynamic, testable, and observable Airflow DAGs.",
+      "Operate workflows with clear monitoring, alerting, and recovery patterns.",
     ],
     concepts: [
-      "Dockerfile, images, containers, networks, volumes.",
-      "Environment parity across development, test, and production.",
+      "Monday: Advanced Airflow features including XCom, TaskFlow, branching, and task dependencies.",
+      "Tuesday: Implement dynamic DAGs and task groups.",
+      "Wednesday: Scheduling, monitoring, error handling, callbacks, and incident playbooks.",
+      "Thursday: Create complex DAGs for multi-step ETL pipelines.",
+      "Friday: Job shadowing — observe advanced Airflow pipeline implementations.",
+      "Saturday lab: Design an advanced Airflow DAG for complex workflows.",
     ],
-    project: "Containerized ETL app: ETL service + Postgres + admin UI.",
-    tools: "Docker, Docker Compose, Docker Hub/GHCR",
+    project: "Production-style Airflow DAG with dynamic tasks, quality gates, notifications, and retries.",
+    tools: "Apache Airflow, Astronomer, Docker, Slack/email alerts, Great Expectations, pytest",
   },
   {
     week: "Week 12",
-    title: "Workflow Orchestration with Apache Airflow",
+    title: "Data Lakes and Delta Lake",
+    month: "Month 3: Advanced Data Engineering",
     objectives: [
-      "Author, schedule, and monitor DAGs.",
-      "Build retry-safe, production-aware workflows.",
+      "Design scalable lakehouse tables with schema evolution and time travel.",
+      "Load batch and streaming data into trusted Delta Lake layers.",
     ],
     concepts: [
-      "DAG/task dependencies, sensors, hooks/operators.",
-      "Backfills, SLAs, retries, idempotency, environment separation.",
+      "Monday: Data lakes, lakehouses, Delta Lake architecture, and transaction logs.",
+      "Tuesday: Set up Delta Lake on AWS or Azure for storage and management.",
+      "Wednesday: Manage schema evolution, compaction, time travel, and table optimization.",
+      "Thursday: Implement batch and real-time loading to Delta Lake.",
+      "Friday: Peer project — design a lakehouse architecture for an e-commerce platform.",
+      "Saturday lab: Implement a scalable Delta Lake architecture.",
     ],
-    project: "Daily pipeline DAG: ingestion → validation → transform → publish.",
-    tools: "Apache Airflow, Dockerized Airflow, SQL/Python operators",
+    project: "E-commerce lakehouse with Delta tables, schema evolution, and optimized reads.",
+    tools: "Delta Lake, Apache Iceberg concepts, Spark, AWS S3, Azure Data Lake Storage, Databricks concepts",
   },
   {
     week: "Week 13",
-    title: "Batch Data Processing at Scale",
+    title: "Batch Data Pipeline Development",
+    month: "Month 4: Capstone Projects",
     objectives: [
-      "Build reliable high-volume batch jobs.",
-      "Optimize processing windows and throughput.",
+      "Build an end-to-end batch data pipeline for analytics use cases.",
+      "Package, test, document, and deploy pipeline components like a production project.",
     ],
     concepts: [
-      "Partitioned processing, checkpointing, job scheduling.",
-      "Late-arriving data and backfill strategy.",
+      "Monday to Thursday: Design and implement an end-to-end batch pipeline for e-commerce sales analytics.",
+      "Focus areas: ingestion, validation, transformation, orchestration, documentation, and reproducibility.",
+      "Friday: Peer review — present progress and receive feedback.",
+      "Saturday lab: Finalize and present batch pipeline results.",
     ],
-    project: "Utility Billing Batch System with monthly reconciliation.",
-    tools: "Python + SQL jobs, Airflow scheduling, cloud/object storage",
+    project: "End-to-end e-commerce sales analytics batch pipeline.",
+    tools: "PySpark, SQL, PostgreSQL, Airflow, S3, Docker, Great Expectations, GitHub Actions",
   },
   {
     week: "Week 14",
-    title: "Real-Time Data Processing & Streaming Fundamentals",
+    title: "Real-Time Data Pipeline Development",
+    month: "Month 4: Capstone Projects",
     objectives: [
-      "Understand streaming architecture and event-time processing.",
-      "Build near-real-time analytics pipelines.",
+      "Build an end-to-end real-time pipeline for monitoring and live analytics.",
+      "Handle streaming state, schemas, windows, alerts, and dashboards.",
     ],
     concepts: [
-      "Event streams, windows, watermarking, delivery semantics.",
-      "Streaming trade-offs and operational decisions.",
+      "Monday to Thursday: Design and implement a real-time data pipeline for IoT sensor monitoring.",
+      "Focus areas: event ingestion, streaming transformations, stateful processing, storage, and alerts.",
+      "Friday: Peer review — present progress and receive feedback.",
+      "Saturday lab: Finalize and present real-time pipeline results.",
     ],
-    project: "Ride/Delivery Tracking Stream for live KPIs.",
-    tools: "Spark Structured Streaming intro or Kafka Streams concepts",
+    project: "IoT sensor monitoring pipeline with real-time KPIs and alerting.",
+    tools: "Kafka, Spark Structured Streaming, Apache Flink, S3, Delta Lake, Grafana, Prometheus, Loki",
   },
   {
     week: "Week 15",
-    title: "Messaging Systems with Apache Kafka",
+    title: "Final Project Integration",
+    month: "Month 4: Capstone Projects",
     objectives: [
-      "Produce and consume events with robust topic design.",
-      "Integrate Kafka with downstream systems.",
+      "Integrate batch and streaming systems into a complete data platform.",
+      "Add transformations, tests, observability, CI/CD, and clear architecture documentation.",
     ],
     concepts: [
-      "Brokers, topics/partitions, consumer groups, retention.",
-      "Schema management intro, DLQs, replay.",
+      "Monday to Thursday: Integrate batch and real-time pipelines into one end-to-end solution.",
+      "Focus areas: dbt transformations, data contracts, tests, Dockerized services, dashboards, and CI/CD.",
+      "Friday: Job shadowing — observe senior engineers integrating complex pipelines.",
+      "Saturday lab: Showcase the integrated solution for technical review.",
     ],
-    project: "M-Pesa-like Event Bus Simulation with fraud signal stream.",
-    tools: "Apache Kafka, Kafka UI, Python producers/consumers",
+    project: "Integrated data platform combining batch, streaming, transformation, monitoring, and documentation.",
+    tools: "Kafka, PySpark, Airflow, Delta Lake, PostgreSQL, S3, dbt, Docker, Great Expectations, Grafana, GitHub Actions",
   },
   {
     week: "Week 16",
-    title: "Data Transformation with dbt + Monitoring with Grafana",
+    title: "Capstone Project Presentation",
+    month: "Month 4: Capstone Projects",
     objectives: [
-      "Build tested transformation layers with dbt.",
-      "Monitor system health and data freshness.",
+      "Polish, test, document, and present a production-style data engineering capstone.",
+      "Defend architecture decisions, trade-offs, reliability controls, and business outcomes.",
     ],
     concepts: [
-      "dbt models, tests, docs, lineage, snapshots.",
-      "Metrics dashboards, alerts, SLO basics, runbook practice.",
+      "Monday to Thursday: Final presentation preparation, testing, documentation, and portfolio publishing.",
+      "Focus areas: README, architecture diagram, runbook, data dictionary, data lineage, and deployment notes.",
+      "Friday: Peer review — present final projects and receive feedback.",
+      "Saturday lab: Capstone presentation to industry professionals and instructors.",
     ],
-    project: "Analytics engineering layer + Grafana alerts.",
-    tools: "dbt Core/Cloud, PostgreSQL/warehouse, Grafana, Prometheus/Loki basics",
+    project: "Final data engineering capstone with live demo, architecture defense, and portfolio repository.",
+    tools: "GitHub, Docker Compose, Terraform basics, dbt docs, Great Expectations reports, Grafana dashboards, OpenLineage/Marquez basics",
   },
 ];
 
-const internshipWeeks = [
-  "Week 17: Internship onboarding, KPI contracts, and architecture proposal.",
-  "Week 18: Solution architecture, environment provisioning, and stack setup.",
-  "Week 19: Ingestion from multiple sources with quality gates and quarantine patterns.",
-  "Week 20: Silver/gold modeling with incremental dbt transformations and tests.",
-  "Week 21: Streaming extension with Kafka and near-real-time dashboarding.",
-  "Week 22: Observability, reliability, alerts, and incident response game day.",
-  "Week 23: CI/CD pipelines for tests, deployments, rollback, and versioning.",
-  "Week 24: Capstone demo day, technical defense, and portfolio publication.",
+const coreToolStack = [
+  "Languages: Python, SQL, Bash",
+  "Databases and warehouses: PostgreSQL, Snowflake, Redshift, BigQuery, Azure Synapse",
+  "Cloud and storage: Azure Blob Storage, Azure Data Lake Storage, AWS S3, GCP Cloud Storage, MinIO",
+  "Orchestration: Apache Airflow, Astronomer, Dagster concepts",
+  "Streaming and processing: Apache Kafka, Redpanda, Spark, PySpark, Spark Structured Streaming, Apache Flink",
+  "Lakehouse and formats: Delta Lake, Apache Iceberg concepts, Parquet",
+  "Transformation and quality: dbt, Great Expectations, Pandera, SQLFluff",
+  "DevOps and observability: Docker, Docker Compose, GitHub Actions, Terraform basics, Grafana, Prometheus, Loki",
+  "Governance and lineage: OpenMetadata/DataHub basics, OpenLineage/Marquez basics, IAM/RBAC, secrets management",
 ];
 
-const optionalWeeks = [
-  "Week 25: Remedial SQL, Python, and data modeling clinics.",
-  "Week 26: Cloud specialization track (Azure, AWS, or GCP).",
-  "Week 27: Advanced Spark performance tuning and optimization.",
-  "Week 28: Interview sprint and certification support.",
+const portfolioArtifacts = [
+  "SQL star schema and optimization case study",
+  "Python ETL pipeline with validation and tests",
+  "Dockerized data engineering application",
+  "Airflow-orchestrated batch workflow",
+  "Kafka streaming pipeline with schema strategy",
+  "Spark/PySpark big-data processing project",
+  "Delta Lake/lakehouse implementation",
+  "dbt transformation project with tests, docs, and lineage",
+  "Great Expectations data-quality reports",
+  "Grafana monitoring stack with Prometheus/Loki alerts",
+  "Final capstone repository with CI/CD, architecture diagrams, runbook, and live demo",
 ];
 
 export default function DataEngineeringCurriculum() {
   return (
     <section className="mt-16" id="data-engineering-curriculum">
       <h2 className="text-2xl md:text-3xl font-bold mb-2 text-slate-50 text-center">
-        LuxDevHQ Data Engineering Curriculum (6 Months, Extendable to 7)
+        LuxDevHQ Data Engineering Curriculum (4 Months / 16 Weeks)
       </h2>
       <p className="text-slate-300 text-center max-w-3xl mx-auto mb-10">
-        Week 1 remains exactly as currently designed at LuxDevHQ. From Week 2 onward,
-        the roadmap below gives a clear, industry-aligned path focused on real projects,
-        production workflows, and graduate employability.
+        This 4-month course equips learners with production-ready skills in Python, SQL,
+        Azure, AWS, Docker, dbt, Great Expectations, Apache Airflow, Kafka, Spark,
+        Grafana, and modern lakehouse workflows.
       </p>
 
       <div className="grid grid-cols-1 md:grid-cols-2 gap-8 mb-8">
@@ -258,9 +350,10 @@ export default function DataEngineeringCurriculum() {
           </CardHeader>
           <CardContent>
             <ul className="space-y-2 text-slate-300 text-sm">
-              <li>• 24-week baseline: Weeks 1-16 instruction + Weeks 17-24 internship.</li>
-              <li>• Optional extension to Weeks 25-28 for remedial and specialization tracks.</li>
-              <li>• Learning mix: 70% hands-on, 20% guided instruction, 10% assessments/reflection.</li>
+              <li>• 16-week baseline delivered across 4 intensive months.</li>
+              <li>• Monday to Thursday: theory, guided practice, and implementation.</li>
+              <li>• Friday: job shadowing, peer project work, reviews, or technical demos.</li>
+              <li>• Saturday: hands-on labs and project-based learning.</li>
               <li>• Portfolio-first delivery with production-style artifacts and capstone outputs.</li>
             </ul>
           </CardContent>
@@ -284,14 +377,17 @@ export default function DataEngineeringCurriculum() {
 
       <Card className="border-slate-600 bg-slate-900 mb-8">
         <CardHeader>
-          <CardTitle className="text-blue-300">Week-by-Week Curriculum (Weeks 2-16)</CardTitle>
+          <CardTitle className="text-blue-300">Week-by-Week Curriculum (Weeks 1-16)</CardTitle>
         </CardHeader>
         <CardContent>
           <Accordion type="single" collapsible className="w-full">
             {instructorLedWeeks.map((item) => (
               <AccordionItem value={item.week} key={item.week} className="border-slate-700">
                 <AccordionTrigger className="text-left text-slate-100 hover:text-blue-300">
-                  {item.week} — {item.title}
+                  <span>
+                    <span className="block text-xs font-medium uppercase tracking-wide text-blue-300">{item.month}</span>
+                    <span>{item.week} — {item.title}</span>
+                  </span>
                 </AccordionTrigger>
                 <AccordionContent className="text-sm text-slate-300 space-y-3">
                   <div>
@@ -303,7 +399,7 @@ export default function DataEngineeringCurriculum() {
                     </ul>
                   </div>
                   <div>
-                    <p className="font-medium text-blue-200 mb-1">Key concepts</p>
+                    <p className="font-medium text-blue-200 mb-1">Weekly schedule</p>
                     <ul className="list-disc ml-5 space-y-1">
                       {item.concepts.map((concept) => (
                         <li key={concept}>{concept}</li>
@@ -326,11 +422,11 @@ export default function DataEngineeringCurriculum() {
       <div className="grid grid-cols-1 md:grid-cols-2 gap-8 mb-8">
         <Card className="border-slate-600 bg-slate-900">
           <CardHeader>
-            <CardTitle className="text-blue-300">Internship Phase (Weeks 17-24)</CardTitle>
+            <CardTitle className="text-blue-300">Expanded Tool Stack</CardTitle>
           </CardHeader>
           <CardContent>
             <ul className="space-y-2 text-slate-300 text-sm">
-              {internshipWeeks.map((item) => (
+              {coreToolStack.map((item) => (
                 <li key={item}>• {item}</li>
               ))}
             </ul>
@@ -339,13 +435,14 @@ export default function DataEngineeringCurriculum() {
 
         <Card className="border-slate-600 bg-slate-900">
           <CardHeader>
-            <CardTitle className="text-blue-300">Optional Extension (Weeks 25-28)</CardTitle>
+            <CardTitle className="text-blue-300">Delivery Rhythm</CardTitle>
           </CardHeader>
           <CardContent>
             <ul className="space-y-2 text-slate-300 text-sm">
-              {optionalWeeks.map((item) => (
-                <li key={item}>• {item}</li>
-              ))}
+              <li>• Monday to Thursday: instructor-led theory, demos, and implementation practice.</li>
+              <li>• Friday: job shadowing with senior engineers, peer reviews, or project work.</li>
+              <li>• Saturday: labs, mini projects, capstone milestones, and portfolio polishing.</li>
+              <li>• Every month ends with a build review focused on reliability, documentation, and employability.</li>
             </ul>
           </CardContent>
         </Card>
@@ -357,17 +454,11 @@ export default function DataEngineeringCurriculum() {
         </CardHeader>
         <CardContent className="text-sm text-slate-300 space-y-3">
           <p>Weekly check-ins include labs, mini-quizzes, and code reviews with practical build assessments.</p>
-          <p className="font-medium text-blue-200">Portfolio artifacts expected by Week 24:</p>
+          <p className="font-medium text-blue-200">Portfolio artifacts expected by Week 16:</p>
           <ul className="list-disc ml-5 space-y-1">
-            <li>1 Power BI dashboard</li>
-            <li>2 SQL case studies</li>
-            <li>2 Python ETL automation projects</li>
-            <li>1 Dockerized data application</li>
-            <li>1 Airflow-orchestrated pipeline</li>
-            <li>1 Kafka/Spark streaming mini-system</li>
-            <li>1 dbt project with tests, docs, and lineage</li>
-            <li>1 Grafana monitoring stack with alerts</li>
-            <li>1 capstone repository with CI/CD and architecture documentation</li>
+            {portfolioArtifacts.map((item) => (
+              <li key={item}>{item}</li>
+            ))}
           </ul>
         </CardContent>
       </Card>
