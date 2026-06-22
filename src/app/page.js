@@ -15,12 +15,13 @@ import {
   Sparkles,
   BookOpen,
   Code,
+  Laptop,
+  Building2,
 } from "lucide-react";
 import Header from "./components/header";
 import Footer from "./components/footer";
 import { MarqueeDemo } from "./components/marquee";
 import ApplicationProcess from "./components/application_process";
-import ShortCourseForm from "@/components/ShortCourseForm";
 import { Dialog, DialogTrigger, DialogContent, DialogTitle } from "@/components/ui/dialog";
 import FullProgramForm from "@/components/FullProgramForm";
 import UniversalEnrollmentForm from "@/components/UniversalEnrollmentForm";
@@ -29,7 +30,6 @@ import BenefitsSection from "@/components/benefits-section";
 
 export default function Home() {
   const registrationUrl = process.env.NEXT_PUBLIC_REGISTRATION_LINK ?? '#';
-  const [showShortCourseForm, setShowShortCourseForm] = useState(false);
   const [showFullProgramForm, setShowFullProgramForm] = useState(false);
   const [showUniversalEnrollmentForm, setShowUniversalEnrollmentForm] = useState(false);
   useEffect(() => {
@@ -193,108 +193,107 @@ export default function Home() {
 
       {/* Programs Section */}
       <section className="py-16 px-4 bg-slate-50">
-    <div className="container mx-auto max-w-6xl">
-      <div className="text-center mb-12" data-aos="fade-up">
-        <h2 className="text-3xl md:text-4xl font-bold mb-4">
-          Program Access & Enrollment Options
-        </h2>
-        <p className="text-xl text-gray-600 max-w-2xl mx-auto">
-          Choose the path that fits your career goals and schedule. Available in-person and online.
-        </p>
-      </div>
-      <div className="grid grid-cols-1 md:grid-cols-2 gap-8">
-        <div
-          className="bg-blue-50 rounded-2xl p-8 border border-blue-100"
-          data-aos="fade-up"
-        >
-          <h3 className="text-2xl font-bold text-blue-900 mb-4">
-            Full Program
-          </h3>
-          <div className="mb-6">
-            <p className="text-lg mb-2">
-              <span className="font-semibold">Duration:</span> 6 Months
+        <div className="container mx-auto max-w-6xl">
+          <div className="text-center mb-12" data-aos="fade-up">
+            <h2 className="text-3xl md:text-4xl font-bold mb-4">
+              Program Access & Enrollment Options
+            </h2>
+            <p className="text-xl text-gray-600 max-w-2xl mx-auto">
+              Choose your learning studio: focused online evenings or an immersive campus experience.
             </p>
-            <p className="text-gray-600">• 4 Months Learning</p>
-            <p className="text-gray-600">• 2 Months Internship</p>
-            <div className="mt-4 p-3 bg-white rounded-lg border border-blue-200">
-              <p className="text-sm font-medium text-blue-800 mb-1">Available Formats:</p>
-              <div className="flex flex-wrap gap-2">
-                <span className="inline-flex items-center px-2.5 py-0.5 rounded-full text-xs font-medium bg-blue-100 text-blue-800">
-                  🏢 Physical Classes
-                </span>
-                <span className="inline-flex items-center px-2.5 py-0.5 rounded-full text-xs font-medium bg-green-100 text-green-800">
-                  💻 Online Classes
-                </span>
-              </div>
-            </div>
           </div>
-          <div className="flex items-center justify-between">
-            <div className="text-3xl font-bold text-blue-900">
-              From KES 30,000
-            </div>
-            <Dialog open={showFullProgramForm} onOpenChange={setShowFullProgramForm}>
-              <DialogTrigger asChild>
-                <Button
-                  size="sm"
-                  className="rounded-full bg-blue-900 text-white"
-                  onClick={() => setShowFullProgramForm(true)}
-                >
-                  Enroll now
-                  <ArrowRight className="ml-2 h-4 w-4" />
-                </Button>
-              </DialogTrigger>
-              <DialogContent>
-                <DialogTitle>Full Program Enrollment</DialogTitle>
-                <FullProgramForm onClose={() => setShowFullProgramForm(false)} />
-              </DialogContent>
-            </Dialog>
-          </div>
-        </div>
-
-            {/* Prep Program Card */}
+          <div className="grid grid-cols-1 md:grid-cols-2 gap-8">
             <div
-              className="bg-blue-50 rounded-2xl p-8 border border-blue-100"
+              className="relative overflow-hidden bg-gradient-to-br from-blue-950 via-blue-900 to-blue-700 rounded-3xl p-8 text-white shadow-xl shadow-blue-900/10"
               data-aos="fade-up"
             >
-              <h3 className="text-2xl font-bold text-blue-900 mb-4">
-               Short Courses
-              </h3>
-              <div className="mb-6">
-                <p className="text-lg mb-2">
-                  <span className="font-semibold">Duration:</span> 1 Month
+              <div className="absolute -right-16 -top-16 h-48 w-48 rounded-full bg-white/10 blur-2xl"></div>
+              <div className="relative">
+                <div className="mb-6 inline-flex h-14 w-14 items-center justify-center rounded-2xl bg-white/15 ring-1 ring-white/20">
+                  <Laptop className="h-7 w-7" />
+                </div>
+                <p className="mb-3 text-sm font-semibold uppercase tracking-[0.25em] text-blue-100">
+                  Live evening cohort
                 </p>
-                <p className="text-gray-600">• 3 Week Learning</p>
-                <p className="text-gray-600">• 1 Week Building</p>
-                <div className="mt-4 p-3 bg-white rounded-lg border border-blue-200">
-                  <p className="text-sm font-medium text-blue-800 mb-1">Available Formats:</p>
-                  <div className="flex flex-wrap gap-2">
-                    <span className="inline-flex items-center px-2.5 py-0.5 rounded-full text-xs font-medium bg-blue-100 text-blue-800">
-                      🏢 Physical Classes
-                    </span>
-                    <span className="inline-flex items-center px-2.5 py-0.5 rounded-full text-xs font-medium bg-green-100 text-green-800">
-                      💻 Online Classes
-                    </span>
+                <h3 className="text-3xl font-bold mb-4">Online Learning</h3>
+                <p className="mb-6 text-blue-50">
+                  Join mentor-led live classes from anywhere, build weekly portfolio projects, and keep momentum with internship-ready support.
+                </p>
+                <div className="mb-8 rounded-2xl bg-white/10 p-5 ring-1 ring-white/15 backdrop-blur">
+                  <p className="text-sm font-medium text-blue-100">Investment</p>
+                  <div className="mt-2 text-4xl font-black tracking-tight">
+                    7,500 KES<span className="text-base font-semibold text-blue-100">/month</span>
                   </div>
+                  <p className="mt-1 text-blue-100">(30,000 KES total)</p>
                 </div>
-              </div>
-              <div className="flex items-center justify-between">
-                <div className="text-3xl font-bold text-blue-900">
-                  For KES 5,500
+                <div className="mb-8 grid gap-3 text-sm text-blue-50 sm:grid-cols-2">
+                  <span className="rounded-full bg-white/10 px-4 py-2">💻 Online classes</span>
+                  <span className="rounded-full bg-white/10 px-4 py-2">🌙 Evening schedule</span>
+                  <span className="rounded-full bg-white/10 px-4 py-2">🧑‍🏫 Mentor guidance</span>
+                  <span className="rounded-full bg-white/10 px-4 py-2">🚀 Career projects</span>
                 </div>
-                <Dialog open={showShortCourseForm} onOpenChange={setShowShortCourseForm}>
+                <Dialog open={showFullProgramForm} onOpenChange={setShowFullProgramForm}>
                   <DialogTrigger asChild>
                     <Button
                       size="sm"
-                      className="rounded-full bg-blue-900 text-white"
-                      onClick={() => setShowShortCourseForm(true)}
+                      className="rounded-full bg-white text-blue-900 hover:bg-blue-50"
+                      onClick={() => setShowFullProgramForm(true)}
                     >
-                      Enroll now
+                      Enroll online
                       <ArrowRight className="ml-2 h-4 w-4" />
                     </Button>
                   </DialogTrigger>
                   <DialogContent>
-                    <DialogTitle>Short Course Enrollment</DialogTitle>
-                    <ShortCourseForm onClose={() => setShowShortCourseForm(false)} />
+                    <DialogTitle>Online Learning Enrollment</DialogTitle>
+                    <FullProgramForm onClose={() => setShowFullProgramForm(false)} />
+                  </DialogContent>
+                </Dialog>
+              </div>
+            </div>
+
+            <div
+              className="relative overflow-hidden rounded-3xl border border-blue-100 bg-white p-8 shadow-xl shadow-blue-900/5"
+              data-aos="fade-up"
+            >
+              <div className="absolute -left-16 -bottom-16 h-48 w-48 rounded-full bg-blue-100 blur-2xl"></div>
+              <div className="relative">
+                <div className="mb-6 inline-flex h-14 w-14 items-center justify-center rounded-2xl bg-blue-900 text-white shadow-lg shadow-blue-900/20">
+                  <Building2 className="h-7 w-7" />
+                </div>
+                <p className="mb-3 text-sm font-semibold uppercase tracking-[0.25em] text-blue-700">
+                  Campus immersion
+                </p>
+                <h3 className="text-3xl font-bold text-blue-950 mb-4">Physical Classes</h3>
+                <p className="mb-6 text-gray-600">
+                  Learn in person at our campus with structured morning sessions, peer collaboration, and direct access to mentors and learning resources.
+                </p>
+                <div className="mb-8 rounded-2xl border border-blue-100 bg-blue-50 p-5">
+                  <p className="text-sm font-medium text-blue-700">Investment</p>
+                  <div className="mt-2 text-4xl font-black tracking-tight text-blue-950">
+                    12,500 KES<span className="text-base font-semibold text-blue-700">/month</span>
+                  </div>
+                  <p className="mt-1 text-blue-700">(50,000 KES total)</p>
+                </div>
+                <div className="mb-8 grid gap-3 text-sm text-blue-950 sm:grid-cols-2">
+                  <span className="rounded-full bg-blue-50 px-4 py-2">🏢 Campus classes</span>
+                  <span className="rounded-full bg-blue-50 px-4 py-2">☀️ Morning sessions</span>
+                  <span className="rounded-full bg-blue-50 px-4 py-2">🤝 Peer labs</span>
+                  <span className="rounded-full bg-blue-50 px-4 py-2">🎯 Mentor reviews</span>
+                </div>
+                <Dialog open={showUniversalEnrollmentForm} onOpenChange={setShowUniversalEnrollmentForm}>
+                  <DialogTrigger asChild>
+                    <Button
+                      size="sm"
+                      className="rounded-full bg-blue-900 text-white"
+                      onClick={() => setShowUniversalEnrollmentForm(true)}
+                    >
+                      Enroll on campus
+                      <ArrowRight className="ml-2 h-4 w-4" />
+                    </Button>
+                  </DialogTrigger>
+                  <DialogContent>
+                    <DialogTitle>Physical Classes Enrollment</DialogTitle>
+                    <UniversalEnrollmentForm onClose={() => setShowUniversalEnrollmentForm(false)} />
                   </DialogContent>
                 </Dialog>
               </div>
@@ -312,6 +311,44 @@ export default function Home() {
       <section className="py-24 px-4 bg-slate-50">
         <div className="container mx-auto max-w-5xl">
           <div className="text-center mb-16" data-aos="fade-up">
+            <div className="mx-auto mb-6 flex h-24 w-24 items-center justify-center rounded-full bg-blue-900/5">
+              <svg
+                viewBox="0 0 160 160"
+                role="img"
+                aria-label="Student success conversation illustration"
+                className="h-20 w-20"
+              >
+                <defs>
+                  <linearGradient id="studentStoryGradient" x1="24" y1="18" x2="136" y2="142" gradientUnits="userSpaceOnUse">
+                    <stop stopColor="#1E3A8A" />
+                    <stop offset="1" stopColor="#60A5FA" />
+                  </linearGradient>
+                </defs>
+                <circle cx="80" cy="80" r="68" fill="#EFF6FF" />
+                <path
+                  d="M46 51h68c9 0 16 7 16 16v26c0 9-7 16-16 16H82l-24 18 5-18H46c-9 0-16-7-16-16V67c0-9 7-16 16-16Z"
+                  fill="url(#studentStoryGradient)"
+                />
+                <circle cx="60" cy="82" r="7" fill="white" opacity="0.95" />
+                <circle cx="80" cy="82" r="7" fill="white" opacity="0.95" />
+                <circle cx="100" cy="82" r="7" fill="white" opacity="0.95" />
+                <path
+                  d="M54 42c8-12 21-19 36-17 11 2 20 8 26 17"
+                  fill="none"
+                  stroke="#93C5FD"
+                  strokeWidth="8"
+                  strokeLinecap="round"
+                />
+                <path
+                  d="M48 119c9 9 20 14 33 14s25-5 33-14"
+                  fill="none"
+                  stroke="#1E3A8A"
+                  strokeWidth="6"
+                  strokeLinecap="round"
+                  opacity="0.35"
+                />
+              </svg>
+            </div>
             <h2 className="text-3xl md:text-4xl font-bold mb-4">
               What Our Students Say
             </h2>
