@@ -209,11 +209,10 @@ const shortCourses = [
 
 const SHORT_COURSE_TIMES = ["7 PM", "5 AM"];
 
-const modes = ["Online Classes", "Hybrid Classes", "Physical Classes"];
+const modes = ["Online Classes", "Physical Classes"];
 
 const MODE_MONTHLY_KES = {
   "Online Classes": 7500,
-  "Hybrid Classes": 10500,
   "Physical Classes": 12500,
 };
 

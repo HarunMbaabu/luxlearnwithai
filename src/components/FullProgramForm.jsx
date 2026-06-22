@@ -197,7 +197,7 @@ const countries = [
 ];
 
 const genders = ["Male", "Female"];
-const modes = ["Online Classes", "Hybrid Classes", "Physical Classes"];
+const modes = ["Online Classes", "Physical Classes"];
 const tracks = ["Data Analytics, Data Science and AI", "Data Engineering"];
 
 const sources = [
@@ -225,7 +225,6 @@ const MONTHS = 4;
 
 const MODE_MONTHLY_KES = {
   "Online Classes": 7500,
-  "Hybrid Classes": 10500,
   "Physical Classes": 12500,
 };
 
