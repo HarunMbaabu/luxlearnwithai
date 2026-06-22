@@ -411,8 +411,7 @@ export default function UniversalEnrollmentForm({
   return (
     <div
       id="universal-form-scroll"
-      className="w-full max-w-full px-4 py-4 bg-white rounded-none sm:rounded-lg sm:max-w-md sm:mx-auto
-                 max-h-[85vh] overflow-y-auto overflow-x-hidden"
+      className="w-full max-w-full rounded-none bg-transparent px-6 pb-6 pt-2 sm:max-w-xl sm:px-8 max-h-[78vh] overflow-y-auto overflow-x-hidden"
     >
       <form onSubmit={handleSubmit} className="space-y-4">
         <div>

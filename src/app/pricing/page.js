@@ -286,8 +286,8 @@ const page = () => {
       <Footer />
 
       {open && (
-        <div className="fixed inset-0 z-50 bg-black/50 flex items-center justify-center p-4">
-          <div className="bg-white rounded-lg w-full max-w-md">
+        <div className="fixed inset-0 z-50 flex items-center justify-center bg-blue-950/70 p-4 backdrop-blur-sm">
+          <div className="relative w-full max-w-2xl overflow-hidden rounded-[2rem] border border-white/70 bg-white/95 shadow-[0_30px_90px_rgba(15,23,42,0.35)] ring-1 ring-blue-100/80 before:absolute before:inset-x-0 before:top-0 before:h-2 before:bg-gradient-to-r before:from-blue-950 before:via-blue-500 before:to-cyan-300">
             <FullProgramMonthlyForm
               defaultMode={selectedMode}
               onClose={() => setOpen(false)}
