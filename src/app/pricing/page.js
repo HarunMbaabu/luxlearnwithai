@@ -34,7 +34,7 @@ const page = () => {
               </h2>
             </div>
             <div className="flex flex-wrap items-stretch px-4">
-              <div className="flex w-full mb-8 sm:px-4 md:w-1/2 lg:w-1/3 lg:mb-0">
+              <div className="flex w-full mb-8 sm:px-4 md:w-1/2 lg:mb-0">
                 <div className="flex flex-grow flex-col p-6 space-y-6 rounded-md border sm:p-8 dark:bg-gray-50">
                   <div className="space-y-2">
                     <h4 className="text-2xl font-bold">
@@ -106,92 +106,7 @@ const page = () => {
                 </div>
               </div>
 
-              <div className="flex w-full mb-8 sm:px-4 md:w-1/2 lg:w-1/3 lg:mb-0">
-                <div className="flex flex-grow flex-col p-6 space-y-6 rounded-md sm:p-8 bg-blue-900 dark:bg-violet-600 text-gray-50">
-                  <div className="space-y-2">
-                    <h4 className="text-2xl font-bold">Hybrid Classes</h4>
-                    <span className="text-xl font-bold">
-                      10,500 KES
-                      <span className="text-sm tracking-wide">/month</span>
-                    </span>
-                    <p className="text-sm font-medium">(42,000 KES total)</p>
-                  </div>
-                  <p className="leading-relaxed">
-                    Flexible learning with both online and physical classes
-                  </p>
-                  <ul className="flex-1 space-y-2">
-                    <li className="flex items-center space-x-2">
-                      <svg
-                        xmlns="http://www.w3.org/2000/svg"
-                        viewBox="0 0 20 20"
-                        fill="currentColor"
-                        className="flex-shrink-0 w-6 h-6"
-                      >
-                        <path
-                          fillRule="evenodd"
-                          d="M10 18a8 8 0 100-16 8 8 0 000 16zm3.707-9.293a1 1 0 00-1.414-1.414L9 10.586 7.707 9.293a1 1 0 00-1.414 1.414l2 2a1 1 0 001.414 0l4-4z"
-                          clipRule="evenodd"
-                        ></path>
-                      </svg>
-                      <span>Everything in Online plan</span>
-                    </li>
-                    <li className="flex items-center space-x-2">
-                      <svg
-                        xmlns="http://www.w3.org/2000/svg"
-                        viewBox="0 0 20 20"
-                        fill="currentColor"
-                        className="flex-shrink-0 w-6 h-6"
-                      >
-                        <path
-                          fillRule="evenodd"
-                          d="M10 18a8 8 0 100-16 8 8 0 000 16zm3.707-9.293a1 1 0 00-1.414-1.414L9 10.586 7.707 9.293a1 1 0 00-1.414 1.414l2 2a1 1 0 001.414 0l4-4z"
-                          clipRule="evenodd"
-                        ></path>
-                      </svg>
-                      <span>Access to campus facilities</span>
-                    </li>
-                    <li className="flex items-center space-x-2">
-                      <svg
-                        xmlns="http://www.w3.org/2000/svg"
-                        viewBox="0 0 20 20"
-                        fill="currentColor"
-                        className="flex-shrink-0 w-6 h-6"
-                      >
-                        <path
-                          fillRule="evenodd"
-                          d="M10 18a8 8 0 100-16 8 8 0 000 16zm3.707-9.293a1 1 0 00-1.414-1.414L9 10.586 7.707 9.293a1 1 0 00-1.414 1.414l2 2a1 1 0 001.414 0l4-4z"
-                          clipRule="evenodd"
-                        ></path>
-                      </svg>
-                      <span>Friday project work with mentors</span>
-                    </li>
-                    <li className="flex items-center space-x-2">
-                      <svg
-                        xmlns="http://www.w3.org/2000/svg"
-                        viewBox="0 0 20 20"
-                        fill="currentColor"
-                        className="flex-shrink-0 w-6 h-6"
-                      >
-                        <path
-                          fillRule="evenodd"
-                          d="M10 18a8 8 0 100-16 8 8 0 000 16zm3.707-9.293a1 1 0 00-1.414-1.414L9 10.586 7.707 9.293a1 1 0 00-1.414 1.414l2 2a1 1 0 001.414 0l4-4z"
-                          clipRule="evenodd"
-                        ></path>
-                      </svg>
-                      <span>Flexible attendance options</span>
-                    </li>
-                  </ul>
-                  <button
-                    type="button"
-                    onClick={() => openForm("Hybrid Classes")}
-                    className="inline-block w-full px-5 py-3 font-bold tracking-wider text-center rounded bg-gray-100 text-blue-900 dark:text-violet-600"
-                  >
-                    Apply Now
-                  </button>
-                </div>
-              </div>
-
-              <div className="flex w-full mb-8 sm:px-4 md:w-1/2 lg:w-1/3 lg:mb-0">
+              <div className="flex w-full mb-8 sm:px-4 md:w-1/2 lg:mb-0">
                 <div className="flex flex-grow flex-col p-6 space-y-6 rounded-md border sm:p-8 dark:bg-gray-50">
                   <div className="space-y-2">
                     <h4 className="text-2xl font-bold">Physical Classes</h4>
@@ -218,7 +133,7 @@ const page = () => {
                           clipRule="evenodd"
                         ></path>
                       </svg>
-                      <span>Everything in Hybrid plan</span>
+                      <span>Everything in Online plan</span>
                     </li>
                     <li className="flex items-start space-x-2">
                       <svg

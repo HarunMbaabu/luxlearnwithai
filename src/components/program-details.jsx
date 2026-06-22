@@ -139,7 +139,7 @@ export default function ProgramDetails() {
               <div className="w-1 h-1 rounded-full bg-blue-600 mt-2.5"></div>
               <p className="text-slate-400">
                 <span className="font-medium text-blue-200">Campus location:</span> 1842 Lenana Road, Kilimani, Nairobi (for
-                physical/hybrid classes)
+                physical classes)
               </p>
             </li>
           </ul>
