@@ -15,7 +15,7 @@ const cardsData = [
         features: [
             "8:30am - 5:00pm access",
             "High-speed Wi-Fi",
-            "Complimentary tea & coffee",
+            "Complimentary tea and coffee",
             "Shared workspace",
             "Printing (additional cost)",
             "Meeting rooms (additional cost)"
@@ -149,7 +149,7 @@ export default function CoworkingPage() {
                     Our shared workspaces are beautiful, diverse and promote collaboration.
                     </h2>
                     <p>
-                    The flexible seating arrangement allows our members to choose from standing desks to private booths, from swings to couches and everything in between, either indoors or outside. Our communal membership includes all the shared amenities that our locations have to offer including meeting rooms, specialty coffee bars and outdoor cafes, complimentary yoga & meditation, phone booths, prayer rooms, mother’s rooms, showers and so much more. Simply choose an open seat in our coworking area and get to work.
+                    The flexible seating arrangement allows our members to choose from standing desks to private booths, from swings to couches and everything in between, either indoors or outside. Our communal membership includes all the shared amenities that our locations have to offer including meeting rooms, specialty coffee bars and outdoor cafes, complimentary yoga and meditation, phone booths, prayer rooms, mother’s rooms, showers and so much more. Simply choose an open seat in our coworking area and get to work.
                     </p>
                 </div>
 

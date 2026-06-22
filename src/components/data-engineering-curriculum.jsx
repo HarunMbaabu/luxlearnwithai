@@ -450,7 +450,7 @@ export default function DataEngineeringCurriculum() {
 
       <Card className="border-slate-600 bg-slate-900">
         <CardHeader>
-          <CardTitle className="text-blue-300">Assessment & Portfolio Framework</CardTitle>
+          <CardTitle className="text-blue-300">Assessment and Portfolio Framework</CardTitle>
         </CardHeader>
         <CardContent className="text-sm text-slate-300 space-y-3">
           <p>Weekly check-ins include labs, mini-quizzes, and code reviews with practical build assessments.</p>

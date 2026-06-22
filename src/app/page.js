@@ -23,6 +23,11 @@ import {
   PauseCircle,
   Infinity,
   GraduationCap,
+  Clock,
+  MapPin,
+  Headphones,
+  Library,
+  Images,
 } from "lucide-react";
 import Header from "./components/header";
 import Footer from "./components/footer";
@@ -41,6 +46,15 @@ export default function Home() {
   useEffect(() => {
     AOS.init({ duration: 700, once: true });
   }, []);
+
+  const galleryImages = [
+    { src: "/gallery/LUXGRADUATION_-213.jpg", alt: "LuxDev Academy graduation celebration" },
+    { src: "/gallery/LUXGRADUATION_-192.jpg", alt: "LuxDev Academy student community moment" },
+    { src: "/gallery/LUXGRADUATION_-290.jpg", alt: "LuxDev Academy graduates celebrating achievement" },
+    { src: "/gallery/LUX22GRADUATION..(46of199).jpg", alt: "LuxDev Academy in-person learning community" },
+    { src: "/gallery/LUXGRADUATION_-251.jpg", alt: "LuxDev Academy student success event" },
+    { src: "/gallery/LUX22GRADUATION..(97of199).jpg", alt: "LuxDev Academy learners and mentors" },
+  ];
 
   const testimonials = [
     {
@@ -212,7 +226,7 @@ export default function Home() {
                   Best offer
                 </span>
                 <h2 className="text-4xl font-black leading-tight md:text-5xl">
-                  Pay upfront & save 10%
+                  Pay upfront and save 10%
                 </h2>
                 <p className="mt-5 max-w-2xl text-lg font-medium text-white/90">
                   Pay your full LuxDevHQ tuition before your cohort starts and enjoy a 10% discount while securing lifetime access after you enroll, complete, and graduate.
@@ -294,10 +308,10 @@ export default function Home() {
         <div className="container mx-auto max-w-6xl">
           <div className="text-center mb-12" data-aos="fade-up">
             <h2 className="text-3xl md:text-4xl font-bold mb-4">
-              Program Access & Enrollment Options
+              Program Access and Enrollment Options
             </h2>
             <p className="text-xl text-gray-600 max-w-2xl mx-auto">
-              Choose your learning studio: focused online evenings or an immersive campus experience.
+              Choose a flexible learning path with live online classes, in-person learning at Garden Court HQ, continuous support, and reliable access to learning materials.
             </p>
           </div>
           <div className="grid grid-cols-1 md:grid-cols-2 gap-8">
@@ -311,11 +325,11 @@ export default function Home() {
                   <Laptop className="h-7 w-7" />
                 </div>
                 <p className="mb-3 text-sm font-semibold uppercase tracking-[0.25em] text-blue-100">
-                  Live evening cohort
+                  Live online cohorts
                 </p>
-                <h3 className="text-3xl font-bold mb-4">Online Learning</h3>
+                <h3 className="text-3xl font-bold mb-4">Online Classes</h3>
                 <p className="mb-6 text-blue-50">
-                  Join mentor-led live classes from anywhere, build weekly portfolio projects, and keep momentum with internship-ready support.
+                  Join mentor-led online classes from wherever you are. Our morning and evening schedules make learning accessible for students balancing work, school, or personal commitments.
                 </p>
                 <div className="mb-8 rounded-2xl bg-white/10 p-5 ring-1 ring-white/15 backdrop-blur">
                   <p className="text-sm font-medium text-blue-100">Investment</p>
@@ -324,11 +338,19 @@ export default function Home() {
                   </div>
                   <p className="mt-1 text-blue-100">(30,000 KES total)</p>
                 </div>
-                <div className="mb-8 grid gap-3 text-sm text-blue-50 sm:grid-cols-2">
-                  <span className="rounded-full bg-white/10 px-4 py-2">💻 Online classes</span>
-                  <span className="rounded-full bg-white/10 px-4 py-2">🌙 Evening schedule</span>
-                  <span className="rounded-full bg-white/10 px-4 py-2">🧑‍🏫 Mentor guidance</span>
-                  <span className="rounded-full bg-white/10 px-4 py-2">🚀 Career projects</span>
+                <div className="mb-8 space-y-3 text-sm text-blue-50">
+                  <div className="rounded-2xl bg-white/10 px-4 py-3 ring-1 ring-white/10">
+                    <div className="flex items-center gap-2 font-semibold"><Clock className="h-4 w-4" /> Morning online classes</div>
+                    <p className="mt-1 text-blue-100">10:00 AM to 1:30 PM EAT</p>
+                  </div>
+                  <div className="rounded-2xl bg-white/10 px-4 py-3 ring-1 ring-white/10">
+                    <div className="flex items-center gap-2 font-semibold"><Clock className="h-4 w-4" /> Evening online classes</div>
+                    <p className="mt-1 text-blue-100">7:30 PM to 10:00 PM EAT</p>
+                  </div>
+                  <div className="grid gap-3 sm:grid-cols-2">
+                    <span className="rounded-full bg-white/10 px-4 py-2">🧑‍🏫 Mentor guidance</span>
+                    <span className="rounded-full bg-white/10 px-4 py-2">🚀 Career projects</span>
+                  </div>
                 </div>
                 <Dialog open={showFullProgramForm} onOpenChange={setShowFullProgramForm}>
                   <DialogTrigger asChild>
@@ -361,9 +383,9 @@ export default function Home() {
                 <p className="mb-3 text-sm font-semibold uppercase tracking-[0.25em] text-blue-700">
                   Campus immersion
                 </p>
-                <h3 className="text-3xl font-bold text-blue-950 mb-4">Physical Classes</h3>
+                <h3 className="text-3xl font-bold text-blue-950 mb-4">In-Person Classes</h3>
                 <p className="mb-6 text-gray-600">
-                  Learn in person at our campus with structured morning sessions, peer collaboration, and direct access to mentors and learning resources.
+                  Learn physically at our Garden Court HQ with structured morning sessions, peer collaboration, direct mentor interaction, and daytime access to the school and learning resources.
                 </p>
                 <div className="mb-8 rounded-2xl border border-blue-100 bg-blue-50 p-5">
                   <p className="text-sm font-medium text-blue-700">Investment</p>
@@ -372,11 +394,17 @@ export default function Home() {
                   </div>
                   <p className="mt-1 text-blue-700">(50,000 KES total)</p>
                 </div>
-                <div className="mb-8 grid gap-3 text-sm text-blue-950 sm:grid-cols-2">
-                  <span className="rounded-full bg-blue-50 px-4 py-2">🏢 Campus classes</span>
-                  <span className="rounded-full bg-blue-50 px-4 py-2">☀️ Morning sessions</span>
-                  <span className="rounded-full bg-blue-50 px-4 py-2">🤝 Peer labs</span>
-                  <span className="rounded-full bg-blue-50 px-4 py-2">🎯 Mentor reviews</span>
+                <div className="mb-8 space-y-3 text-sm text-blue-950">
+                  <div className="rounded-2xl bg-blue-50 px-4 py-3 ring-1 ring-blue-100">
+                    <div className="flex items-center gap-2 font-semibold"><MapPin className="h-4 w-4" /> Garden Court HQ schedule</div>
+                    <p className="mt-1 text-blue-700">10:00 AM to 1:30 PM EAT</p>
+                  </div>
+                  <div className="grid gap-3 sm:grid-cols-2">
+                    <span className="rounded-full bg-blue-50 px-4 py-2">🏢 Daytime resource access</span>
+                    <span className="rounded-full bg-blue-50 px-4 py-2">🤝 Peer labs</span>
+                    <span className="rounded-full bg-blue-50 px-4 py-2">🎯 Mentor reviews</span>
+                    <span className="rounded-full bg-blue-50 px-4 py-2">📚 Learning materials</span>
+                  </div>
                 </div>
                 <Dialog open={showUniversalEnrollmentForm} onOpenChange={setShowUniversalEnrollmentForm}>
                   <DialogTrigger asChild>
@@ -396,6 +424,60 @@ export default function Home() {
                 </Dialog>
               </div>
             </div>
+          </div>
+        </div>
+      </section>
+
+      <section className="py-16 px-4 bg-white">
+        <div className="container mx-auto max-w-6xl">
+          <div className="grid grid-cols-1 gap-8 lg:grid-cols-[0.9fr_1.1fr] lg:items-center">
+            <div data-aos="fade-up">
+              <p className="mb-3 text-sm font-bold uppercase tracking-[0.25em] text-blue-700">Student support and resources</p>
+              <h2 className="mb-5 text-3xl font-bold text-blue-950 md:text-4xl">Support that stays with you, anytime you learn</h2>
+              <p className="text-lg text-gray-600">
+                Every student gets 24/7 support and 24/7 access to school resources, so you can review lessons, practice with learning materials, and ask for help whenever your schedule allows.
+              </p>
+            </div>
+            <div className="grid gap-4 sm:grid-cols-2" data-aos="fade-up">
+              <div className="rounded-3xl border border-blue-100 bg-blue-50 p-6">
+                <Headphones className="mb-4 h-8 w-8 text-blue-900" />
+                <h3 className="mb-2 text-xl font-bold text-blue-950">24/7 student support</h3>
+                <p className="text-gray-600">Get continuous guidance for coursework, projects, and learning blockers.</p>
+              </div>
+              <div className="rounded-3xl border border-emerald-100 bg-emerald-50 p-6">
+                <Library className="mb-4 h-8 w-8 text-emerald-700" />
+                <h3 className="mb-2 text-xl font-bold text-emerald-950">24/7 resource access</h3>
+                <p className="text-gray-600">Use school resources and learning materials whenever you need to study.</p>
+              </div>
+            </div>
+          </div>
+        </div>
+      </section>
+
+      <section className="overflow-hidden bg-slate-950 py-20 px-4 text-white">
+        <div className="container mx-auto max-w-7xl">
+          <div className="mb-12 flex flex-col gap-6 md:flex-row md:items-end md:justify-between" data-aos="fade-up">
+            <div>
+              <div className="mb-4 inline-flex items-center rounded-full bg-white/10 px-4 py-2 text-sm font-semibold text-blue-100 ring-1 ring-white/15">
+                <Images className="mr-2 h-4 w-4" /> Campus gallery
+              </div>
+              <h2 className="text-3xl font-black md:text-5xl">A glimpse of learning, community, and celebration</h2>
+            </div>
+            <p className="max-w-xl text-lg text-slate-300">
+              Explore moments from our LuxDev Academy community, from in-person milestones to the energy that supports every online and campus learner.
+            </p>
+          </div>
+          <div className="grid auto-rows-[220px] grid-cols-1 gap-4 md:grid-cols-4">
+            {galleryImages.map((image, index) => (
+              <div
+                key={image.src}
+                className={`group relative overflow-hidden rounded-3xl bg-white/10 shadow-2xl ring-1 ring-white/10 ${index === 0 ? "md:col-span-2 md:row-span-2" : ""} ${index === 3 ? "md:col-span-2" : ""}`}
+                data-aos="zoom-in"
+              >
+                <Image src={image.src} alt={image.alt} fill sizes="(min-width: 768px) 25vw, 100vw" className="object-cover transition duration-700 group-hover:scale-110" />
+                <div className="absolute inset-0 bg-gradient-to-t from-slate-950/70 via-transparent to-transparent opacity-80"></div>
+              </div>
+            ))}
           </div>
         </div>
       </section>

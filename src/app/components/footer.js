@@ -57,7 +57,7 @@ export default function Footer() {
               </li>
               <li>
                 <Link href="#" className="text-gray-600 hover:text-blue-900">
-                  Data Science & AI
+                  Data Science and AI
                 </Link>
               </li>
               <li>

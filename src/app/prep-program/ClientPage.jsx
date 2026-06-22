@@ -165,8 +165,8 @@ export default function LuxDevHQPrepProgram() {
                       "6 weeks intensive training",
                       "Real-world project experience",
                       "Industry professional mentorship",
-                      "Excel, SQL, Python & Power BI",
-                      "Machine Learning & AI fundamentals",
+                      "Excel, SQL, Python and Power BI",
+                      "Machine Learning and AI fundamentals",
                     ].map((item, i) => (
                       <div key={i} className="flex items-center text-white">
                         <CheckCircle className="h-4 w-4 text-green-400 mr-3" />
@@ -453,7 +453,7 @@ export default function LuxDevHQPrepProgram() {
                     </div>
                     <div className="flex items-center space-x-4">
                       <Users className="h-6 w-6 text-blue-600" />
-                      <span className="text-lg font-light">Direct mentorship & collaboration</span>
+                      <span className="text-lg font-light">Direct mentorship and collaboration</span>
                     </div>
                     <div className="flex items-center space-x-4">
                       <Target className="h-6 w-6 text-blue-600" />
@@ -610,7 +610,7 @@ export default function LuxDevHQPrepProgram() {
               <CardHeader className="text-center pb-8">
                 <CardTitle className="text-4xl font-light text-red-800 flex items-center justify-center">
                   <AlertCircle className="mr-4 h-10 w-10" />
-                  Commitment & Expectations
+                  Commitment and Expectations
                 </CardTitle>
               </CardHeader>
               <CardContent className="space-y-8">

@@ -29,7 +29,7 @@ export default function ProgramOverview() {
 
   const programs = [
     {
-      title: "Data Science & AI",
+      title: "Data Science and AI",
       icon: <Brain className="h-6 w-6 text-blue-900" />,
       description: "Learn machine learning, deep learning, and AI applications",
       features: [

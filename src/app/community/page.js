@@ -54,7 +54,7 @@ export default function CommunityPage() {
     {
       title: "AI Ethics Workshop",
       date: "April 22, 2025",
-      location: "Nairobi & Virtual",
+      location: "Nairobi and Virtual",
       description:
         "Explore the ethical implications of AI with industry experts and thought leaders.",
       image: "/workshop.jpg?height=400&width=600",
@@ -63,7 +63,7 @@ export default function CommunityPage() {
     {
       title: "Python for Data Science Meetup",
       date: "May 5, 2025",
-      location: "Nairobi & Virtual",
+      location: "Nairobi and Virtual",
       description:
         "Monthly meetup for Python enthusiasts to share knowledge and network.",
       image: "/meet.jpg?height=400&width=600",
@@ -394,7 +394,7 @@ export default function CommunityPage() {
               <TabsList className="grid w-full max-w-md grid-cols-3">
                 <TabsTrigger value="all">All Projects</TabsTrigger>
                 <TabsTrigger value="data-science">Data Science</TabsTrigger>
-                <TabsTrigger value="ai">AI & ML</TabsTrigger>
+                <TabsTrigger value="ai">AI and ML</TabsTrigger>
               </TabsList>
             </div>
 
@@ -592,7 +592,7 @@ export default function CommunityPage() {
 
             <TabsContent value="ai">
               <div className="grid grid-cols-1 md:grid-cols-3 gap-8">
-                {/* AI & ML specific projects would go here */}
+                {/* AI and ML specific projects would go here */}
                 <Card
                   className="border border-gray-200"
                   data-aos="fade-up"
