@@ -17,6 +17,12 @@ import {
   Code,
   Laptop,
   Building2,
+  CheckCircle2,
+  CreditCard,
+  Percent,
+  PauseCircle,
+  Infinity,
+  GraduationCap,
 } from "lucide-react";
 import Header from "./components/header";
 import Footer from "./components/footer";
@@ -188,6 +194,98 @@ export default function Home() {
             </p>
           </div>
           <BenefitsSection />
+        </div>
+      </section>
+
+
+      <section className="py-16 px-4 bg-white">
+        <div className="container mx-auto max-w-6xl">
+          <div
+            className="relative overflow-hidden rounded-3xl bg-gradient-to-br from-sky-500 via-teal-400 to-emerald-300 p-8 md:p-12 shadow-2xl shadow-blue-900/10"
+            data-aos="fade-up"
+          >
+            <div className="absolute -right-24 -top-24 h-72 w-72 rounded-full bg-white/20 blur-3xl"></div>
+            <div className="absolute right-10 bottom-8 hidden h-40 w-40 rounded-full border-8 border-white/20 md:block"></div>
+            <div className="relative grid grid-cols-1 items-center gap-10 lg:grid-cols-[1.05fr_0.95fr]">
+              <div className="text-white">
+                <span className="mb-5 inline-flex rounded-full bg-rose-500 px-4 py-2 text-sm font-extrabold uppercase tracking-wide shadow-lg shadow-rose-900/20">
+                  Best offer
+                </span>
+                <h2 className="text-4xl font-black leading-tight md:text-5xl">
+                  Pay upfront & save 10%
+                </h2>
+                <p className="mt-5 max-w-2xl text-lg font-medium text-white/90">
+                  Pay your full LuxDevHQ tuition before your cohort starts and enjoy a 10% discount while securing lifetime access after you enroll, complete, and graduate.
+                </p>
+                <div className="mt-8 flex flex-col gap-3 sm:flex-row">
+                  <Dialog open={showUniversalEnrollmentForm} onOpenChange={setShowUniversalEnrollmentForm}>
+                    <DialogTrigger asChild>
+                      <Button
+                        size="lg"
+                        className="rounded-full bg-amber-500 text-white hover:bg-amber-600"
+                        onClick={() => setShowUniversalEnrollmentForm(true)}
+                      >
+                        Apply now
+                        <ArrowRight className="ml-2 h-4 w-4" />
+                      </Button>
+                    </DialogTrigger>
+                    <DialogContent>
+                      <DialogTitle>Enrollment</DialogTitle>
+                      <UniversalEnrollmentForm onClose={() => setShowUniversalEnrollmentForm(false)} />
+                    </DialogContent>
+                  </Dialog>
+                  <Link
+                    href="/pricing"
+                    className="inline-flex items-center justify-center rounded-full bg-white/15 px-6 py-3 font-semibold text-white ring-1 ring-white/35 backdrop-blur transition hover:bg-white/25"
+                  >
+                    View payment plans
+                  </Link>
+                </div>
+              </div>
+
+              <div className="relative mx-auto w-full max-w-md">
+                <div className="absolute -left-6 top-8 rounded-2xl bg-white p-4 shadow-xl">
+                  <CreditCard className="h-8 w-8 text-sky-500" />
+                </div>
+                <div className="absolute -right-3 top-0 rounded-2xl bg-blue-500 p-4 shadow-xl">
+                  <Percent className="h-8 w-8 text-white" />
+                </div>
+                <div className="rounded-[2rem] bg-white/95 p-7 shadow-2xl ring-1 ring-white/50">
+                  <div className="mb-6 flex items-center gap-4">
+                    <div className="flex h-16 w-16 items-center justify-center rounded-2xl bg-blue-900 text-white">
+                      <GraduationCap className="h-8 w-8" />
+                    </div>
+                    <div>
+                      <p className="text-sm font-bold uppercase tracking-widest text-rose-500">
+                        Enrolling now
+                      </p>
+                      <h3 className="text-2xl font-black text-blue-950">
+                        Flexible tuition
+                      </h3>
+                    </div>
+                  </div>
+                  <div className="space-y-4 text-gray-700">
+                    <div className="flex gap-3">
+                      <CheckCircle2 className="mt-1 h-5 w-5 flex-shrink-0 text-emerald-500" />
+                      <p>Pay monthly in manageable installments designed for real budgets.</p>
+                    </div>
+                    <div className="flex gap-3">
+                      <CheckCircle2 className="mt-1 h-5 w-5 flex-shrink-0 text-emerald-500" />
+                      <p>One of the world&apos;s most affordable big data analytics, data science, AI, and data engineering bootcamps.</p>
+                    </div>
+                    <div className="flex gap-3">
+                      <Infinity className="mt-1 h-5 w-5 flex-shrink-0 text-blue-600" />
+                      <p>Graduate once and keep lifetime access to our course materials.</p>
+                    </div>
+                    <div className="flex gap-3">
+                      <PauseCircle className="mt-1 h-5 w-5 flex-shrink-0 text-amber-500" />
+                      <p>Need time away? Take learning breaks as needed and continue when ready.</p>
+                    </div>
+                  </div>
+                </div>
+              </div>
+            </div>
+          </div>
         </div>
       </section>
 
