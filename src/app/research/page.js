@@ -33,12 +33,12 @@ const page = () => {
               <div className="w-fit inline-flex items-center px-3 py-1 rounded-full bg-blue-900/10 text-blue-900 mb-6">
                 <Book className="h-4 w-4 mr-2" />
                 <span className=" font-medium">
-                  Research & Innovation
+                  Research and Innovation
                 </span>
               </div>
               <h1 className="text-3xl font-bold sm:text-5xl xl:text-6xl/none">
                 Advancing the Future of
-                <span className="text-primary !text-blue-900"> Data Science</span> & AI
+                <span className="text-primary !text-blue-900"> Data Science</span> and AI
               </h1>
               <p className="max-w-[600px] text-muted-foreground md:text-xl">
                 Our research team is dedicated to pushing the boundaries of data
@@ -126,7 +126,7 @@ const page = () => {
             </Card>
             <Card className="flex flex-col">
               <CardHeader>
-                <CardTitle>Ethical AI & Governance</CardTitle>
+                <CardTitle>Ethical AI and Governance</CardTitle>
                 <CardDescription>
                   Ensuring responsible development and deployment of AI systems
                 </CardDescription>
@@ -166,7 +166,7 @@ const page = () => {
             </Card>
             <Card className="flex flex-col">
               <CardHeader>
-                <CardTitle>Industry 4.0 & IoT</CardTitle>
+                <CardTitle>Industry 4.0 and IoT</CardTitle>
                 <CardDescription>
                   Researching smart systems for manufacturing and infrastructure
                 </CardDescription>

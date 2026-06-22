@@ -217,7 +217,7 @@ export default function AIServicesPage() {
                 <div className="w-12 h-12 bg-blue-900/10 rounded-full flex items-center justify-center mb-6">
                   <Database className="h-6 w-6 text-blue-900" />
                 </div>
-                <h3 className="text-xl font-bold mb-3">Data Analytics & BI</h3>
+                <h3 className="text-xl font-bold mb-3">Data Analytics and BI</h3>
                 <p className="text-gray-600 mb-4">
                   Transform your raw data into actionable business intelligence with advanced analytics and
                   visualization.
@@ -336,7 +336,7 @@ export default function AIServicesPage() {
                         <Shield className="h-5 w-5 text-blue-900" />
                       </div>
                       <div>
-                        <h4 className="font-bold mb-1">Fraud Detection & Prevention</h4>
+                        <h4 className="font-bold mb-1">Fraud Detection and Prevention</h4>
                         <p className="text-gray-600">
                           Advanced anomaly detection systems that identify suspicious patterns in real-time.
                         </p>
@@ -574,7 +574,7 @@ export default function AIServicesPage() {
                 <div className="w-16 h-16 bg-blue-900/10 rounded-full flex items-center justify-center mx-auto mb-6">
                   <span className="text-2xl font-bold text-blue-900">1</span>
                 </div>
-                <h3 className="text-xl font-bold mb-3">Discovery & Assessment</h3>
+                <h3 className="text-xl font-bold mb-3">Discovery and Assessment</h3>
                 <p className="text-gray-600">
                   We analyze your business needs, data infrastructure, and identify opportunities where AI can deliver
                   the most value.
@@ -600,7 +600,7 @@ export default function AIServicesPage() {
                 <div className="w-16 h-16 bg-blue-900/10 rounded-full flex items-center justify-center mx-auto mb-6">
                   <span className="text-2xl font-bold text-blue-900">3</span>
                 </div>
-                <h3 className="text-xl font-bold mb-3">Development & Testing</h3>
+                <h3 className="text-xl font-bold mb-3">Development and Testing</h3>
                 <p className="text-gray-600">
                   We build, train, and rigorously test your AI solution to ensure it meets performance and accuracy
                   requirements.
@@ -613,7 +613,7 @@ export default function AIServicesPage() {
                 <div className="w-16 h-16 bg-blue-900/10 rounded-full flex items-center justify-center mx-auto mb-6">
                   <span className="text-2xl font-bold text-blue-900">4</span>
                 </div>
-                <h3 className="text-xl font-bold mb-3">Deployment & Support</h3>
+                <h3 className="text-xl font-bold mb-3">Deployment and Support</h3>
                 <p className="text-gray-600">
                   We implement the solution in your environment, provide training, and offer ongoing support and
                   optimization.

@@ -110,7 +110,7 @@ export const courses = [
     ],
     instructor: {
       name: "Dr. Sarah Johnson",
-      title: "Python Developer & Educator",
+      title: "Python Developer and Educator",
       avatar: "/profile-picture-3.jpg?height=48&width=48",
     },
   },
@@ -234,7 +234,7 @@ export const courses = [
     ],
     instructor: {
       name: "Michael Chen",
-      title: "Data Scientist & AI Researcher",
+      title: "Data Scientist and AI Researcher",
       avatar: "/profile-picture-3.jpg?height=48&width=48",
     },
   },
@@ -376,7 +376,7 @@ export const courses = [
     ],
     instructor: {
       name: "Dr. Alex Rodriguez",
-      title: "ML Engineer & University Professor",
+      title: "ML Engineer and University Professor",
       avatar: "/profile-picture-3.jpg?height=48&width=48",
     },
   },
@@ -511,7 +511,7 @@ export const courses = [
     ],
     instructor: {
       name: "Emma Wilson",
-      title: "Full Stack Developer & Python Expert",
+      title: "Full Stack Developer and Python Expert",
       avatar: "/profile-picture-3.jpg?height=48&width=48",
     },
   },
@@ -631,7 +631,7 @@ export const courses = [
     ],
     instructor: {
       name: "Priya Patel",
-      title: "Data Analyst & Python Instructor",
+      title: "Data Analyst and Python Instructor",
       avatar: "/profile-picture-3.jpg?height=48&width=48",
     },
   },
@@ -775,7 +775,7 @@ export const courses = [
     ],
     instructor: {
       name: "Dr. James Wilson",
-      title: "AI Researcher & Deep Learning Specialist",
+      title: "AI Researcher and Deep Learning Specialist",
       avatar: "/profile-picture-3.jpg?height=48&width=48",
     },
   },

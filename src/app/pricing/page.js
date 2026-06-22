@@ -38,7 +38,7 @@ const page = () => {
                 <div className="flex flex-grow flex-col p-6 space-y-6 rounded-md border sm:p-8 dark:bg-gray-50">
                   <div className="space-y-2">
                     <h4 className="text-2xl font-bold">
-                      Online/Evening Classes
+                      Online Classes
                     </h4>
                     <span className="text-xl font-bold">
                       7,500 KES
@@ -47,7 +47,7 @@ const page = () => {
                     <p className="text-sm font-medium">(30,000 KES total)</p>
                   </div>
                   <p className="mt-3 leading-relaxed dark:text-gray-600">
-                    Evening sessions from 7:00 PM to 10:00 PM EAT
+                    Flexible live online classes with morning and evening options.
                   </p>
                   <ul className="flex-1 mb-6 dark:text-gray-600">
                     <li className="flex mb-2 space-x-2">
@@ -78,7 +78,7 @@ const page = () => {
                           clipRule="evenodd"
                         ></path>
                       </svg>
-                      <span>3 hours/day, Monday to Thursday</span>
+                      <span>Morning online classes: 10:00 AM to 1:30 PM EAT</span>
                     </li>
                     <li className="flex mb-2 space-x-2">
                       <svg
@@ -93,7 +93,7 @@ const page = () => {
                           clipRule="evenodd"
                         ></path>
                       </svg>
-                      <span>Verifiable certification upon completion</span>
+                      <span>Evening online classes: 7:30 PM to 10:00 PM EAT</span>
                     </li>
                   </ul>
                   <button
@@ -117,7 +117,7 @@ const page = () => {
                     <p className="text-sm font-medium">(50,000 KES total)</p>
                   </div>
                   <p className="leading-relaxed dark:text-gray-600">
-                    In-person classes at our Garden Estate campus
+                    In-person classes at our Garden Court HQ with daytime access to the school and learning resources.
                   </p>
                   <ul className="space-y-2 dark:text-gray-600">
                     <li className="flex items-start space-x-2">
@@ -133,7 +133,7 @@ const page = () => {
                           clipRule="evenodd"
                         ></path>
                       </svg>
-                      <span>Everything in Online plan</span>
+                      <span>Everything in the online plan, plus in-person learning at Garden Court HQ</span>
                     </li>
                     <li className="flex items-start space-x-2">
                       <svg
@@ -148,7 +148,7 @@ const page = () => {
                           clipRule="evenodd"
                         ></path>
                       </svg>
-                      <span>4 hours/day, Monday to Thursday</span>
+                      <span>In-person class schedule: 10:00 AM to 1:30 PM EAT</span>
                     </li>
                     <li className="flex items-start space-x-2">
                       <svg
@@ -163,7 +163,7 @@ const page = () => {
                           clipRule="evenodd"
                         ></path>
                       </svg>
-                      <span>Morning sessions: 10:00 AM to 2:30 PM</span>
+                      <span>Access to the school and learning resources during the day</span>
                     </li>
                     <li className="flex items-start space-x-2">
                       <svg
@@ -193,7 +193,7 @@ const page = () => {
                           clipRule="evenodd"
                         ></path>
                       </svg>
-                      <span>Full campus resources access</span>
+                      <span>24/7 support and 24/7 access to school resources</span>
                     </li>
                   </ul>
                   <button
@@ -254,9 +254,7 @@ const page = () => {
                 <li className="flex items-start gap-2">
                   <div className="w-1 h-1 rounded-full bg-blue-600 mt-2.5"></div>
                   <p className="text-slate-700">
-                    <span className="font-medium">Monday to Thursday:</span> 4
-                    hours/day for physical classes, 3 hours/day for online
-                    classes
+                    <span className="font-medium">Monday to Thursday:</span> online morning classes from 10:00 AM to 1:30 PM EAT, online evening classes from 7:30 PM to 10:00 PM EAT, and in-person classes from 10:00 AM to 1:30 PM EAT
                   </p>
                 </li>
                 <li className="flex items-start gap-2">
@@ -269,8 +267,7 @@ const page = () => {
                 <li className="flex items-start gap-2">
                   <div className="w-1 h-1 rounded-full bg-blue-600 mt-2.5"></div>
                   <p className="text-slate-700">
-                    <span className="font-medium">Morning sessions:</span> 10:00
-                    AM to 2:30 PM EAT
+                    <span className="font-medium">Student support:</span> 24/7 support and 24/7 access to school resources
                   </p>
                 </li>
               </ul>

@@ -57,7 +57,7 @@ export default function Footer() {
               </li>
               <li>
                 <Link href="#" className="text-gray-600 hover:text-blue-900">
-                  Data Science & AI
+                  Data Science and AI
                 </Link>
               </li>
               <li>
@@ -137,7 +137,7 @@ export default function Footer() {
 
         <div className="mt-12 pt-8 border-t border-gray-100 text-center text-gray-500 text-sm">
           <p>
-            &copy; {new Date().getFullYear()} LuxDev Academy. All rights
+            © {new Date().getFullYear()} LuxDev Academy. All rights
             reserved.
           </p>
         </div>

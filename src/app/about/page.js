@@ -148,7 +148,7 @@ export default function AboutHero() {
                 </div>
             </section>
 
-            {/* Vision & Mission Section */}
+            {/* Vision and Mission Section */}
             <section className="py-20 px-4">
                 <div className="container mx-auto max-w-6xl">
                     <div className="grid grid-cols-1 lg:grid-cols-2 gap-12">

@@ -27,7 +27,7 @@ export default function CoworkingPage() {
     {
       icon: '🧘‍♀️',
       title: 'Wellness Program',
-      description: 'Complimentary yoga & meditation sessions to boost your productivity'
+      description: 'Complimentary yoga and meditation sessions to boost your productivity'
     },
     {
       icon: '🏢',
@@ -48,7 +48,7 @@ export default function CoworkingPage() {
 
   const features = [
     {
-      title: 'Indoor & Outdoor Spaces',
+      title: 'Indoor and Outdoor Spaces',
       description: 'Work by the beautiful garden pool or cozy up by the warm fireplace indoors',
       image: '/api/placeholder/400/300'
     },
@@ -356,7 +356,7 @@ export default function CoworkingPage() {
             </div>
             
             <div className="mt-8 pt-8 border-t border-gray-200 text-center text-gray-600">
-              <p>&copy; 2025 Ikigai. All rights reserved.</p>
+              <p>© 2025 Ikigai. All rights reserved.</p>
             </div>
           </div>
         </footer>
