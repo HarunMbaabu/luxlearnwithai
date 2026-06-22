@@ -195,7 +195,7 @@ export default function RegistrationForm({ paymentId, email }) {
                 {index === 0
                   ? "Personal Info"
                   : index === 1
-                  ? "Education & Mode"
+                  ? "Education and Mode"
                   : "Program Details"}
               </span>
             </div>

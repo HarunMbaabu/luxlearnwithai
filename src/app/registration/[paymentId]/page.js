@@ -4,7 +4,7 @@ import RegistrationForm from "@/components/registration-form"
 
 export const metadata = {
   title: "Complete Your Registration - LuxDevHQ",
-  description: "Complete your registration for LuxDevHQ's AI & Data Science Training Program",
+  description: "Complete your registration for LuxDevHQ's AI and Data Science Training Program",
 }
 
 export default async function RegistrationPage({ params }) {

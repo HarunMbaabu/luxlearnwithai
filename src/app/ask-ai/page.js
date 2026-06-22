@@ -722,7 +722,7 @@ export default function AskAIPage() {
                 <div>
                   <h2 className="font-bold">LuxIQ</h2>
                   <p className="text-xs text-gray-500">
-                    Specialized in data science & AI
+                    Specialized in data science and AI
                   </p>
                 </div>
               </div>
@@ -1153,7 +1153,7 @@ export default function AskAIPage() {
                       Capabilities
                     </h4>
                     <ul className="text-sm text-gray-600 space-y-1">
-                      <li>• Answer data science & AI questions</li>
+                      <li>• Answer data science and AI questions</li>
                       <li>• Explain complex concepts simply</li>
                       <li>• Recommend learning resources</li>
                       <li>• Help with coding problems</li>

@@ -34,7 +34,7 @@ export default function ProgramValueSection() {
 
         <Card className="border-slate-600 bg-slate-900">
           <CardHeader>
-            <CardTitle className="text-blue-300 text-lg">Duration & Flexibility</CardTitle>
+            <CardTitle className="text-blue-300 text-lg">Duration and Flexibility</CardTitle>
           </CardHeader>
           <CardContent className="text-slate-300 text-sm space-y-3">
             <h3 className="font-semibold text-blue-200">Clear timeline, flexible pace</h3>
@@ -51,7 +51,7 @@ export default function ProgramValueSection() {
 
         <Card className="border-slate-600 bg-slate-900">
           <CardHeader>
-            <CardTitle className="text-blue-300 text-lg">Pricing & Payment Options</CardTitle>
+            <CardTitle className="text-blue-300 text-lg">Pricing and Payment Options</CardTitle>
           </CardHeader>
           <CardContent className="text-slate-300 text-sm space-y-3">
             <h3 className="font-semibold text-blue-200">Flexible Payment Coding Bootcamp</h3>

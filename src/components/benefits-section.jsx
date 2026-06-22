@@ -35,7 +35,7 @@ export default function BenefitsSection() {
       icon: <BookOpen className="h-5 w-5 text-blue-900" />,
     },
     {
-      title: "Mentorship & Support",
+      title: "Mentorship and Support",
       description: "Get guidance from industry professionals with 24/7 lab access",
       icon: <Headphones className="h-5 w-5 text-blue-900" />,
     },
