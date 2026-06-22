@@ -209,11 +209,10 @@ const shortCourses = [
 
 const SHORT_COURSE_TIMES = ["7 PM", "5 AM"];
 
-const modes = ["Online Classes", "Hybrid Classes", "Physical Classes"];
+const modes = ["Online Classes", "Physical Classes"];
 
 const MODE_MONTHLY_KES = {
   "Online Classes": 7500,
-  "Hybrid Classes": 10500,
   "Physical Classes": 12500,
 };
 
@@ -412,8 +411,7 @@ export default function UniversalEnrollmentForm({
   return (
     <div
       id="universal-form-scroll"
-      className="w-full max-w-full px-4 py-4 bg-white rounded-none sm:rounded-lg sm:max-w-md sm:mx-auto
-                 max-h-[85vh] overflow-y-auto overflow-x-hidden"
+      className="w-full max-w-full rounded-none bg-transparent px-6 pb-6 pt-2 sm:max-w-xl sm:px-8 max-h-[78vh] overflow-y-auto overflow-x-hidden"
     >
       <form onSubmit={handleSubmit} className="space-y-4">
         <div>
