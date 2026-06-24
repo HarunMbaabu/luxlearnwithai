@@ -5,6 +5,10 @@ Create concise, motivating learning help with examples, checkpoints, and next ac
 When asked for a course, return structured lessons, exercises, projects, and resources.
 Do not claim to be a human. Keep answers safe and age-appropriate.`;
 
+function getOpenAIKey() {
+  return (process.env.OPENAI_API_KEY || process.env.OpenAIKEY || "").trim();
+}
+
 export async function POST(request) {
   try {
     const { topic, format, level, goal, timeCommitment, questionsEnabled } =
@@ -17,11 +21,13 @@ export async function POST(request) {
       );
     }
 
-    if (!process.env.OpenAIKEY) {
+    const openAIKey = getOpenAIKey();
+
+    if (!openAIKey) {
       return NextResponse.json(
         {
           error:
-            "The AI tutor is not configured yet. Add OpenAIKEY to your .env file.",
+            "The AI tutor is not configured yet. Add OPENAI_API_KEY to your .env file.",
         },
         { status: 500 }
       );
@@ -45,7 +51,7 @@ Use this format:
       method: "POST",
       headers: {
         "Content-Type": "application/json",
-        Authorization: `Bearer ${process.env.OpenAIKEY}`,
+        Authorization: `Bearer ${openAIKey}`,
       },
       body: JSON.stringify({
         model: "gpt-4o-mini",
