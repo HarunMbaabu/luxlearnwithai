@@ -162,6 +162,13 @@ export default function Header() {
               PROGRAMS
             </Link>
 
+            <Link
+              href="/free-ai-tutor"
+              className="text-md tracking-wide font-bold text-blue-900 hover:text-blue-700 transition-colors"
+            >
+              Free AI Tutor
+            </Link>
+
             {/* Company Dropdown */}
             <div className="relative">
               <button
@@ -298,6 +305,13 @@ export default function Header() {
                 className="text-sm font-medium text-gray-600 hover:text-blue-900 transition-colors py-2"
               >
                  PROGRAMS
+              </Link>
+
+              <Link
+                href="/free-ai-tutor"
+                className="text-sm font-semibold text-blue-900 hover:text-blue-700 transition-colors py-2"
+              >
+                Free AI Tutor
               </Link>
 
               {/* Mobile Company Section */}
