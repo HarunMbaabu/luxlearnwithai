@@ -136,7 +136,7 @@ export default function FreeAITutorPage() {
 
   return (
     <div className="min-h-screen overflow-hidden bg-[#f4f7fb] text-slate-950">
-      <Header />
+      <Header hideRegistrationBanner />
       <main className="relative pt-24 sm:pt-28">
         <div className="absolute inset-0 -z-10 bg-[radial-gradient(circle_at_15%_8%,rgba(37,99,235,0.24),transparent_30%),radial-gradient(circle_at_88%_12%,rgba(217,70,239,0.18),transparent_28%),linear-gradient(135deg,#f8fbff_0%,#eef3f9_55%,#f8fafc_100%)]" />
         <div className="absolute left-1/2 top-32 -z-10 h-72 w-72 -translate-x-1/2 rounded-full bg-blue-300/20 blur-3xl" />
