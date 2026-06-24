@@ -12,11 +12,11 @@ import {
   DialogTitle,
 } from "@/components/ui/dialog";
 
-export default function Header() {
+export default function Header({ hideRegistrationBanner = false }) {
   const [showLanguageDropdown, setShowLanguageDropdown] = useState(false);
   const [showCompanyDropdown, setShowCompanyDropdown] = useState(false);
   const [mobileMenuOpen, setMobileMenuOpen] = useState(false);
-  const [showBanner, setShowBanner] = useState(true);
+  const [showBanner, setShowBanner] = useState(!hideRegistrationBanner);
   const [showUniversalEnrollmentForm, setShowUniversalEnrollmentForm] =
     useState(false);
 
@@ -53,6 +53,10 @@ export default function Header() {
     return () => document.removeEventListener("mousedown", handleClickOutside);
   }, []);
 
+  useEffect(() => {
+    setShowBanner(!hideRegistrationBanner);
+  }, [hideRegistrationBanner]);
+
   const languages = [
     { flag: "/globe.svg", name: "English" },
     { flag: "/globe.svg", name: "Français" },
@@ -79,7 +83,7 @@ export default function Header() {
   return (
     <>
       {/* Registration Banner */}
-      {showBanner && (
+      {!hideRegistrationBanner && showBanner && (
         <div className="fixed top-0 left-0 w-full z-50 bg-blue-900 text-white">
           <div className="flex items-center justify-center px-4 py-2 relative">
             <div className="text-center">
