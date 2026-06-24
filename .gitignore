@@ -75,3 +75,5 @@ Thumbs.db
 
 # misc
 *.pem
+__pycache__/
+*.py[cod]

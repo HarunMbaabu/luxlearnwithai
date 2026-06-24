@@ -1,9 +1,7 @@
 import { NextResponse } from "next/server";
 
-const SYSTEM_PROMPT = `You are LuxTutor, a warm, practical AI tutor for LuxDevHQ learners.
-Create concise, motivating learning help with examples, checkpoints, and next actions.
-When asked for a course, return structured lessons, exercises, projects, and resources.
-Do not claim to be a human. Keep answers safe and age-appropriate.`;
+const FASTAPI_AI_TUTOR_URL =
+  process.env.FASTAPI_AI_TUTOR_URL || "http://127.0.0.1:8000/api/free-ai-tutor";
 
 function getOpenAIKey() {
   return (process.env.OPENAI_API_KEY || process.env.OpenAIKEY || "").trim();
@@ -11,10 +9,9 @@ function getOpenAIKey() {
 
 export async function POST(request) {
   try {
-    const { topic, format, level, goal, timeCommitment, questionsEnabled } =
-      await request.json();
+    const payload = await request.json();
 
-    if (!topic || !String(topic).trim()) {
+    if (!payload?.topic || !String(payload.topic).trim()) {
       return NextResponse.json(
         { error: "Please enter a topic to learn." },
         { status: 400 }
@@ -53,34 +50,32 @@ Use this format:
         "Content-Type": "application/json",
         Authorization: `Bearer ${openAIKey}`,
       },
-      body: JSON.stringify({
-        model: "gpt-4o-mini",
-        messages: [
-          { role: "system", content: SYSTEM_PROMPT },
-          { role: "user", content: prompt },
-        ],
-        temperature: 0.75,
-        max_tokens: 1200,
-      }),
+      body: JSON.stringify(payload),
     });
 
     const data = await response.json();
 
     if (!response.ok) {
       return NextResponse.json(
-        { error: data?.error?.message || "The AI tutor could not respond." },
+        {
+          error:
+            data?.detail || data?.error || "The AI tutor could not respond.",
+        },
         { status: response.status }
       );
     }
 
     return NextResponse.json({
-      answer: data?.choices?.[0]?.message?.content || "No response generated.",
+      answer: data?.answer || "No response generated.",
     });
   } catch (error) {
-    console.error("Free AI Tutor error:", error);
+    console.error("Free AI Tutor proxy error:", error);
     return NextResponse.json(
-      { error: "Something went wrong while contacting the AI tutor." },
-      { status: 500 }
+      {
+        error:
+          "The AI tutor service is unavailable. Make sure the FastAPI backend is running and FASTAPI_AI_TUTOR_URL is configured.",
+      },
+      { status: 502 }
     );
   }
 }
