@@ -173,6 +173,20 @@ export default function Header({ hideRegistrationBanner = false }) {
               Free AI Tutor
             </Link>
 
+            <Link
+              href="/get-started"
+              className="text-md tracking-wide font-bold text-gray-800 hover:text-blue-900 transition-colors"
+            >
+              Get Started
+            </Link>
+
+            <Link
+              href="/login"
+              className="text-md tracking-wide font-bold text-gray-800 hover:text-blue-900 transition-colors"
+            >
+              Log in
+            </Link>
+
             {/* Company Dropdown */}
             <div className="relative">
               <button
@@ -316,6 +330,20 @@ export default function Header({ hideRegistrationBanner = false }) {
                 className="text-sm font-semibold text-blue-900 hover:text-blue-700 transition-colors py-2"
               >
                 Free AI Tutor
+              </Link>
+
+              <Link
+                href="/get-started"
+                className="text-sm font-medium text-gray-600 hover:text-blue-900 transition-colors py-2"
+              >
+                Get Started
+              </Link>
+
+              <Link
+                href="/login"
+                className="text-sm font-medium text-gray-600 hover:text-blue-900 transition-colors py-2"
+              >
+                Log in
               </Link>
 
               {/* Mobile Company Section */}
