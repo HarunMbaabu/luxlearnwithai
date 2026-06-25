@@ -1,6 +1,6 @@
 export const runtime = "nodejs";
 
-import { getAuthErrorMessage, verifyWebsiteUser } from "@/lib/auth-db";
+import { verifyWebsiteUser } from "@/lib/auth-db";
 
 export async function POST(req) {
   try {
@@ -21,6 +21,9 @@ export async function POST(req) {
     return Response.json({ success: true, user });
   } catch (error) {
     console.error("WEBSITE USER LOGIN ERROR:", error);
-    return Response.json({ error: getAuthErrorMessage(error) }, { status: 500 });
+    return Response.json(
+      { error: "We could not log you in. Please try again." },
+      { status: 500 }
+    );
   }
 }
