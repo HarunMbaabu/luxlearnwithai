@@ -77,7 +77,7 @@ app.add_middleware(
 
 
 def get_openai_key() -> str:
-    return (os.getenv("OPENAI_API_KEY") or os.getenv("OpenAIKEY") or "").strip().strip('"').strip("'")
+    return (os.getenv("OPENAI_API_KEY") or os.getenv("OpenAIKEY") or os.getenv("OPENAIKEY") or "").strip().strip('"').strip("'")
 
 
 def build_prompt(payload: TutorRequest) -> str:
@@ -121,7 +121,7 @@ async def free_ai_tutor(payload: TutorRequest) -> TutorResponse:
     if not openai_key:
         raise HTTPException(
             status_code=500,
-            detail="The AI tutor is not configured yet. Add OPENAI_API_KEY or OpenAIKEY to your FastAPI .env file.",
+            detail="The AI tutor backend is missing OPENAI_API_KEY. Add OPENAI_API_KEY to the FastAPI hosting environment. Legacy OpenAIKEY/OPENAIKEY is also accepted, but OPENAI_API_KEY is recommended.",
         )
 
     try:
