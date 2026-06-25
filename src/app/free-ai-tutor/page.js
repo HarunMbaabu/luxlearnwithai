@@ -112,10 +112,11 @@ export default function FreeAITutorPage() {
     setAnswer("");
 
     try {
-      const response = await fetch("/api/free-ai-tutor", {
+      const response = await fetch("/api/ai-tutor", {
         method: "POST",
         headers: { "Content-Type": "application/json" },
         body: JSON.stringify({
+          message: topic,
           topic,
           format,
           level,
@@ -124,11 +125,15 @@ export default function FreeAITutorPage() {
           questionsEnabled,
         }),
       });
-      const data = await response.json();
-      if (!response.ok) throw new Error(data?.error || "Unable to generate your plan.");
+      const data = await response.json().catch(() => ({}));
+      if (!response.ok) {
+        throw new Error(
+          data?.error || "The AI tutor service is currently unavailable. Please try again shortly."
+        );
+      }
       setAnswer(data.answer);
     } catch (err) {
-      setError(err.message);
+      setError(err.message || "The AI tutor service is currently unavailable. Please try again shortly.");
     } finally {
       setIsLoading(false);
     }
