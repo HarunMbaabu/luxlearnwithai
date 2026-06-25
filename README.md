@@ -1,59 +1,33 @@
-This is a [Next.js](https://nextjs.org) project bootstrapped with [`create-next-app`](https://github.com/vercel/next.js/tree/canary/packages/create-next-app).
+# LuxDevHQ
+
+This is a [Next.js](https://nextjs.org) project deployed on Vercel.
 
 ## Getting Started
 
-First, run the development server:
+Run the development server:
 
 ```bash
 npm run dev
-# or
-yarn dev
-# or
-pnpm dev
-# or
-bun dev
 ```
 
-Open [http://localhost:3000](http://localhost:3000) with your browser to see the result.
+Open [http://localhost:3000](http://localhost:3000) with your browser.
 
-You can start editing the page by modifying `app/page.js`. The page auto-updates as you edit the file.
+## AI Tutor on Vercel
 
-This project uses [`next/font`](https://nextjs.org/docs/app/building-your-application/optimizing/fonts) to automatically optimize and load [Geist](https://vercel.com/font), a new font family for Vercel.
+The free AI tutor runs through a Next.js serverless API route at `/api/ai-tutor`. The React frontend posts the student's message to this internal route, and the route calls OpenAI from the server side. The browser never calls OpenAI directly.
 
-## Learn More
+### Required Vercel Environment Variable
 
-To learn more about Next.js, take a look at the following resources:
+Add this variable in **Vercel Project Settings → Environment Variables**:
 
-- [Next.js Documentation](https://nextjs.org/docs) - learn about Next.js features and API.
-- [Learn Next.js](https://nextjs.org/learn) - an interactive Next.js tutorial.
+```env
+OpenAIKEY=your_openai_api_key_here
+```
 
-You can check out [the Next.js GitHub repository](https://github.com/vercel/next.js) - your feedback and contributions are welcome!
+After adding or changing `OpenAIKEY`, redeploy the Vercel project so the serverless function receives the updated environment variable.
+
+Do **not** put the OpenAI key in frontend `.env` files with `VITE_`, `REACT_APP_`, or `NEXT_PUBLIC_`. The key must only be accessed by the serverless API route with `process.env.OpenAIKEY`.
 
 ## Deploy on Vercel
 
-The easiest way to deploy your Next.js app is to use the [Vercel Platform](https://vercel.com/new?utm_medium=default-template&filter=next.js&utm_source=create-next-app&utm_campaign=create-next-app-readme) from the creators of Next.js.
-
-Check out our [Next.js deployment documentation](https://nextjs.org/docs/app/building-your-application/deploying) for more details.
-
-
-
-
-Hello [NAME],
-
-Thank you for completing your payment and application for the LuxDevHQ 6 Weeks Preparatory Training Program.
-
-To proceed, please schedule your personalization interview and test at a convenient time using the link below:
-
-https://cal.com/luxedevhq.com/2nd-luxdevhq-prep-course-personalized-profile-assessment-interview
-
-This session will help us evaluate your technical skills and create a personalized profile to enhance your experience in our program.
-
-If none of the available time slots work for you, please contact Brigid Chepkemoi via call or WhatsApp at 0796448232 to arrange an alternative slot.
-
-If you have any questions or need assistance, feel free to reach out. We look forward to speaking with you soon!
-
-For inquiries and enrollment details, visit our campus at Garden Estate, off Thika Road. The next training intake is August 2026. You can join the LuxDevHQ August Intake WhatsApp Support Group here: https://chat.whatsapp.com/HNVVzlccdBlEFgNu5nlG1R or contact us at info@luxdevhq.com. You can also call or WhatsApp 0796448232 for more information.
-
-Best regards,
-LuxDevHQ Admissions Team
-Tel: +254796448232
+Deploy the project with Vercel after configuring the required environment variables. The AI tutor does not require a separate FastAPI backend or `FASTAPI_AI_TUTOR_URL`.
