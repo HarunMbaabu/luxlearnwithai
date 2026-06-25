@@ -126,6 +126,7 @@ export default function FreeAITutorPage() {
         }),
       });
       const data = await response.json().catch(() => ({}));
+      const data = await response.json();
       if (!response.ok) {
         throw new Error(
           data?.error || "The AI tutor service is currently unavailable. Please try again shortly."

@@ -3,7 +3,6 @@ import { NextResponse } from "next/server";
 const OPENAI_RESPONSES_URL = "https://api.openai.com/v1/responses";
 const OPENAI_MODEL = "gpt-4.1-mini";
 const FRIENDLY_ERROR = "The AI tutor service is currently unavailable. Please try again shortly.";
-const MISSING_CONFIG_ERROR = "The AI tutor is missing server configuration.";
 
 const SYSTEM_PROMPT = `You are LuxTutor, a warm, practical AI tutor for LuxDevHQ learners.
 Create clear, beginner-friendly learning help for Python, web development, FastAPI concepts, data science, data analytics, data engineering, and AI learners.
@@ -36,13 +35,14 @@ function extractOutputText(data) {
 }
 
 export async function POST(request) {
-  console.info("AI tutor route reached");
+  console.info("AI tutor API route reached.");
 
   const apiKey = process.env.OpenAIKEY;
   console.info("OpenAIKEY configured:", Boolean(apiKey));
 
   if (!apiKey) {
     return NextResponse.json({ error: MISSING_CONFIG_ERROR }, { status: 500 });
+    return NextResponse.json({ error: FRIENDLY_ERROR }, { status: 500 });
   }
 
   let payload;
@@ -99,6 +99,8 @@ export async function POST(request) {
 
       console.error("OpenAI tutor request failed with status:", response.status);
       return NextResponse.json({ error: FRIENDLY_ERROR }, { status: 500 });
+      console.error("OpenAI tutor request failed with status:", response.status);
+      return NextResponse.json({ error: FRIENDLY_ERROR }, { status: 502 });
     }
 
     const data = await response.json();
@@ -106,5 +108,6 @@ export async function POST(request) {
   } catch (error) {
     console.error("AI tutor serverless error:", error?.message || "Unknown OpenAI request error");
     return NextResponse.json({ error: FRIENDLY_ERROR }, { status: 500 });
+    return NextResponse.json({ error: FRIENDLY_ERROR }, { status: 502 });
   }
 }
