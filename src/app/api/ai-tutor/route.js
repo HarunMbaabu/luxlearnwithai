@@ -41,6 +41,7 @@ export async function POST(request) {
   console.info("OpenAIKEY configured:", Boolean(apiKey));
 
   if (!apiKey) {
+    return NextResponse.json({ error: MISSING_CONFIG_ERROR }, { status: 500 });
     return NextResponse.json({ error: FRIENDLY_ERROR }, { status: 500 });
   }
 
@@ -53,6 +54,7 @@ export async function POST(request) {
   }
 
   const message = String(payload?.message || payload?.topic || "").trim();
+  console.info("Message received:", Boolean(message));
 
   if (!message) {
     console.info("AI tutor request is missing a message.");
@@ -75,6 +77,28 @@ export async function POST(request) {
     });
 
     if (!response.ok) {
+      if (response.status === 401) {
+        console.error("OpenAI authentication failed. Check OpenAIKEY in Vercel.");
+        return NextResponse.json({ error: FRIENDLY_ERROR }, { status: 401 });
+      }
+
+      if (response.status === 403) {
+        console.error("OpenAI permission or project access failed. Check OpenAIKEY in Vercel.");
+        return NextResponse.json({ error: FRIENDLY_ERROR }, { status: 403 });
+      }
+
+      if (response.status === 429) {
+        console.error("OpenAI quota or rate limit issue.");
+        return NextResponse.json({ error: FRIENDLY_ERROR }, { status: 429 });
+      }
+
+      if (response.status >= 500) {
+        console.error("OpenAI service/server error with status:", response.status);
+        return NextResponse.json({ error: FRIENDLY_ERROR }, { status: 503 });
+      }
+
+      console.error("OpenAI tutor request failed with status:", response.status);
+      return NextResponse.json({ error: FRIENDLY_ERROR }, { status: 500 });
       console.error("OpenAI tutor request failed with status:", response.status);
       return NextResponse.json({ error: FRIENDLY_ERROR }, { status: 502 });
     }
@@ -83,6 +107,7 @@ export async function POST(request) {
     return NextResponse.json({ answer: extractOutputText(data) });
   } catch (error) {
     console.error("AI tutor serverless error:", error?.message || "Unknown OpenAI request error");
+    return NextResponse.json({ error: FRIENDLY_ERROR }, { status: 500 });
     return NextResponse.json({ error: FRIENDLY_ERROR }, { status: 502 });
   }
 }

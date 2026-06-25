@@ -125,6 +125,7 @@ export default function FreeAITutorPage() {
           questionsEnabled,
         }),
       });
+      const data = await response.json().catch(() => ({}));
       const data = await response.json();
       if (!response.ok) {
         throw new Error(
