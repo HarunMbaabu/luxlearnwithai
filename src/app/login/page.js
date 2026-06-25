@@ -33,8 +33,7 @@ export default function LoginPage() {
     }
 
     setUserName(result.user.fullName);
-    setStatus({ type: "success", message: "Login successful. Opening your dashboard..." });
-    window.location.href = "/dashboard";
+    setStatus({ type: "success", message: "Login successful. Welcome back!" });
   }
 
   return (

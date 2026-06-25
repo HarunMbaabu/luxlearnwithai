@@ -1,7 +1,6 @@
 export const runtime = "nodejs";
 
-import { createWebsiteUser, getAuthErrorMessage } from "@/lib/auth-db";
-import { createSessionCookie } from "@/lib/auth-session";
+import { createWebsiteUser } from "@/lib/auth-db";
 
 function validatePayload(payload) {
   const fullName = String(payload?.fullName || "").trim();
@@ -24,18 +23,17 @@ export async function POST(req) {
     }
 
     const user = await createWebsiteUser(payload);
-    return Response.json(
-      { success: true, user },
-      {
-        headers: {
-          "Set-Cookie": createSessionCookie(user),
-        },
-      }
-    );
+    return Response.json({ success: true, user });
   } catch (error) {
     console.error("WEBSITE USER REGISTER ERROR:", error);
 
-    const status = error.code === "EMAIL_EXISTS" ? 409 : 500;
-    return Response.json({ error: getAuthErrorMessage(error) }, { status });
+    if (error.code === "EMAIL_EXISTS") {
+      return Response.json({ error: error.message }, { status: 409 });
+    }
+
+    return Response.json(
+      { error: "We could not create your account. Please try again." },
+      { status: 500 }
+    );
   }
 }

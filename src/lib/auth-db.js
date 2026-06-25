@@ -3,94 +3,29 @@ import { Pool } from "pg";
 
 let pool;
 
-const SCHEMA_NAME = "prep_program_intakes";
-const TABLE_NAME = "website_users";
-
-function firstEnv(...names) {
-  for (const name of names) {
-    const value = process.env[name];
-    if (value) return value;
-  }
-  return "";
-}
-
-function buildConnectionString() {
-  const directUrl = firstEnv("DATABASE_URL", "LUXDEVDB_CONN", "POSTGRES_URL");
-  if (directUrl) return directUrl;
-
-  const host = firstEnv("PGHOST", "DB_HOST", "POSTGRES_HOST", "LUXDEVDB_HOST");
-  const port = firstEnv("PGPORT", "DB_PORT", "POSTGRES_PORT", "LUXDEVDB_PORT") || "5432";
-  const database = firstEnv("PGDATABASE", "DB_NAME", "POSTGRES_DATABASE", "LUXDEVDB_DATABASE");
-  const user = firstEnv("PGUSER", "DB_USER", "POSTGRES_USER", "LUXDEVDB_USER");
-  const password = firstEnv("PGPASSWORD", "DB_PASSWORD", "POSTGRES_PASSWORD", "LUXDEVDB_PASSWORD");
-  const sslMode = firstEnv("PGSSLMODE", "DB_SSLMODE", "POSTGRES_SSLMODE", "LUXDEVDB_SSLMODE") || "require";
-
-  if (!host || !database || !user || !password) {
-    throw new Error(
-      "Missing database connection settings. Set DATABASE_URL or provide PGHOST, PGPORT, PGDATABASE, PGUSER, PGPASSWORD, and PGSSLMODE."
-    );
-  }
-
-  const encodedUser = encodeURIComponent(user);
-  const encodedPassword = encodeURIComponent(password);
-  const encodedDatabase = encodeURIComponent(database);
-
-  return `postgresql://${encodedUser}:${encodedPassword}@${host}:${port}/${encodedDatabase}?sslmode=${sslMode}`;
-}
-
-function getSslMode(connectionString) {
-  try {
-    return new URL(connectionString).searchParams.get("sslmode")?.toLowerCase() || "";
-  } catch {
-    return "";
-  }
-}
-
-function getSslConfig(connectionString) {
-  const sslMode = getSslMode(connectionString) || firstEnv("PGSSLMODE", "DB_SSLMODE", "POSTGRES_SSLMODE", "LUXDEVDB_SSLMODE").toLowerCase();
-
-  if (sslMode === "disable") return undefined;
-
-  const ca = firstEnv("PGSSLROOTCERT", "DB_SSL_ROOT_CERT", "POSTGRES_SSL_ROOT_CERT", "LUXDEVDB_SSL_ROOT_CERT");
-  if (ca) {
-    return { ca, rejectUnauthorized: process.env.PGSSL_REJECT_UNAUTHORIZED !== "false" };
-  }
-
-  return { rejectUnauthorized: false };
-}
-
 function getPool() {
+  const connectionString = process.env.DATABASE_URL || process.env.LUXDEVDB_CONN;
+
+  if (!connectionString) {
+    throw new Error("Missing DATABASE_URL or LUXDEVDB_CONN");
+  }
+
   if (!pool) {
-    const connectionString = buildConnectionString();
     pool = new Pool({
       connectionString,
-      connectionTimeoutMillis: 10000,
+      connectionTimeoutMillis: 5000,
       idleTimeoutMillis: 30000,
-      ssl: getSslConfig(connectionString),
+      ssl: connectionString.includes("sslmode=disable")
+        ? undefined
+        : { rejectUnauthorized: process.env.PGSSL_REJECT_UNAUTHORIZED !== "false" },
     });
   }
 
   return pool;
 }
 
-export function getAuthErrorMessage(error) {
-  if (error?.code === "EMAIL_EXISTS") return error.message;
-
-  const message = String(error?.message || "");
-  if (message.includes("Missing database connection settings")) {
-    return "Account storage is not configured yet. Please add the LuxDevHQ PostgreSQL connection settings and try again.";
-  }
-
-  if (message.includes("self-signed certificate") || message.includes("certificate")) {
-    return "The database SSL settings need to be updated for the LuxDevHQ managed PostgreSQL connection.";
-  }
-
-  if (message.includes("password authentication failed") || message.includes("no pg_hba.conf")) {
-    return "The database rejected the configured account credentials. Please verify the LuxDevHQ PostgreSQL username, password, host, port, database, and SSL mode.";
-  }
-
-  return "We could not create your account because the account database is unavailable. Please try again or contact LuxDevHQ support.";
-}
+const SCHEMA_NAME = "prep_program_intakes";
+const TABLE_NAME = "website_users";
 
 function normalizeEmail(email) {
   return String(email || "").trim().toLowerCase();

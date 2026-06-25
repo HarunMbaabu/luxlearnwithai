@@ -32,9 +32,8 @@ export default function GetStartedPage() {
 
     setStatus({
       type: "success",
-      message: "Your account is ready. Opening your dashboard...",
+      message: "Your account is ready. You can now log in with the same email and password.",
     });
-    window.location.href = "/dashboard";
   }
 
   return (
