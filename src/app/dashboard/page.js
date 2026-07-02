@@ -29,7 +29,7 @@ export default async function DashboardPage() {
       icon: GraduationCap,
     },
     {
-      title: "Explore free AI tutor",
+      title: "Explore Ask AI",
       description: "Use LuxTutor to plan lessons, ask questions, and practice data skills.",
       href: "/free-ai-tutor",
       icon: Sparkles,

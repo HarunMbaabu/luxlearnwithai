@@ -184,7 +184,7 @@ export default function FreeAITutorPage() {
         <section className="mx-auto grid max-w-7xl gap-8 px-4 pb-12 sm:px-6 lg:gap-10 xl:ml-72 xl:grid-cols-[0.9fr_1.1fr] xl:px-10">
           <div className="pt-4 sm:pt-10 lg:pt-16">
             <div className="mb-5 inline-flex items-center gap-2 rounded-full border border-blue-200 bg-white/80 px-4 py-2 text-xs font-black uppercase tracking-[0.16em] text-blue-900 shadow-sm backdrop-blur sm:text-sm">
-              <Stars className="h-4 w-4" /> Free AI Tutor for every learner
+              <Stars className="h-4 w-4" /> Ask AI for every learner
             </div>
             <h1 className="max-w-3xl text-4xl font-black tracking-[-0.06em] text-slate-950 sm:text-6xl lg:text-7xl">
               Build your next skill with an AI learning studio.
@@ -384,7 +384,7 @@ function TutorBrand() {
         <BrainCircuit className="h-6 w-6" />
       </div>
       <div>
-        <p className="font-black">AI Tutor</p>
+        <p className="font-black">Ask AI</p>
         <p className="text-xs text-slate-500">by LuxDevHQ</p>
       </div>
     </Link>
