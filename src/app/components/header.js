@@ -167,6 +167,13 @@ export default function Header({ hideRegistrationBanner = false }) {
             </Link>
 
             <Link
+              href="/prep-program"
+              className="text-md tracking-wide font-bold text-gray-800 hover:text-blue-900 transition-colors"
+            >
+              Prep Program
+            </Link>
+
+            <Link
               href="/free-ai-tutor"
               className="text-md tracking-wide font-bold text-blue-900 hover:text-blue-700 transition-colors"
             >
@@ -323,6 +330,13 @@ export default function Header({ hideRegistrationBanner = false }) {
                 className="text-sm font-medium text-gray-600 hover:text-blue-900 transition-colors py-2"
               >
                  PROGRAMS
+              </Link>
+
+              <Link
+                href="/prep-program"
+                className="text-sm font-medium text-gray-600 hover:text-blue-900 transition-colors py-2"
+              >
+                Prep Program
               </Link>
 
               <Link
