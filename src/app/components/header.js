@@ -15,6 +15,9 @@ import {
 export default function Header({ hideRegistrationBanner = false }) {
   const [showLanguageDropdown, setShowLanguageDropdown] = useState(false);
   const [showCompanyDropdown, setShowCompanyDropdown] = useState(false);
+  const [showProgramDropdown, setShowProgramDropdown] = useState(false);
+  const [showMobileProgramDropdown, setShowMobileProgramDropdown] =
+    useState(false);
   const [mobileMenuOpen, setMobileMenuOpen] = useState(false);
   const [showBanner, setShowBanner] = useState(!hideRegistrationBanner);
   const [showUniversalEnrollmentForm, setShowUniversalEnrollmentForm] =
@@ -32,6 +35,7 @@ export default function Header({ hideRegistrationBanner = false }) {
       if (
         event.target.closest(".language-dropdown-trigger") ||
         event.target.closest(".company-dropdown-trigger") ||
+        event.target.closest(".program-dropdown-trigger") ||
         event.target.closest(".mobile-menu-trigger")
       ) {
         return;
@@ -41,10 +45,13 @@ export default function Header({ hideRegistrationBanner = false }) {
       if (
         !event.target.closest(".language-dropdown-content") &&
         !event.target.closest(".company-dropdown-content") &&
+        !event.target.closest(".program-dropdown-content") &&
         !event.target.closest(".mobile-menu-content")
       ) {
         setShowLanguageDropdown(false);
         setShowCompanyDropdown(false);
+        setShowProgramDropdown(false);
+        setShowMobileProgramDropdown(false);
         setMobileMenuOpen(false);
       }
     };
@@ -64,6 +71,11 @@ export default function Header({ hideRegistrationBanner = false }) {
     { flag: "/globe.svg", name: "Deutsch" },
   ];
 
+  const programLinks = [
+    { href: "/pricing", label: "Full Program" },
+    { href: "/prep-program", label: "Prep Program" },
+  ];
+
   const companyLinks = [
     { href: "/about", label: "About Us" },
     { href: "/research", label: "Research" },
@@ -78,6 +90,7 @@ export default function Header({ hideRegistrationBanner = false }) {
 
   const toggleMobileMenu = () => {
     setMobileMenuOpen(!mobileMenuOpen);
+    setShowMobileProgramDropdown(false);
   };
 
   return (
@@ -97,6 +110,7 @@ export default function Header({ hideRegistrationBanner = false }) {
                     if (open) {
                       setShowLanguageDropdown(false);
                       setShowCompanyDropdown(false);
+                      setShowProgramDropdown(false);
                       setMobileMenuOpen(false);
                     }
                   }}
@@ -159,18 +173,42 @@ export default function Header({ hideRegistrationBanner = false }) {
               Pricing
             </Link>
 
-            <Link
-              href="/pricing"
-              className="text-md tracking-wide font-bold text-gray-800 hover:text-blue-900 transition-colors"
-            >
-              PROGRAMS
-            </Link>
+            {/* Program Dropdown */}
+            <div className="relative">
+              <button
+                className="program-dropdown-trigger flex items-center gap-1 text-md tracking-wide font-bold text-gray-800 hover:text-blue-900 transition-colors focus:outline-none"
+                aria-expanded={showProgramDropdown}
+                onClick={(e) => {
+                  e.stopPropagation();
+                  setShowLanguageDropdown(false);
+                  setShowCompanyDropdown(false);
+                  setShowProgramDropdown(!showProgramDropdown);
+                }}
+              >
+                Program
+                <ChevronDown className="h-4 w-4" />
+              </button>
+              {showProgramDropdown && (
+                <div className="program-dropdown-content absolute left-0 mt-2 w-48 bg-white border rounded-lg shadow-lg z-10">
+                  {programLinks.map((link) => (
+                    <Link
+                      key={link.href}
+                      href={link.href}
+                      className="block px-4 py-3 text-sm font-medium text-gray-600 hover:text-blue-900 hover:bg-gray-50 transition-colors"
+                      onClick={() => setShowProgramDropdown(false)}
+                    >
+                      {link.label}
+                    </Link>
+                  ))}
+                </div>
+              )}
+            </div>
 
             <Link
               href="/free-ai-tutor"
               className="text-md tracking-wide font-bold text-blue-900 hover:text-blue-700 transition-colors"
             >
-              Free AI Tutor
+              Ask AI
             </Link>
 
             <Link
@@ -194,6 +232,7 @@ export default function Header({ hideRegistrationBanner = false }) {
                 onClick={(e) => {
                   e.stopPropagation();
                   setShowLanguageDropdown(false);
+                  setShowProgramDropdown(false);
                   setShowCompanyDropdown(!showCompanyDropdown);
                 }}
               >
@@ -226,6 +265,7 @@ export default function Header({ hideRegistrationBanner = false }) {
                   e.stopPropagation();
                   setMobileMenuOpen(false);
                   setShowCompanyDropdown(false);
+                  setShowProgramDropdown(false);
                   setShowLanguageDropdown(!showLanguageDropdown);
                 }}
               >
@@ -267,6 +307,7 @@ export default function Header({ hideRegistrationBanner = false }) {
                 if (open) {
                   setShowLanguageDropdown(false);
                   setShowCompanyDropdown(false);
+                  setShowProgramDropdown(false);
                   setMobileMenuOpen(false);
                 }
               }}
@@ -295,6 +336,7 @@ export default function Header({ hideRegistrationBanner = false }) {
                 toggleMobileMenu();
                 setShowLanguageDropdown(false);
                 setShowCompanyDropdown(false);
+                setShowProgramDropdown(false);
               }}
               aria-label="Toggle menu"
             >
@@ -318,18 +360,46 @@ export default function Header({ hideRegistrationBanner = false }) {
                 Pricing
               </Link>
 
-              <Link
-                href="/pricing"
-                className="text-sm font-medium text-gray-600 hover:text-blue-900 transition-colors py-2"
-              >
-                 PROGRAMS
-              </Link>
+              <div className="border-l-2 border-blue-100 pl-3">
+                <button
+                  type="button"
+                  className="flex w-full items-center justify-between py-2 text-left text-sm font-semibold text-blue-900 uppercase tracking-wide hover:text-blue-700 transition-colors"
+                  aria-expanded={showMobileProgramDropdown}
+                  onClick={() =>
+                    setShowMobileProgramDropdown(!showMobileProgramDropdown)
+                  }
+                >
+                  Program
+                  <ChevronDown
+                    className={`h-4 w-4 transition-transform ${
+                      showMobileProgramDropdown ? "rotate-180" : ""
+                    }`}
+                  />
+                </button>
+                {showMobileProgramDropdown && (
+                  <div className="mt-1 space-y-1">
+                    {programLinks.map((link) => (
+                      <Link
+                        key={link.href}
+                        href={link.href}
+                        className="block py-1 text-sm font-medium text-gray-600 hover:text-blue-900 transition-colors"
+                        onClick={() => {
+                          setShowMobileProgramDropdown(false);
+                          setMobileMenuOpen(false);
+                        }}
+                      >
+                        {link.label}
+                      </Link>
+                    ))}
+                  </div>
+                )}
+              </div>
 
               <Link
                 href="/free-ai-tutor"
                 className="text-sm font-semibold text-blue-900 hover:text-blue-700 transition-colors py-2"
               >
-                Free AI Tutor
+                Ask AI
               </Link>
 
               <Link
