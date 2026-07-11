@@ -103,11 +103,16 @@ export default function Home() {
                 LuxDev Academy
                 {/* Investing in the  of Data Science Education */}
               </h1>
-              <p className="text-xl text-gray-600 mb-8 max-w-xl">
+              <p className="text-xl text-gray-600 mb-5 max-w-xl">
                 Master Analytics, Data Science, Artificial Intelligence, and
                 Data Engineering 10X faster with our hands-on training, AI
                 enabled coach, industry experts, and our elite educators.
               </p>
+              <div className="mb-8 rounded-2xl border border-blue-100 bg-blue-50 p-5 max-w-xl">
+                <p className="text-base font-semibold text-blue-950">
+                  August 2026 is our final intake for 2026. Enroll now to secure your place in Data Analytics, Data Science and AI, or Data Engineering.
+                </p>
+              </div>
               <div className="flex flex-col sm:flex-row gap-4">
                 <Dialog open={showUniversalEnrollmentForm} onOpenChange={setShowUniversalEnrollmentForm}>
               <DialogTrigger asChild>
@@ -116,7 +121,7 @@ export default function Home() {
                   className="rounded-full bg-blue-900 text-white"
                   onClick={() => setShowUniversalEnrollmentForm(true)}
                 >
-                  Enroll now
+                  Enroll Now
                   <ArrowRight className="ml-2 h-4 w-4" />
                 </Button>
               </DialogTrigger>
@@ -239,7 +244,7 @@ export default function Home() {
                         className="rounded-full bg-amber-500 text-white hover:bg-amber-600"
                         onClick={() => setShowUniversalEnrollmentForm(true)}
                       >
-                        Apply now
+                        Enroll Now
                         <ArrowRight className="ml-2 h-4 w-4" />
                       </Button>
                     </DialogTrigger>
@@ -359,7 +364,7 @@ export default function Home() {
                       className="rounded-full bg-white text-blue-900 hover:bg-blue-50"
                       onClick={() => setShowFullProgramForm(true)}
                     >
-                      Enroll online
+                      Enroll Now
                       <ArrowRight className="ml-2 h-4 w-4" />
                     </Button>
                   </DialogTrigger>
@@ -413,7 +418,7 @@ export default function Home() {
                       className="rounded-full bg-blue-900 text-white"
                       onClick={() => setShowUniversalEnrollmentForm(true)}
                     >
-                      Enroll on campus
+                      Enroll Now
                       <ArrowRight className="ml-2 h-4 w-4" />
                     </Button>
                   </DialogTrigger>
@@ -973,7 +978,7 @@ export default function Home() {
                   className="rounded-full bg-blue-900 text-white"
                   onClick={() => setShowUniversalEnrollmentForm(true)}
                 >
-                  Enroll now
+                  Enroll Now
                   <ArrowRight className="ml-2 h-4 w-4" />
                 </Button>
               </DialogTrigger>
