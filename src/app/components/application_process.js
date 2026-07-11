@@ -67,10 +67,19 @@ export default function ApplicationProcess() {
           Our Application Process
         </h2>
         <p className="text-xl text-gray-600 max-w-2xl mx-auto">
-          Our selective admission process ensures we build a community of
-          exceptional developers. Here's how to become part of our elite
-          network.
+          Applications for the August 2026 intake are now open. This is LuxDevHQ&apos;s final intake for 2026.
         </p>
+      </div>
+
+      <div className="mb-12 rounded-2xl border border-blue-100 bg-white p-6 shadow-sm">
+        <h3 className="mb-4 text-2xl font-bold text-blue-900">How to Apply</h3>
+        <ol className="list-decimal space-y-3 pl-6 text-gray-700">
+          <li>Click the “Enroll Now” button.</li>
+          <li>Complete the online application form.</li>
+          <li>Select your preferred programme and learning mode.</li>
+          <li>Submit your application for review.</li>
+          <li>The LuxDevHQ team will contact you with the next steps.</li>
+        </ol>
       </div>
 
       {/* Mobile Process Steps */}

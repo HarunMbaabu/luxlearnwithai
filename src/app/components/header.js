@@ -101,7 +101,7 @@ export default function Header({ hideRegistrationBanner = false }) {
           <div className="flex items-center justify-center px-4 py-2 relative">
             <div className="text-center">
               <p className="text-sm md:text-base font-medium">
-                <strong>August 2026 Intake – Registration Now Open | Register Now!</strong>
+                <strong>August 2026 Intake – Final Intake for 2026 |</strong>
 
                 <Dialog
                   open={showUniversalEnrollmentForm}
@@ -121,7 +121,7 @@ export default function Header({ hideRegistrationBanner = false }) {
                       className="ml-1 underline hover:no-underline font-semibold"
                       onClick={() => setShowUniversalEnrollmentForm(true)}
                     >
-                      Register→
+                      Enroll Now →
                     </button>
                   </DialogTrigger>
                   <DialogContent>

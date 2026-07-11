@@ -179,7 +179,7 @@ export default function ClientPage() {
                       className="bg-white text-slate-900 hover:bg-slate-100"
                       onClick={scrollToPayment}
                     >
-                      Apply Now
+                      Enroll Now
                     </Button>
                   </div>
                 </div>
