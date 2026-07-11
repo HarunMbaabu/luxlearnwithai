@@ -550,7 +550,13 @@ export default function Home() {
                   <div className="w-full mx-auto rounded-lg bg-white border border-gray-200 p-5 text-gray-800 font-light mb-6">
                     <div className="w-full flex mb-4 items-center">
                       <div className="overflow-hidden rounded-full w-10 h-10 bg-gray-50 border border-gray-200">
-                        <img src="/logo.png" alt="" />
+                        <Image
+                          src="/gallery/female_post.png"
+                          alt="Faith Mwangi profile image"
+                          width={40}
+                          height={40}
+                          className="h-full w-full object-cover"
+                        />
                       </div>
                       <div className="flex-grow pl-3">
                         <h6 className="font-bold  uppercase text-gray-600">
@@ -575,7 +581,13 @@ export default function Home() {
                   <div className="w-full mx-auto rounded-lg bg-white border border-gray-200 p-5 text-gray-800 font-light mb-6">
                     <div className="w-full flex mb-4 items-center">
                       <div className="overflow-hidden rounded-full w-10 h-10 bg-gray-50 border border-gray-200">
-                        <img src="/logo.png" alt="" />
+                        <Image
+                          src="/gallery/male_post.png"
+                          alt="Daniel Omondi profile image"
+                          width={40}
+                          height={40}
+                          className="h-full w-full object-cover"
+                        />
                       </div>
                       <div className="flex-grow pl-3">
                         <h6 className="font-bold  uppercase text-gray-600">
@@ -604,7 +616,13 @@ export default function Home() {
                   <div className="w-full mx-auto rounded-lg bg-white border border-gray-200 p-5 text-gray-800 font-light mb-6">
                     <div className="w-full flex mb-4 items-center">
                       <div className="overflow-hidden rounded-full w-10 h-10 bg-gray-50 border border-gray-200">
-                        <img src="/logo.png" alt="" />
+                        <Image
+                          src="/gallery/male_post.png"
+                          alt="Thomas Kimeli profile image"
+                          width={40}
+                          height={40}
+                          className="h-full w-full object-cover"
+                        />
                       </div>
                       <div className="flex-grow pl-3">
                         <h6 className="font-bold  uppercase text-gray-600">
@@ -629,7 +647,13 @@ export default function Home() {
                   <div className="w-full mx-auto rounded-lg bg-white border border-gray-200 p-5 text-gray-800 font-light mb-6">
                     <div className="w-full flex mb-4 items-center">
                       <div className="overflow-hidden rounded-full w-10 h-10 bg-gray-50 border border-gray-200">
-                        <img src="/logo.png" alt="" />
+                        <Image
+                          src="/gallery/female_post.png"
+                          alt="Akinyi Otieno profile image"
+                          width={40}
+                          height={40}
+                          className="h-full w-full object-cover"
+                        />
                       </div>
                       <div className="flex-grow pl-3">
                         <h6 className="font-bold  uppercase text-gray-600">
@@ -658,7 +682,13 @@ export default function Home() {
                   <div className="w-full mx-auto rounded-lg bg-white border border-gray-200 p-5 text-gray-800 font-light mb-6">
                     <div className="w-full flex mb-4 items-center">
                       <div className="overflow-hidden rounded-full w-10 h-10 bg-gray-50 border border-gray-200">
-                        <img src="/logo.png" alt="" />
+                        <Image
+                          src="/gallery/male_post.png"
+                          alt="Edwin Kivuva profile image"
+                          width={40}
+                          height={40}
+                          className="h-full w-full object-cover"
+                        />
                       </div>
                       <div className="flex-grow pl-3">
                         <h6 className="font-bold  uppercase text-gray-600">
@@ -682,7 +712,13 @@ export default function Home() {
                   <div className="w-full mx-auto rounded-lg bg-white border border-gray-200 p-5 text-gray-800 font-light mb-6">
                     <div className="w-full flex mb-4 items-center">
                       <div className="overflow-hidden rounded-full w-10 h-10 bg-gray-50 border border-gray-200">
-                        <img src="/logo.png" alt="" />
+                        <Image
+                          src="/gallery/male_post.png"
+                          alt="Idris A profile image"
+                          width={40}
+                          height={40}
+                          className="h-full w-full object-cover"
+                        />
                       </div>
                       <div className="flex-grow pl-3">
                         <h6 className="font-bold  uppercase text-gray-600">
