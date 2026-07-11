@@ -71,14 +71,14 @@ export default function ProgramValueSection() {
       <div className="mt-8 bg-gradient-to-r from-slate-900 to-slate-800 border border-slate-700 rounded-2xl p-6 text-center">
         <h3 className="text-xl font-bold text-slate-50 mb-2">Next intake starting soon — limited cohort slots</h3>
         <p className="text-slate-300 mb-4">
-          Apply now to secure your spot and start building your portfolio with guided support.
+          Enroll now to secure your spot and start building your portfolio with guided support.
         </p>
         <div className="flex flex-wrap items-center justify-center gap-4 text-sm">
           <Link href="#data-engineering-curriculum" className="text-blue-300 hover:text-blue-200 underline">
             View curriculum
           </Link>
           <Link href="#payment-form" className="text-blue-300 hover:text-blue-200 underline">
-            Apply now
+            Enroll Now
           </Link>
           <Link href="#testimonials" className="text-blue-300 hover:text-blue-200 underline">
             Read testimonials

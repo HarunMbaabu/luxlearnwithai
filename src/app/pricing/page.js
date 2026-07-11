@@ -101,7 +101,7 @@ const page = () => {
                     onClick={() => openForm("Online Classes")}
                     className="inline-block px-5 py-3 font-semibold tracking-wider text-center rounded bg-gray-100 dark:bg-violet-600 dark:text-gray-50"
                   >
-                    Apply Now
+                    Enroll Now
                   </button>
                 </div>
               </div>
@@ -201,7 +201,7 @@ const page = () => {
                     onClick={() => openForm("Physical Classes")}
                     className="inline-block w-full px-5 py-3 font-semibold tracking-wider text-center rounded bg-gray-100 dark:bg-violet-600 dark:text-gray-50"
                   >
-                    Apply Now
+                    Enroll Now
                   </button>
                 </div>
               </div>
