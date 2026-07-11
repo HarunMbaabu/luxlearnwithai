@@ -25,9 +25,9 @@
   ],
   "shortcuts": [
     {
-      "name": "Free AI Tutor",
-      "short_name": "AI Tutor",
-      "description": "Open the LuxDevHQ free AI tutor.",
+      "name": "Ask AI",
+      "short_name": "Ask AI",
+      "description": "Open LuxDevHQ Ask AI.",
       "url": "/free-ai-tutor",
       "icons": [{ "src": "/logo.png", "sizes": "192x192", "type": "image/png" }]
     },
