@@ -97,7 +97,7 @@ export default function Header({ hideRegistrationBanner = false }) {
     <>
       {/* Registration Banner */}
       {!hideRegistrationBanner && showBanner && (
-        <div className="fixed top-0 left-0 w-full z-50 bg-blue-900 text-white">
+        <div className="fixed top-0 left-0 w-full z-[60] bg-blue-900 text-white">
           <div className="flex items-center justify-center px-4 py-2 relative">
             <div className="text-center">
               <p className="text-sm md:text-base font-medium">
@@ -146,7 +146,7 @@ export default function Header({ hideRegistrationBanner = false }) {
 
       {/* Main Header */}
       <header
-        className={`fixed left-0 w-full z-40 bg-white/95 backdrop-blur-sm border-b border-blue-200 ${
+        className={`fixed left-0 w-full z-50 bg-white/95 backdrop-blur-sm border-b border-blue-200 ${
           showBanner ? "top-10" : "top-0"
         } transition-all duration-300`}
       >
@@ -209,20 +209,6 @@ export default function Header({ hideRegistrationBanner = false }) {
               className="text-md tracking-wide font-bold text-blue-900 hover:text-blue-700 transition-colors"
             >
               Ask AI
-            </Link>
-
-            <Link
-              href="/get-started"
-              className="text-md tracking-wide font-bold text-gray-800 hover:text-blue-900 transition-colors"
-            >
-              Get Started
-            </Link>
-
-            <Link
-              href="/login"
-              className="text-md tracking-wide font-bold text-gray-800 hover:text-blue-900 transition-colors"
-            >
-              Log in
             </Link>
 
             {/* Company Dropdown */}
@@ -400,20 +386,6 @@ export default function Header({ hideRegistrationBanner = false }) {
                 className="text-sm font-semibold text-blue-900 hover:text-blue-700 transition-colors py-2"
               >
                 Ask AI
-              </Link>
-
-              <Link
-                href="/get-started"
-                className="text-sm font-medium text-gray-600 hover:text-blue-900 transition-colors py-2"
-              >
-                Get Started
-              </Link>
-
-              <Link
-                href="/login"
-                className="text-sm font-medium text-gray-600 hover:text-blue-900 transition-colors py-2"
-              >
-                Log in
               </Link>
 
               {/* Mobile Company Section */}
