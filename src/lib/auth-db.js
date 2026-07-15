@@ -3,6 +3,17 @@ import { Pool } from "pg";
 
 let pool;
 
+function shouldUseSsl(connectionString) {
+  try {
+    const url = new URL(connectionString);
+    const sslmode = (url.searchParams.get("sslmode") || "").toLowerCase();
+    if (sslmode) return sslmode !== "disable";
+  } catch {}
+
+  const envSslMode = process.env.PGSSLMODE || process.env.LUX_PGSSLMODE || "";
+  return envSslMode.toLowerCase() !== "disable" && Boolean(envSslMode);
+}
+
 function getPool() {
   const connectionString = process.env.LUXDEVDB_CONN || process.env.DATABASE_URL;
 
@@ -15,9 +26,9 @@ function getPool() {
       connectionString,
       connectionTimeoutMillis: 5000,
       idleTimeoutMillis: 30000,
-      ssl: connectionString.includes("sslmode=disable")
-        ? undefined
-        : { rejectUnauthorized: process.env.PGSSL_REJECT_UNAUTHORIZED !== "false" },
+      ssl: shouldUseSsl(connectionString)
+        ? { rejectUnauthorized: process.env.PGSSL_REJECT_UNAUTHORIZED === "true" }
+        : undefined,
     });
   }
 
@@ -26,6 +37,12 @@ function getPool() {
 
 const SCHEMA_NAME = "prep_program_intakes";
 const TABLE_NAME = "website_users";
+
+function quoteIdent(name) {
+  const value = String(name || "");
+  if (!value) throw new Error("Invalid database identifier");
+  return `"${value.replace(/"/g, '""')}"`;
+}
 
 function normalizeEmail(email) {
   return String(email || "").trim().toLowerCase();
@@ -48,10 +65,21 @@ function verifyPassword(password, storedPassword) {
   return timingSafeEqual(hash, stored);
 }
 
+async function schemaExists(client) {
+  const { rows } = await client.query(
+    "SELECT 1 FROM information_schema.schemata WHERE schema_name = $1 LIMIT 1",
+    [SCHEMA_NAME]
+  );
+  return rows.length > 0;
+}
+
 async function ensureAuthTable(client) {
-  await client.query(`CREATE SCHEMA IF NOT EXISTS ${SCHEMA_NAME}`);
+  if (!(await schemaExists(client))) {
+    await client.query(`CREATE SCHEMA ${quoteIdent(SCHEMA_NAME)}`);
+  }
+
   await client.query(`
-    CREATE TABLE IF NOT EXISTS ${SCHEMA_NAME}.${TABLE_NAME} (
+    CREATE TABLE IF NOT EXISTS ${quoteIdent(SCHEMA_NAME)}.${quoteIdent(TABLE_NAME)} (
       id BIGSERIAL PRIMARY KEY,
       full_name TEXT NOT NULL,
       email TEXT NOT NULL UNIQUE,
@@ -71,7 +99,7 @@ export async function createWebsiteUser({ fullName, email, password }) {
     const passwordHash = hashPassword(password);
     const { rows } = await client.query(
       `
-        INSERT INTO ${SCHEMA_NAME}.${TABLE_NAME} (full_name, email, password_hash)
+        INSERT INTO ${quoteIdent(SCHEMA_NAME)}.${quoteIdent(TABLE_NAME)} (full_name, email, password_hash)
         VALUES ($1, $2, $3)
         RETURNING id, full_name, email, created_at
       `,
@@ -98,7 +126,7 @@ export async function verifyWebsiteUser({ email, password }) {
     const { rows } = await client.query(
       `
         SELECT id, full_name, email, password_hash
-        FROM ${SCHEMA_NAME}.${TABLE_NAME}
+        FROM ${quoteIdent(SCHEMA_NAME)}.${quoteIdent(TABLE_NAME)}
         WHERE email = $1
         LIMIT 1
       `,
@@ -111,7 +139,7 @@ export async function verifyWebsiteUser({ email, password }) {
     }
 
     await client.query(
-      `UPDATE ${SCHEMA_NAME}.${TABLE_NAME} SET last_login_at = NOW() WHERE id = $1`,
+      `UPDATE ${quoteIdent(SCHEMA_NAME)}.${quoteIdent(TABLE_NAME)} SET last_login_at = NOW() WHERE id = $1`,
       [user.id]
     );
 
