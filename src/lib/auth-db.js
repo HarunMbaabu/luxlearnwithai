@@ -4,7 +4,7 @@ import { Pool } from "pg";
 let pool;
 
 function getPool() {
-  const connectionString = process.env.DATABASE_URL || process.env.LUXDEVDB_CONN;
+  const connectionString = process.env.LUXDEVDB_CONN || process.env.DATABASE_URL;
 
   if (!connectionString) {
     throw new Error("Missing DATABASE_URL or LUXDEVDB_CONN");

@@ -1,6 +1,9 @@
 export const runtime = "nodejs";
 
+import { NextResponse } from "next/server";
+
 import { verifyWebsiteUser } from "@/lib/auth-db";
+import { createSessionCookie } from "@/lib/auth-session";
 
 export async function POST(req) {
   try {
@@ -9,19 +12,21 @@ export async function POST(req) {
     const password = String(payload?.password || "");
 
     if (!email || !password) {
-      return Response.json({ error: "Email and password are required." }, { status: 400 });
+      return NextResponse.json({ error: "Email and password are required." }, { status: 400 });
     }
 
     const user = await verifyWebsiteUser({ email, password });
 
     if (!user) {
-      return Response.json({ error: "Invalid email or password." }, { status: 401 });
+      return NextResponse.json({ error: "Invalid email or password." }, { status: 401 });
     }
 
-    return Response.json({ success: true, user });
+    const response = NextResponse.json({ success: true, user });
+    response.headers.set("Set-Cookie", createSessionCookie(user));
+    return response;
   } catch (error) {
     console.error("WEBSITE USER LOGIN ERROR:", error);
-    return Response.json(
+    return NextResponse.json(
       { error: "We could not log you in. Please try again." },
       { status: 500 }
     );
