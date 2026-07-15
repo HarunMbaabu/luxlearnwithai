@@ -303,7 +303,7 @@ export default function ShortCourseForm({ onSubmit, onClose }) {
       const res = await fetch("/api/application", {
         method: "POST",
         headers: { "Content-Type": "application/json" },
-        body: JSON.stringify({ formType: "shortCourse", data: form }),
+        body: JSON.stringify({ formType: "fullProgram", data: form }),
       });
 
       if (res.status === 409) {

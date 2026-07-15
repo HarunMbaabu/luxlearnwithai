@@ -198,16 +198,9 @@ const countries = [
   { name: "Zimbabwe", code: "+263", nationality: "Zimbabwean" }
 ];
 
-const PROGRAM_TYPES = ["Full Program", "Short Course"];
+const PROGRAM_TYPES = ["Full Program"];
 const genders = ["Male", "Female"];
 
-const shortCourses = [
-  { name: "Data Science  and Analytics", price: 5500, times: ["7 PM", "5 AM"] },
-  { name: "Python For Data Analysis", price: 5500, times: ["7 PM", "5 AM"] },
-  { name: "SQL for Data Analysis", price: 5500, times: ["7 PM", "5 AM"] },
-];
-
-const SHORT_COURSE_TIMES = ["7 PM", "5 AM"];
 
 const modes = ["Online Classes", "Physical Classes"];
 
@@ -262,8 +255,6 @@ export default function UniversalEnrollmentForm({
     phone: "",
     gender: "",
     programType: defaultProgramType || "",
-    course: "",
-    shortCourseTime: "",
     mode: "",
     tracks: [],
     source: "",
@@ -277,9 +268,6 @@ export default function UniversalEnrollmentForm({
     const el = document.getElementById("universal-form-scroll");
     if (el) el.scrollTop = 0;
   }, []);
-
-  const shortCoursePrice =
-    shortCourses.find((c) => c.name === form.course)?.price || 0;
 
   const fullProgramTotal =
     MODE_MONTHLY_KES[form.mode] ? MODE_MONTHLY_KES[form.mode] * MONTHS : 0;
@@ -302,22 +290,11 @@ export default function UniversalEnrollmentForm({
       setForm((f) => ({
         ...f,
         programType: value,
-        course: "",
-        shortCourseTime: "",
         mode: "",
         tracks: [],
         source: "",
         interest: "",
         employment: "",
-      }));
-      return;
-    }
-
-    if (name === "course") {
-      setForm((f) => ({
-        ...f,
-        course: value,
-        shortCourseTime: "",
       }));
       return;
     }
@@ -346,37 +323,24 @@ export default function UniversalEnrollmentForm({
     e.preventDefault();
     setSubmitted(true);
 
-    const isShort = form.programType === "Short Course";
     const isFull = form.programType === "Full Program";
 
-    const formType = isShort ? "shortCourse" : isFull ? "fullProgram" : "";
+    const formType = isFull ? "fullProgram" : "";
 
-    const data = isShort
-      ? {
-          name: form.name,
-          email: form.email,
-          country: form.country,
-          code: form.code,
-          phone: form.phone,
-          nationality: form.nationality,
-          course: form.course,
-          time: form.shortCourseTime,
-          price: shortCoursePrice,
-        }
-      : {
-          name: form.name,
-          email: form.email,
-          country: form.country,
-          code: form.code,
-          phone: form.phone,
-          nationality: form.nationality,
-          gender: form.gender,
-          mode: form.mode,
-          tracks: form.tracks,
-          source: form.source,
-          interest: form.interest,
-          employment: form.employment,
-        };
+    const data = {
+      name: form.name,
+      email: form.email,
+      country: form.country,
+      code: form.code,
+      phone: form.phone,
+      nationality: form.nationality,
+      gender: form.gender,
+      mode: form.mode,
+      tracks: form.tracks,
+      source: form.source,
+      interest: form.interest,
+      employment: form.employment,
+    };
 
     try {
       const res = await fetch("/api/application", {
@@ -515,59 +479,6 @@ export default function UniversalEnrollmentForm({
             ))}
           </select>
         </div>
-
-        {form.programType === "Short Course" && (
-          <>
-            <div>
-              <select
-                name="course"
-                value={form.course}
-                required
-                onChange={handleChange}
-                className="w-full px-3 py-2 rounded border"
-              >
-                <option value="" disabled>
-                  Select a Course
-                </option>
-                {shortCourses.map((c) => (
-                  <option key={c.name} value={c.name}>
-                    {c.name}
-                  </option>
-                ))}
-              </select>
-            </div>
-
-            <div>
-              <select
-                name="shortCourseTime"
-                value={form.shortCourseTime}
-                required
-                onChange={handleChange}
-                className="w-full px-3 py-2 rounded border"
-                disabled={!form.course}
-              >
-                <option value="" disabled>
-                  Select Class Time
-                </option>
-                {SHORT_COURSE_TIMES.map((t) => (
-                  <option key={t} value={t}>
-                    {t}
-                  </option>
-                ))}
-              </select>
-            </div>
-
-            <div>
-              <div className="text-sm font-medium text-gray-700 mb-1">Program Fee</div>
-              <input
-                disabled
-                value={shortCoursePrice ? formatKES(shortCoursePrice) : ""}
-                placeholder="Program Fee"
-                className="w-full px-3 py-2 rounded border bg-gray-100 font-bold"
-              />
-            </div>
-          </>
-        )}
 
         {form.programType === "Full Program" && (
           <>
