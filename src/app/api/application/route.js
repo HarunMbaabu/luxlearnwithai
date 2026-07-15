@@ -54,11 +54,6 @@ function normalizePhone(code, phone) {
   return p;
 }
 
-function sanitizeTableName(formType) {
-  const s = String(formType || "").trim();
-  if (!s) return "";
-  return s.replace(/[^a-zA-Z0-9_]/g, "");
-}
 
 function toRow(input) {
   const row = { ...input };
@@ -167,7 +162,7 @@ export async function POST(req) {
     }
 
     const schemaName = "applications";
-    const tableName = sanitizeTableName(formType);
+    const tableName = "fullProgram";
 
     if (!tableName) {
       return new Response(JSON.stringify({ error: "Invalid formType" }), { status: 400 });
