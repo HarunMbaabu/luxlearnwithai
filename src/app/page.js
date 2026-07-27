@@ -61,7 +61,7 @@ export default function Home() {
       name: "Hellen Matti",
       role: "Data Analyst",
       quote:
-        "Before joining LuxDevHQ, I had no experience in Data Analytics. The hands-on training helped me secure a job as a Data Analyst.",
+        "Before joining LuxDevHQ, I had no experience in Data Science and Analytics. The hands-on training helped me secure a job as a Data Analyst.",
       image: "/profile-picture-3.jpg?height=80&width=80",
       rating: 4.5,
     },
@@ -110,7 +110,7 @@ export default function Home() {
               </p>
               <div className="mb-8 rounded-2xl border border-blue-100 bg-blue-50 p-5 max-w-xl">
                 <p className="text-base font-semibold text-blue-950">
-                  August 2026 is our final intake for 2026. Enroll now to secure your place in Data Analytics, Data Science and AI, or Data Engineering.
+                  August 2026 is our final intake for 2026. Enroll now to secure your place in Data Science and Analytics, or Data Engineering.
                 </p>
               </div>
               <div className="flex flex-col sm:flex-row gap-4">
@@ -197,7 +197,7 @@ export default function Home() {
           <div className="text-center mb-12" data-aos="fade-up">
             <h2 className="text-3xl md:text-4xl font-bold mb-4">Our Training Programs</h2>
             <p className="text-xl text-gray-600 max-w-2xl mx-auto">
-              Explore our core learning tracks built for data careers in analytics, AI, and data engineering.
+              Explore our two core learning tracks built for careers in data science, analytics, and data engineering.
             </p>
           </div>
           <ProgramOverview />

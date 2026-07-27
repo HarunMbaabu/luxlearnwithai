@@ -151,9 +151,8 @@ export default function SchoolFeeForm() {
               required
             >
               <option value="">Select Course</option>
-              <option value="Data Science">Data Science</option>
               <option value="Data Engineering">Data Engineering</option>
-              <option value="Data Analytics">Data Analytics</option>
+              <option value="Data Science and Analytics">Data Science and Analytics</option>
             </select>
           </div>
 

@@ -76,7 +76,7 @@ export default function CommunityPage() {
       name: "Hellen Matti",
       role: "Data Analyst",
       quote:
-        "Before joining LuxDevHQ, I had no experience in Data Analytics. The hands-on training helped me secure a job as a Data Analyst.",
+        "Before joining LuxDevHQ, I had no experience in Data Science and Analytics. The hands-on training helped me secure a job as a Data Analyst.",
       image: "/profile-picture-3.jpg?height=80&width=80",
       rating: 0,
     },

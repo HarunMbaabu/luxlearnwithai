@@ -196,7 +196,7 @@ export async function submitRegistration(prevState, formData) {
       learningTime: validatedData.learningMode === "Online" 
         ? "Online - 7:00 PM to 10:00 PM EAT" 
         : "Physical - 10:00 AM to 2:30 PM EAT",
-      fieldOfInterest: "Analytics, Data Science and AI",
+      fieldOfInterest: "Data Science and Analytics",
       referralSource: validatedData.referralSource,
     })
 

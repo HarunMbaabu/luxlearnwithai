@@ -2,7 +2,7 @@
 
 import Link from "next/link";
 import { Card, CardContent } from "@/components/ui/card";
-import { Database, BarChart, Brain } from "lucide-react";
+import { Database, BarChart } from "lucide-react";
 import { useEffect, useRef } from "react";
 
 export default function ProgramOverview() {
@@ -29,44 +29,34 @@ export default function ProgramOverview() {
 
   const programs = [
     {
-      title: "Data Science and AI",
-      icon: <Brain className="h-6 w-6 text-blue-900" />,
-      description: "Learn machine learning, deep learning, and AI applications",
-      features: [
-        "Python",
-        "Machine Learning",
-        "Neural Networks",
-        "Computer Vision",
-        "NLP",
-      ],
-      color: "emerald",
-      curriculumLink: "/curriculum#data-science-ai",
-    },
-    {
-      title: "Data Analytics",
+      title: "Data Science and Analytics",
       icon: <BarChart className="h-6 w-6 text-blue-600" />,
       description:
-        "Master data analysis, visualization, and business intelligence",
+        "Learn data analysis, statistics, data visualisation, machine learning, and practical AI applications.",
       features: [
+        "Python",
         "SQL",
-        "Power BI",
         "Excel",
-        "Data Visualization",
-        "Statistical Analysis",
+        "Power BI",
+        "Statistics",
+        "Machine Learning",
+        "Data Visualisation",
       ],
       color: "blue",
-      curriculumLink: "/curriculum#data-analytics",
+      curriculumLink: "/curriculum#data-science-and-analytics",
     },
     {
       title: "Data Engineering",
       icon: <Database className="h-6 w-6 text-purple-600" />,
-      description: "Build data pipelines, warehouses, and infrastructure",
+      description:
+        "Learn to design and build scalable data pipelines, databases, data warehouses, and cloud-based data infrastructure.",
       features: [
+        "SQL",
         "ETL",
         "Data Warehousing",
+        "Data Modelling",
         "Big Data",
         "Cloud Platforms",
-        "Data Modeling",
       ],
       color: "purple",
       curriculumLink: "/curriculum#data-engineering",
@@ -75,11 +65,9 @@ export default function ProgramOverview() {
 
   return (
     <div ref={sectionRef} className="space-y-8">
-      <div className="grid grid-cols-1 md:grid-cols-3 gap-8">
-        {programs.map((program, index) => (
-          <div
-            key={index}
-          >
+      <div className="grid grid-cols-1 md:grid-cols-2 gap-8 max-w-4xl mx-auto">
+        {programs.map((program) => (
+          <div key={program.title} className="h-full">
             <Card className="relative border-slate-200 h-full hover:shadow-md transition-all duration-300">
               <div className="pointer-events-none absolute -top-6 -left-6 w-64 h-64 bg-blue-700 rounded-full mix-blend-multiply filter blur-2xl opacity-20 animate-blob"></div>
               <div className="pointer-events-none absolute -bottom-8 -right-8 w-64 h-64 bg-blue-500 rounded-full mix-blend-multiply filter blur-2xl opacity-20 animate-blob animation-delay-2000"></div>
@@ -92,9 +80,9 @@ export default function ProgramOverview() {
                   <h3 className="font-bold text-xl mb-2">{program.title}</h3>
                   <p className="text-slate-600 mb-4">{program.description}</p>
                   <div className="flex flex-wrap gap-2 mb-6">
-                    {program.features.map((feature, i) => (
+                    {program.features.map((feature) => (
                       <span
-                        key={i}
+                        key={feature}
                         className="text-xs bg-slate-100 text-slate-700 px-2 py-1 rounded-full"
                       >
                         {feature}
