@@ -38,6 +38,7 @@ import UniversalEnrollmentForm from "@/components/UniversalEnrollmentForm";
 import ProgramOverview from "@/components/program-overview";
 import BenefitsSection from "@/components/benefits-section";
 import CampusGallery from "./components/campus-gallery";
+import LearningExperience from "./components/learning-experience";
 
 export default function Home() {
   const registrationUrl = process.env.NEXT_PUBLIC_REGISTRATION_LINK ?? '#';
@@ -206,6 +207,8 @@ export default function Home() {
           <BenefitsSection />
         </div>
       </section>
+
+      <LearningExperience />
 
 
       <section className="py-16 px-4 bg-white">
