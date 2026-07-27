@@ -1,443 +1,198 @@
 "use client";
+
 import Image from "next/image";
-import { useState, useEffect } from "react";
 import Link from "next/link";
+import { useEffect, useState } from "react";
+import { usePathname } from "next/navigation";
+import { ChevronDown, Menu, X } from "lucide-react";
 import { Button } from "@/components/ui/button";
-import { Menu, X, ChevronDown } from "lucide-react";
 import UniversalEnrollmentForm from "@/components/UniversalEnrollmentForm";
 import {
   Dialog,
-  DialogTrigger,
   DialogContent,
   DialogTitle,
+  DialogTrigger,
 } from "@/components/ui/dialog";
 
+const programLinks = [
+  { href: "/curriculum#data-science-and-analytics", label: "Data Science and Analytics" },
+  { href: "/curriculum#data-engineering", label: "Data Engineering" },
+];
+
+const aboutLinks = [
+  { href: "/about", label: "About Us" },
+  { href: "/research", label: "Research" },
+  { href: "/community", label: "Community" },
+  { href: "/ai-services", label: "AI Services" },
+];
+
+const languages = ["English", "Français", "Español", "Deutsch"];
+
 export default function Header({ hideRegistrationBanner = false }) {
-  const [showLanguageDropdown, setShowLanguageDropdown] = useState(false);
-  const [showCompanyDropdown, setShowCompanyDropdown] = useState(false);
-  const [showProgramDropdown, setShowProgramDropdown] = useState(false);
-  const [showMobileProgramDropdown, setShowMobileProgramDropdown] =
-    useState(false);
-  const [mobileMenuOpen, setMobileMenuOpen] = useState(false);
+  const pathname = usePathname();
   const [showBanner, setShowBanner] = useState(!hideRegistrationBanner);
-  const [showUniversalEnrollmentForm, setShowUniversalEnrollmentForm] =
-    useState(false);
+  const [mobileMenuOpen, setMobileMenuOpen] = useState(false);
+  const [openDropdown, setOpenDropdown] = useState(null);
+  const [mobileDropdown, setMobileDropdown] = useState(null);
+  const [selectedLanguage, setSelectedLanguage] = useState("English");
+  const [showEnrollmentForm, setShowEnrollmentForm] = useState(false);
 
-  const [selectedLanguage, setSelectedLanguage] = useState({
-    flag: "/globe.svg",
-    name: "English",
-  });
+  useEffect(() => setShowBanner(!hideRegistrationBanner), [hideRegistrationBanner]);
 
-  // Handle clicks outside dropdowns
   useEffect(() => {
-    const handleClickOutside = (event) => {
-      // Don't close if clicking the dropdown triggers
-      if (
-        event.target.closest(".language-dropdown-trigger") ||
-        event.target.closest(".company-dropdown-trigger") ||
-        event.target.closest(".program-dropdown-trigger") ||
-        event.target.closest(".mobile-menu-trigger")
-      ) {
-        return;
-      }
-
-      // Close if clicking outside
-      if (
-        !event.target.closest(".language-dropdown-content") &&
-        !event.target.closest(".company-dropdown-content") &&
-        !event.target.closest(".program-dropdown-content") &&
-        !event.target.closest(".mobile-menu-content")
-      ) {
-        setShowLanguageDropdown(false);
-        setShowCompanyDropdown(false);
-        setShowProgramDropdown(false);
-        setShowMobileProgramDropdown(false);
+    const closeOnEscape = (event) => {
+      if (event.key === "Escape") {
+        setOpenDropdown(null);
+        setMobileDropdown(null);
         setMobileMenuOpen(false);
       }
     };
-
-    document.addEventListener("mousedown", handleClickOutside);
-    return () => document.removeEventListener("mousedown", handleClickOutside);
+    document.addEventListener("keydown", closeOnEscape);
+    return () => document.removeEventListener("keydown", closeOnEscape);
   }, []);
 
   useEffect(() => {
-    setShowBanner(!hideRegistrationBanner);
-  }, [hideRegistrationBanner]);
+    const closeOnOutsideClick = (event) => {
+      if (!event.target.closest("[data-header-dropdown]")) setOpenDropdown(null);
+    };
+    document.addEventListener("mousedown", closeOnOutsideClick);
+    return () => document.removeEventListener("mousedown", closeOnOutsideClick);
+  }, []);
 
-  const languages = [
-    { flag: "/globe.svg", name: "English" },
-    { flag: "/globe.svg", name: "Français" },
-    { flag: "/globe.svg", name: "Español" },
-    { flag: "/globe.svg", name: "Deutsch" },
-  ];
-
-  const programLinks = [
-    {
-      href: "/curriculum#data-science-and-analytics",
-      label: "Data Science and Analytics",
-    },
-    { href: "/curriculum#data-engineering", label: "Data Engineering" },
-  ];
-
-  const companyLinks = [
-    { href: "/about", label: "About Us" },
-    { href: "/research", label: "Research" },
-    { href: "/community", label: "Community" },
-    { href: "/ai-services", label: "AI Services" },
-  ];
-
-  const handleLanguageChange = (language) => {
-    setSelectedLanguage(language);
-    setShowLanguageDropdown(false);
+  const isActive = (href) =>
+    href === "/" ? pathname === "/" : pathname === href || pathname.startsWith(`${href}/`);
+  const programActive = isActive("/curriculum");
+  const aboutActive = aboutLinks.some(({ href }) => isActive(href));
+  const navClass = (active, prominent = false) =>
+    `relative rounded-sm px-1 py-2 text-sm font-bold tracking-wide transition-colors focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-blue-700 focus-visible:ring-offset-2 ${
+      active
+        ? "text-blue-900 after:absolute after:inset-x-1 after:-bottom-1 after:h-0.5 after:bg-blue-900"
+        : prominent
+          ? "text-blue-900 hover:text-blue-700"
+          : "text-gray-800 hover:text-blue-900"
+    }`;
+  const closeMobileMenu = () => {
+    setMobileMenuOpen(false);
+    setMobileDropdown(null);
   };
 
-  const toggleMobileMenu = () => {
-    setMobileMenuOpen(!mobileMenuOpen);
-    setShowMobileProgramDropdown(false);
+  const dropdown = (name, label, active, links) => (
+    <div className="relative flex items-center" data-header-dropdown>
+      <Link href={name === "program" ? "/curriculum" : "/about"} className={navClass(active)} aria-current={active ? "page" : undefined}>
+        {label}
+      </Link>
+      <button
+        type="button"
+        className="rounded-sm p-1 text-gray-700 hover:text-blue-900 focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-blue-700"
+        aria-label={`Open ${label} menu`}
+        aria-haspopup="menu"
+        aria-expanded={openDropdown === name}
+        aria-controls={`${name}-menu`}
+        onClick={() => setOpenDropdown(openDropdown === name ? null : name)}
+      >
+        <ChevronDown className={`h-4 w-4 transition-transform ${openDropdown === name ? "rotate-180" : ""}`} aria-hidden="true" />
+      </button>
+      {openDropdown === name && (
+        <div id={`${name}-menu`} role="menu" className="absolute left-0 top-full mt-2 w-56 rounded-lg border bg-white py-1 shadow-lg">
+          {links.map((link) => (
+            <Link key={link.href} href={link.href} role="menuitem" className="block px-4 py-3 text-sm font-medium text-gray-600 hover:bg-gray-50 hover:text-blue-900 focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-inset focus-visible:ring-blue-700" onClick={() => setOpenDropdown(null)}>
+              {link.label}
+            </Link>
+          ))}
+        </div>
+      )}
+    </div>
+  );
+
+  const mobileLink = (href, label, prominent = false) => {
+    const active = isActive(href);
+    return (
+      <Link href={href} onClick={closeMobileMenu} aria-current={active ? "page" : undefined} className={`rounded px-2 py-2 text-sm font-semibold focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-blue-700 ${active ? "bg-blue-50 text-blue-900" : prominent ? "text-blue-900 hover:bg-blue-50" : "text-gray-700 hover:bg-gray-50 hover:text-blue-900"}`}>
+        {label}
+      </Link>
+    );
   };
+
+  const mobileDropdownMenu = (name, label, active, links) => (
+    <div className="border-l-2 border-blue-100 pl-2">
+      <div className={`flex items-center rounded ${active ? "bg-blue-50" : ""}`}>
+        <Link href={name === "program" ? "/curriculum" : "/about"} onClick={closeMobileMenu} aria-current={active ? "page" : undefined} className="flex-1 px-2 py-2 text-sm font-semibold text-gray-700 hover:text-blue-900 focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-blue-700">
+          {label}
+        </Link>
+        <button type="button" className="m-1 rounded p-2 text-gray-700 focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-blue-700" aria-label={`Open ${label} menu`} aria-haspopup="menu" aria-expanded={mobileDropdown === name} aria-controls={`mobile-${name}-menu`} onClick={() => setMobileDropdown(mobileDropdown === name ? null : name)}>
+          <ChevronDown className={`h-4 w-4 transition-transform ${mobileDropdown === name ? "rotate-180" : ""}`} aria-hidden="true" />
+        </button>
+      </div>
+      {mobileDropdown === name && (
+        <div id={`mobile-${name}-menu`} role="menu" className="ml-2 space-y-1 py-1">
+          {links.map((link) => (
+            <Link key={link.href} href={link.href} role="menuitem" onClick={closeMobileMenu} className="block rounded px-2 py-2 text-sm font-medium text-gray-600 hover:bg-gray-50 hover:text-blue-900 focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-blue-700">
+              {link.label}
+            </Link>
+          ))}
+        </div>
+      )}
+    </div>
+  );
 
   return (
     <>
-      {/* Registration Banner */}
       {!hideRegistrationBanner && showBanner && (
-        <div className="fixed top-0 left-0 w-full z-[60] bg-blue-900 text-white">
-          <div className="flex items-center justify-center px-4 py-2 relative">
-            <div className="text-center">
-              <p className="text-sm md:text-base font-medium">
-                <strong>August 2026 Intake – Final Intake for 2026 |</strong>
-
-                <Dialog
-                  open={showUniversalEnrollmentForm}
-                  onOpenChange={(open) => {
-                    setShowUniversalEnrollmentForm(open);
-                    if (open) {
-                      setShowLanguageDropdown(false);
-                      setShowCompanyDropdown(false);
-                      setShowProgramDropdown(false);
-                      setMobileMenuOpen(false);
-                    }
-                  }}
-                >
-                  <DialogTrigger asChild>
-                    <button
-                      type="button"
-                      className="ml-1 underline hover:no-underline font-semibold"
-                      onClick={() => setShowUniversalEnrollmentForm(true)}
-                    >
-                      Enroll Now →
-                    </button>
-                  </DialogTrigger>
-                  <DialogContent>
-                    <DialogTitle>Enrollment</DialogTitle>
-                    <UniversalEnrollmentForm
-                      onClose={() => setShowUniversalEnrollmentForm(false)}
-                    />
-                  </DialogContent>
-                </Dialog>
-              </p>
-            </div>
-            <button
-              onClick={() => setShowBanner(false)}
-              className="absolute right-4 hover:bg-blue-800 rounded-full p-1 transition-colors"
-              aria-label="Close banner"
-            >
-              <X className="h-4 w-4" />
-            </button>
+        <div className="fixed left-0 top-0 z-[60] w-full bg-blue-900 text-white">
+          <div className="relative flex items-center justify-center px-10 py-2 text-center text-sm font-medium md:text-base">
+            <p><strong>August 2026 Intake – Final Intake for 2026 |</strong>{" "}<button type="button" className="font-semibold underline hover:no-underline focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-white" onClick={() => setShowEnrollmentForm(true)}>Enroll Now →</button></p>
+            <button type="button" onClick={() => setShowBanner(false)} className="absolute right-4 rounded-full p-1 hover:bg-blue-800 focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-white" aria-label="Close banner"><X className="h-4 w-4" /></button>
           </div>
         </div>
       )}
 
-      {/* Main Header */}
-      <header
-        className={`fixed left-0 w-full z-50 bg-white/95 backdrop-blur-sm border-b border-blue-200 ${
-          showBanner ? "top-10" : "top-0"
-        } transition-all duration-300`}
-      >
-        <div className="w-full px-4 mx-auto flex h-16 items-center justify-between">
-          <Link href={"/"} className="flex items-center gap-2 md:gap-4">
-            <Image
-              src="/logo.png"
-              alt="User"
-              width={40}
-              height={40}
-              className="w-8 h-8 md:w-10 md:h-10 rounded-full"
-            />
-            <h1 className="text-blue-900 font-bold text-xl md:text-2xl">
-              LuxDevHQ
-            </h1>
+      <header className={`fixed left-0 z-50 w-full border-b border-blue-200 bg-white/95 backdrop-blur-sm transition-all duration-300 ${showBanner ? "top-10" : "top-0"}`}>
+        <div className="mx-auto flex h-16 w-full items-center justify-between gap-3 px-4 lg:px-6">
+          <Link href="/" className="flex shrink-0 items-center gap-2 rounded focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-blue-700 md:gap-3">
+            <Image src="/logo.png" alt="LuxDevHQ" width={40} height={40} className="h-8 w-8 rounded-full md:h-10 md:w-10" />
+            <span className="text-xl font-bold text-blue-900 md:text-2xl">LuxDevHQ</span>
           </Link>
 
-          {/* Desktop Navigation */}
-          <nav className="hidden md:flex items-center gap-6">
-            <Link
-              href="/pricing"
-              className="text-md tracking-wide font-bold text-gray-800 hover:text-blue-900 transition-colors"
-            >
-              Pricing
-            </Link>
-
-            {/* Program Dropdown */}
-            <div className="relative">
-              <button
-                className="program-dropdown-trigger flex items-center gap-1 text-md tracking-wide font-bold text-gray-800 hover:text-blue-900 transition-colors focus:outline-none"
-                aria-expanded={showProgramDropdown}
-                onClick={(e) => {
-                  e.stopPropagation();
-                  setShowLanguageDropdown(false);
-                  setShowCompanyDropdown(false);
-                  setShowProgramDropdown(!showProgramDropdown);
-                }}
-              >
-                Program
-                <ChevronDown className="h-4 w-4" />
-              </button>
-              {showProgramDropdown && (
-                <div className="program-dropdown-content absolute left-0 mt-2 w-48 bg-white border rounded-lg shadow-lg z-10">
-                  {programLinks.map((link) => (
-                    <Link
-                      key={link.href}
-                      href={link.href}
-                      className="block px-4 py-3 text-sm font-medium text-gray-600 hover:text-blue-900 hover:bg-gray-50 transition-colors"
-                      onClick={() => setShowProgramDropdown(false)}
-                    >
-                      {link.label}
-                    </Link>
-                  ))}
-                </div>
-              )}
-            </div>
-
-            <Link
-              href="/free-ai-tutor"
-              className="text-md tracking-wide font-bold text-blue-900 hover:text-blue-700 transition-colors"
-            >
-              Ask AI
-            </Link>
-
-            {/* Company Dropdown */}
-            <div className="relative">
-              <button
-                className="company-dropdown-trigger flex items-center gap-1 text-md tracking-wide font-bold text-gray-800 hover:text-blue-900 transition-colors focus:outline-none"
-                onClick={(e) => {
-                  e.stopPropagation();
-                  setShowLanguageDropdown(false);
-                  setShowProgramDropdown(false);
-                  setShowCompanyDropdown(!showCompanyDropdown);
-                }}
-              >
-                About
-                <ChevronDown className="h-4 w-4" />
-              </button>
-              {showCompanyDropdown && (
-                <div className="company-dropdown-content absolute left-0 mt-2 w-48 bg-white border rounded-lg shadow-lg z-10">
-                  {companyLinks.map((link) => (
-                    <Link
-                      key={link.href}
-                      href={link.href}
-                      className="block px-4 py-3 text-sm font-medium text-gray-600 hover:text-blue-900 hover:bg-gray-50 transition-colors"
-                      onClick={() => setShowCompanyDropdown(false)}
-                    >
-                      {link.label}
-                    </Link>
-                  ))}
-                </div>
-              )}
-            </div>
+          <nav aria-label="Main navigation" className="hidden items-center gap-3 md:flex lg:gap-5">
+            <Link href="/" className={navClass(isActive("/"))} aria-current={isActive("/") ? "page" : undefined}>Home</Link>
+            <Link href="/pricing" className={navClass(isActive("/pricing"))} aria-current={isActive("/pricing") ? "page" : undefined}>Pricing</Link>
+            {dropdown("program", "Program", programActive, programLinks)}
+            <Link href="/challenges" className={navClass(isActive("/challenges"))} aria-current={isActive("/challenges") ? "page" : undefined}>Challenges</Link>
+            {dropdown("about", "About", aboutActive, aboutLinks)}
+            <Link href="/free-ai-tutor" className={navClass(isActive("/free-ai-tutor"), true)} aria-current={isActive("/free-ai-tutor") ? "page" : undefined}>Ask AI</Link>
           </nav>
 
-          <div className="flex items-center gap-2 md:gap-4">
-            {/* Language Dropdown */}
-            <div className="relative">
-              <button
-                className="language-dropdown-trigger focus:outline-none"
-                onClick={(e) => {
-                  e.stopPropagation();
-                  setMobileMenuOpen(false);
-                  setShowCompanyDropdown(false);
-                  setShowProgramDropdown(false);
-                  setShowLanguageDropdown(!showLanguageDropdown);
-                }}
-              >
-                <Image
-                  src={selectedLanguage.flag}
-                  alt="Language"
-                  width={30}
-                  height={20}
-                  className="w-6 h-4"
-                />
+          <div className="flex shrink-0 items-center gap-2 md:gap-3">
+            <div className="relative" data-header-dropdown>
+              <button type="button" className="rounded p-1 focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-blue-700" aria-label={`Language: ${selectedLanguage}`} aria-haspopup="menu" aria-expanded={openDropdown === "language"} aria-controls="language-menu" onClick={() => setOpenDropdown(openDropdown === "language" ? null : "language")}>
+                <Image src="/globe.svg" alt="" width={30} height={20} className="h-4 w-6" />
               </button>
-              {showLanguageDropdown && (
-                <div className="language-dropdown-content absolute right-0 mt-2 w-40 bg-white border rounded-lg shadow-lg z-10">
-                  {languages.map((language) => (
-                    <button
-                      key={language.name}
-                      onClick={() => handleLanguageChange(language)}
-                      className="flex items-center w-full px-4 py-2 text-left hover:bg-gray-100"
-                    >
-                      <Image
-                        src={language.flag}
-                        alt={language.name}
-                        width={20}
-                        height={15}
-                        className="mr-2"
-                      />
-                      {language.name}
-                    </button>
-                  ))}
-                </div>
-              )}
+              {openDropdown === "language" && <div id="language-menu" role="menu" className="absolute right-0 mt-2 w-40 rounded-lg border bg-white py-1 shadow-lg">{languages.map((language) => <button type="button" role="menuitem" key={language} onClick={() => { setSelectedLanguage(language); setOpenDropdown(null); }} className="flex w-full items-center px-4 py-2 text-left hover:bg-gray-100 focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-inset focus-visible:ring-blue-700"><Image src="/globe.svg" alt="" width={20} height={15} className="mr-2" />{language}</button>)}</div>}
             </div>
-
-            {/* Desktop Apply Button */}
-            <Dialog
-              open={showUniversalEnrollmentForm}
-              onOpenChange={(open) => {
-                setShowUniversalEnrollmentForm(open);
-                if (open) {
-                  setShowLanguageDropdown(false);
-                  setShowCompanyDropdown(false);
-                  setShowProgramDropdown(false);
-                  setMobileMenuOpen(false);
-                }
-              }}
-            >
-              <DialogTrigger asChild>
-                <Button
-                  size="sm"
-                  className="text-md hidden md:block bg-blue-900"
-                  onClick={() => setShowUniversalEnrollmentForm(true)}
-                >
-                  Enroll Now
-                </Button>
-              </DialogTrigger>
-              <DialogContent>
-                <DialogTitle>Enrollment</DialogTitle>
-                <UniversalEnrollmentForm
-                  onClose={() => setShowUniversalEnrollmentForm(false)}
-                />
-              </DialogContent>
-            </Dialog>
-
-            {/* Mobile Menu Button */}
-            <button
-              className="mobile-menu-trigger md:hidden focus:outline-none"
-              onClick={() => {
-                toggleMobileMenu();
-                setShowLanguageDropdown(false);
-                setShowCompanyDropdown(false);
-                setShowProgramDropdown(false);
-              }}
-              aria-label="Toggle menu"
-            >
-              {mobileMenuOpen ? (
-                <X className="h-6 w-6 text-gray-600" />
-              ) : (
-                <Menu className="h-6 w-6 text-gray-600" />
-              )}
-            </button>
+            <Button size="sm" className="hidden bg-blue-900 text-sm md:block" onClick={() => setShowEnrollmentForm(true)}>Enroll Now</Button>
+            <button type="button" className="rounded p-1 md:hidden focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-blue-700" onClick={() => { setMobileMenuOpen(!mobileMenuOpen); setMobileDropdown(null); setOpenDropdown(null); }} aria-label={mobileMenuOpen ? "Close menu" : "Open menu"} aria-expanded={mobileMenuOpen} aria-controls="mobile-navigation">{mobileMenuOpen ? <X className="h-6 w-6 text-gray-600" /> : <Menu className="h-6 w-6 text-gray-600" />}</button>
           </div>
         </div>
 
-        {/* Mobile Menu */}
         {mobileMenuOpen && (
-          <div className="mobile-menu-content md:hidden bg-white border-t border-gray-100">
-            <div className="px-4 py-3 flex flex-col space-y-3">
-              <Link
-                href="/pricing"
-                className="text-sm font-medium text-gray-600 hover:text-blue-900 transition-colors py-2"
-              >
-                Pricing
-              </Link>
-
-              <div className="border-l-2 border-blue-100 pl-3">
-                <button
-                  type="button"
-                  className="flex w-full items-center justify-between py-2 text-left text-sm font-semibold text-blue-900 uppercase tracking-wide hover:text-blue-700 transition-colors"
-                  aria-expanded={showMobileProgramDropdown}
-                  onClick={() =>
-                    setShowMobileProgramDropdown(!showMobileProgramDropdown)
-                  }
-                >
-                  Program
-                  <ChevronDown
-                    className={`h-4 w-4 transition-transform ${
-                      showMobileProgramDropdown ? "rotate-180" : ""
-                    }`}
-                  />
-                </button>
-                {showMobileProgramDropdown && (
-                  <div className="mt-1 space-y-1">
-                    {programLinks.map((link) => (
-                      <Link
-                        key={link.href}
-                        href={link.href}
-                        className="block py-1 text-sm font-medium text-gray-600 hover:text-blue-900 transition-colors"
-                        onClick={() => {
-                          setShowMobileProgramDropdown(false);
-                          setMobileMenuOpen(false);
-                        }}
-                      >
-                        {link.label}
-                      </Link>
-                    ))}
-                  </div>
-                )}
-              </div>
-
-              <Link
-                href="/free-ai-tutor"
-                className="text-sm font-semibold text-blue-900 hover:text-blue-700 transition-colors py-2"
-              >
-                Ask AI
-              </Link>
-
-              {/* Mobile Company Section */}
-              <div className="border-l-2 border-blue-100 pl-3">
-                <div className="text-xs font-semibold text-blue-900 uppercase tracking-wide mb-2">
-                  About
-                </div>
-                {companyLinks.map((link) => (
-                  <Link
-                    key={link.href}
-                    href={link.href}
-                    className="block text-sm font-medium text-gray-600 hover:text-blue-900 transition-colors py-1"
-                  >
-                    {link.label}
-                  </Link>
-                ))}
-              </div>
-
-              <Dialog
-                open={showUniversalEnrollmentForm}
-                onOpenChange={(open) => {
-                  setShowUniversalEnrollmentForm(open);
-                  if (open) {
-                    setShowLanguageDropdown(false);
-                    setShowCompanyDropdown(false);
-                    setMobileMenuOpen(false);
-                  }
-                }}
-              >
-                <DialogTrigger asChild>
-                  <Button
-                    size="sm"
-                    className="bg-blue-900 w-full mt-2"
-                    onClick={() => setShowUniversalEnrollmentForm(true)}
-                  >
-                    Enroll Now
-                  </Button>
-                </DialogTrigger>
-                <DialogContent>
-                  <DialogTitle>Enrollment</DialogTitle>
-                  <UniversalEnrollmentForm
-                    onClose={() => setShowUniversalEnrollmentForm(false)}
-                  />
-                </DialogContent>
-              </Dialog>
+          <nav id="mobile-navigation" aria-label="Mobile navigation" className="border-t border-gray-100 bg-white md:hidden">
+            <div className="flex flex-col space-y-1 px-4 py-3">
+              {mobileLink("/", "Home")}
+              {mobileLink("/pricing", "Pricing")}
+              {mobileDropdownMenu("program", "Program", programActive, programLinks)}
+              {mobileLink("/challenges", "Challenges")}
+              {mobileDropdownMenu("about", "About", aboutActive, aboutLinks)}
+              {mobileLink("/free-ai-tutor", "Ask AI", true)}
+              <Button size="sm" className="mt-2 w-full bg-blue-900" onClick={() => { closeMobileMenu(); setShowEnrollmentForm(true); }}>Enroll Now</Button>
             </div>
-          </div>
+          </nav>
         )}
       </header>
+
+      <Dialog open={showEnrollmentForm} onOpenChange={setShowEnrollmentForm}>
+        <DialogTrigger className="hidden" />
+        <DialogContent><DialogTitle>Enrollment</DialogTitle><UniversalEnrollmentForm onClose={() => setShowEnrollmentForm(false)} /></DialogContent>
+      </Dialog>
     </>
   );
 }
