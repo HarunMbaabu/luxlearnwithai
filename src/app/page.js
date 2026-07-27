@@ -27,7 +27,6 @@ import {
   MapPin,
   Headphones,
   Library,
-  Images,
 } from "lucide-react";
 import Header from "./components/header";
 import Footer from "./components/footer";
@@ -38,6 +37,7 @@ import FullProgramForm from "@/components/FullProgramForm";
 import UniversalEnrollmentForm from "@/components/UniversalEnrollmentForm";
 import ProgramOverview from "@/components/program-overview";
 import BenefitsSection from "@/components/benefits-section";
+import CampusGallery from "./components/campus-gallery";
 
 export default function Home() {
   const registrationUrl = process.env.NEXT_PUBLIC_REGISTRATION_LINK ?? '#';
@@ -46,15 +46,6 @@ export default function Home() {
   useEffect(() => {
     AOS.init({ duration: 700, once: true });
   }, []);
-
-  const galleryImages = [
-    { src: "/gallery/LUXGRADUATION_-213.jpg", alt: "LuxDev Academy graduation celebration" },
-    { src: "/gallery/LUXGRADUATION_-192.jpg", alt: "LuxDev Academy student community moment" },
-    { src: "/gallery/LUXGRADUATION_-290.jpg", alt: "LuxDev Academy graduates celebrating achievement" },
-    { src: "/gallery/LUX22GRADUATION..(46of199).jpg", alt: "LuxDev Academy in-person learning community" },
-    { src: "/gallery/LUXGRADUATION_-251.jpg", alt: "LuxDev Academy student success event" },
-    { src: "/gallery/LUX22GRADUATION..(97of199).jpg", alt: "LuxDev Academy learners and mentors" },
-  ];
 
   const testimonials = [
     {
@@ -192,7 +183,7 @@ export default function Home() {
         </div>
       </section>
 
-      <section className="py-16 px-4 bg-white">
+      <section id="programmes" className="scroll-mt-24 py-16 px-4 bg-white">
         <div className="container mx-auto max-w-6xl">
           <div className="text-center mb-12" data-aos="fade-up">
             <h2 className="text-3xl md:text-4xl font-bold mb-4">Our Training Programs</h2>
@@ -459,33 +450,7 @@ export default function Home() {
         </div>
       </section>
 
-      <section className="overflow-hidden bg-slate-950 py-20 px-4 text-white">
-        <div className="container mx-auto max-w-7xl">
-          <div className="mb-12 flex flex-col gap-6 md:flex-row md:items-end md:justify-between" data-aos="fade-up">
-            <div>
-              <div className="mb-4 inline-flex items-center rounded-full bg-white/10 px-4 py-2 text-sm font-semibold text-blue-100 ring-1 ring-white/15">
-                <Images className="mr-2 h-4 w-4" /> Campus gallery
-              </div>
-              <h2 className="text-3xl font-black md:text-5xl">A glimpse of learning, community, and celebration</h2>
-            </div>
-            <p className="max-w-xl text-lg text-slate-300">
-              Explore moments from our LuxDev Academy community, from in-person milestones to the energy that supports every online and campus learner.
-            </p>
-          </div>
-          <div className="grid auto-rows-[220px] grid-cols-1 gap-4 md:grid-cols-4">
-            {galleryImages.map((image, index) => (
-              <div
-                key={image.src}
-                className={`group relative overflow-hidden rounded-3xl bg-white/10 shadow-2xl ring-1 ring-white/10 ${index === 0 ? "md:col-span-2 md:row-span-2" : ""} ${index === 3 ? "md:col-span-2" : ""}`}
-                data-aos="zoom-in"
-              >
-                <Image src={image.src} alt={image.alt} fill sizes="(min-width: 768px) 25vw, 100vw" className="object-cover transition duration-700 group-hover:scale-110" />
-                <div className="absolute inset-0 bg-gradient-to-t from-slate-950/70 via-transparent to-transparent opacity-80"></div>
-              </div>
-            ))}
-          </div>
-        </div>
-      </section>
+      <CampusGallery />
 
       {/* Programs Section */}
       <section className="py-16 px-4 bg-white">
