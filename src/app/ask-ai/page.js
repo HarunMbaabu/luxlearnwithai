@@ -954,10 +954,10 @@ export default function AskAIPage() {
                         variant="outline"
                         className="cursor-pointer hover:bg-blue-50"
                         onClick={() =>
-                          handleSuggestedQuestion("Can you provide the LuxDevHQ Data Analytics roadmap?")
+                          handleSuggestedQuestion("Can you provide the LuxDevHQ Data Science and Analytics roadmap?")
                         }
                       >
-                        Data Analytics
+                        Data Science and Analytics
                       </Badge>
                     </div>
                   </div>
@@ -984,7 +984,7 @@ export default function AskAIPage() {
                         className="cursor-pointer hover:bg-blue-50"
                         onClick={() =>
                           handleSuggestedQuestion(
-                            "What is SQL?, how is it used in Data Analytics? Give examples and applications."
+                            "What is SQL?, how is it used in Data Science and Analytics? Give examples and applications."
                           )
                         }
                       >

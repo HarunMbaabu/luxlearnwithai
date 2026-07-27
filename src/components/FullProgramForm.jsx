@@ -198,7 +198,7 @@ const countries = [
 
 const genders = ["Male", "Female"];
 const modes = ["Online Classes", "Physical Classes"];
-const tracks = ["Data Analytics, Data Science and AI", "Data Engineering"];
+const tracks = ["Data Science and Analytics", "Data Engineering"];
 
 const sources = [
   "Friend/Colleague",

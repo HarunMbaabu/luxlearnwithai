@@ -217,7 +217,7 @@ export default function AIServicesPage() {
                 <div className="w-12 h-12 bg-blue-900/10 rounded-full flex items-center justify-center mb-6">
                   <Database className="h-6 w-6 text-blue-900" />
                 </div>
-                <h3 className="text-xl font-bold mb-3">Data Analytics and BI</h3>
+                <h3 className="text-xl font-bold mb-3">Analytics and BI</h3>
                 <p className="text-gray-600 mb-4">
                   Transform your raw data into actionable business intelligence with advanced analytics and
                   visualization.

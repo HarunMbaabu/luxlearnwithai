@@ -4,13 +4,13 @@ import { Analytics } from '@vercel/analytics/next';
 import PWARegistration from './components/pwa-registration';
 
 export const metadata = {
-  title: "LuxDevHQ - AI and Data Science Training",
+  title: "LuxDevHQ - Data Science, Analytics and Engineering Training",
   description:
-    "LuxDevHQ (Lux Academy and Data Science East Africa) is a premier training institution offering hands-on courses in AI, Data Science, Analytics, and Engineering.",
+    "LuxDevHQ offers hands-on Data Science and Analytics and Data Engineering programmes with real-world projects and career mentorship.",
   keywords: [
     "LuxDevHQ",
     "Data Science",
-    "AI Training",
+    "Data Science and Analytics",
     "Data Engineering",
     "Machine Learning",
     "Tech Upskilling",
@@ -27,9 +27,9 @@ export const metadata = {
   },
   themeColor: "#1e3a8a",
   openGraph: {
-    title: "LuxDevHQ - AI and Data Science Training",
+    title: "LuxDevHQ - Data Science, Analytics and Engineering Training",
     description:
-      "Join LuxDevHQ and gain cutting-edge AI and Data Science skills. Hands-on training, real-world projects, and career mentorship.",
+      "Build practical Data Science and Analytics or Data Engineering skills through hands-on training, real-world projects, and career mentorship.",
     url: "https://luxdevhq.ai",
     type: "website",
     images: [
@@ -37,7 +37,7 @@ export const metadata = {
         url: "https://luxdevhq.ai/image-2.png",
         width: 1200,
         height: 630,
-        alt: "LuxDevHQ - AI and Data Science Training",
+        alt: "LuxDevHQ data training programmes",
       },
     ],
   },

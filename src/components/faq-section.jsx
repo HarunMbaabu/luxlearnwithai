@@ -94,7 +94,7 @@ export default function FaqSection() {
             </AccordionTrigger>
             <AccordionContent className="pb-4 text-slate-300">
               Yes. LuxDevHQ combines affordable pricing, flexible payments, and a high-value pay-once access model,
-              making it a strong choice for students seeking an Affordable Data Analytics Course Kenya.
+              making it a strong choice for students seeking an Affordable Data Science and Analytics Course Kenya.
             </AccordionContent>
           </AccordionItem>
         </Accordion>

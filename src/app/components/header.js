@@ -72,8 +72,11 @@ export default function Header({ hideRegistrationBanner = false }) {
   ];
 
   const programLinks = [
-    { href: "/pricing", label: "Full Program" },
-    { href: "/prep-program", label: "Prep Program" },
+    {
+      href: "/curriculum#data-science-and-analytics",
+      label: "Data Science and Analytics",
+    },
+    { href: "/curriculum#data-engineering", label: "Data Engineering" },
   ];
 
   const companyLinks = [

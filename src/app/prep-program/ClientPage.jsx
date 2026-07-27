@@ -53,7 +53,7 @@ const scheduleOptions = [
 
 const audience = [
   "Beginners who want to learn Power BI, Python, or SQL",
-  "Students preparing for Data Analytics, Data Science, or Data Engineering programs",
+  "Students preparing for Data Science and Analytics or Data Engineering programs",
   "Learners who want structured revision and practical exercises",
   "Professionals who want to strengthen their technical foundation",
 ];

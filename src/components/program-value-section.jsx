@@ -61,7 +61,7 @@ export default function ProgramValueSection() {
             </p>
             <p>
               LuxDevHQ is positioned as an
-              <span className="text-blue-200"> Affordable Data Analytics Course Kenya </span>
+              <span className="text-blue-200"> Affordable Data Science and Analytics Course Kenya </span>
               with high career value and practical outcomes.
             </p>
           </CardContent>

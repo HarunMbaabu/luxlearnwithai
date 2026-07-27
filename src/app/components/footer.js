@@ -51,23 +51,13 @@ export default function Footer() {
             <h3 className="text-lg font-bold mb-4">Programs</h3>
             <ul className="space-y-2">
               <li>
-                <Link href="#" className="text-gray-600 hover:text-blue-900">
-                  Data Analytics
+                <Link href="/curriculum#data-science-and-analytics" className="text-gray-600 hover:text-blue-900">
+                  Data Science and Analytics
                 </Link>
               </li>
               <li>
-                <Link href="#" className="text-gray-600 hover:text-blue-900">
-                  Data Science and AI
-                </Link>
-              </li>
-              <li>
-                <Link href="#" className="text-gray-600 hover:text-blue-900">
+                <Link href="/curriculum#data-engineering" className="text-gray-600 hover:text-blue-900">
                   Data Engineering
-                </Link>
-              </li>
-              <li>
-                <Link href="#" className="text-gray-600 hover:text-blue-900">
-                  Corporate Training
                 </Link>
               </li>
             </ul>
@@ -77,7 +67,7 @@ export default function Footer() {
             <h3 className="text-lg font-bold mb-4">Company</h3>
             <ul className="space-y-2">
               <li>
-                <Link href="#" className="text-gray-600 hover:text-blue-900">
+                <Link href="/about" className="text-gray-600 hover:text-blue-900">
                   About Us
                 </Link>
               </li>

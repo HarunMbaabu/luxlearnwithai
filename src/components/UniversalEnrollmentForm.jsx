@@ -209,7 +209,7 @@ const MODE_MONTHLY_KES = {
   "Physical Classes": 12500,
 };
 
-const tracks = ["Data Analytics, Data Science and AI", "Data Engineering"];
+const tracks = ["Data Science and Analytics", "Data Engineering"];
 
 const sources = [
   "Friend/Colleague",
