@@ -82,7 +82,7 @@ export default function PrepProgramPage() {
               </p>
               <div className="mt-10 flex flex-col items-center justify-center gap-4 sm:flex-row">
                 <Button asChild size="lg" className="bg-blue-600 px-8 py-6 text-base hover:bg-blue-700">
-                  <Link href="/get-started">Register for the Prep Program</Link>
+                  <Link href="/enroll">Register for the Prep Program</Link>
                 </Button>
                 <div className="flex items-center gap-2 text-sm text-slate-300">
                   <Calendar className="h-4 w-4 text-blue-300" />
@@ -174,7 +174,7 @@ export default function PrepProgramPage() {
               Register for the Prep Program and choose the Power BI, Python, or SQL class that best matches your next step.
             </p>
             <Button asChild size="lg" className="mt-9 bg-white px-8 py-6 text-base text-blue-950 hover:bg-blue-50">
-              <Link href="/get-started">Register for the Prep Program</Link>
+              <Link href="/enroll">Register for the Prep Program</Link>
             </Button>
           </div>
         </section>
